@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://00bxfurateyx"]
 
 [ext_resource type="Script" uid="uid://cgp0nf81dy7xa" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bqs8nmjb61r2v" path="res://game.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dwl71rxjb5i4j" path="res://ui/menu/main_menu.tscn" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://d0pgs154unya1" path="res://audio/audio_manager.gd" id="4_7mycd"]
 
-[node name="Main" type="Node2D" unique_id=2095924333]
+[node name="Main" type="Node2D" unique_id=2095924333 node_paths=PackedStringArray("audio")]
 script = ExtResource("1_ig7tw")
+game_scene = ExtResource("2_1bvp3")
+main_menu_scene = ExtResource("3_lquwl")
+audio = NodePath("AudioManager")
+
+[node name="AudioManager" type="Node2D" parent="." unique_id=405682857]
+script = ExtResource("4_7mycd")
