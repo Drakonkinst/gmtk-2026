@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dwmjeaul3tjif"]
+
+[ext_resource type="Script" uid="uid://daa7n7fsiyrc4" path="res://drawing/image_loader.gd" id="1_4qa86"]
+[ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="2_mf6jt"]
+[ext_resource type="Resource" uid="uid://c7c8our2jktyo" path="res://drawing/drawings/circle.tres" id="3_54w35"]
+
+[node name="ImageLoadingTest" type="Node2D" unique_id=2100472272]
+
+[node name="ImageLoader" type="Node2D" parent="." unique_id=1281974596]
+script = ExtResource("1_4qa86")
+drawings = Array[ExtResource("2_mf6jt")]([ExtResource("3_54w35")])
