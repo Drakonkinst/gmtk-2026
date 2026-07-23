@@ -9,4 +9,4 @@ signal restart_game
 @onready var drawing_manager: DrawingManager = %DrawingManager
 
 func _ready() -> void:
-    drawing_manager.set_next_drawing()
+	drawing_manager.set_next_drawing()
