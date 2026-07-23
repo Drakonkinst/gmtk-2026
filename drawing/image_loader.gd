@@ -13,7 +13,8 @@ func _ready() -> void:
     for drawing in drawings:
         var image: Image = drawing.image.get_image()
         var image_data: PackedInt64Array = []
-        # TODO: Probably check that all images are the expected width and height
+        if image.get_width() != Drawing.WIDTH || image.get_height() != Drawing.HEIGHT:
+            push_warning("Invalid dimensions for ", drawing.id, ": ", image.get_width(), " by ", image.get_height())
         image_data.resize(image.get_height() * image.get_width())
         image_data.fill(-1)
         for y in image.get_height():

@@ -14,7 +14,8 @@
 script = ExtResource("1_80nbo")
 
 [node name="Drawing" type="Sprite2D" parent="." unique_id=1676181911]
-position = Vector2(571.00006, 344.00003)
+modulate = Color(1, 1, 1, 0.5058824)
+position = Vector2(576.00006, 337)
 scale = Vector2(6.7291665, 6.7291665)
 texture = ExtResource("4_j5wjh")
 

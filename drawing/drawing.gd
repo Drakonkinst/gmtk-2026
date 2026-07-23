@@ -2,6 +2,9 @@ extends Resource
 
 class_name Drawing
 
+const WIDTH := 64
+const HEIGHT := 32
+
 enum DrawingSet {
     SIMPLE
 }
