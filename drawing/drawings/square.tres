@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Drawing" format=3 uid="uid://dbb16snhpmpfc"]
+
+[ext_resource type="Texture2D" uid="uid://dnhs0jo8mqvqm" path="res://drawing/drawings/square.png" id="1_xri4i"]
+[ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="2_ajm7x"]
+
+[resource]
+script = ExtResource("2_ajm7x")
+id = "Square"
+image = ExtResource("1_xri4i")

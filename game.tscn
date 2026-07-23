@@ -1,16 +1,33 @@
 [gd_scene format=3 uid="uid://bqs8nmjb61r2v"]
 
 [ext_resource type="Script" uid="uid://botihjttrss8i" path="res://game.gd" id="1_80nbo"]
-[ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://icon.svg" id="2_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://dwmjeaul3tjif" path="res://image_loading_test.tscn" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://cc7nffoorgjkr" path="res://game/upgrade_manager.gd" id="4_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://b5pl7v4o3x0hf" path="res://drawing/drawings/circle.png" id="4_j5wjh"]
+[ext_resource type="Script" uid="uid://jbnk6ktenqkq" path="res://drawing/drawing_manager.gd" id="5_vef74"]
+[ext_resource type="Script" uid="uid://daa7n7fsiyrc4" path="res://drawing/image_loader.gd" id="6_hve3p"]
+[ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="7_mfdv2"]
+[ext_resource type="Resource" uid="uid://c7c8our2jktyo" path="res://drawing/drawings/circle.tres" id="8_iotsf"]
+[ext_resource type="Resource" uid="uid://dbb16snhpmpfc" path="res://drawing/drawings/square.tres" id="8_vef74"]
+[ext_resource type="Resource" uid="uid://7bgkcmf5ef3" path="res://drawing/drawings/triangle.tres" id="9_hve3p"]
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1167246026]
+[node name="Drawing" type="Sprite2D" parent="." unique_id=1676181911]
+position = Vector2(571.00006, 344.00003)
+scale = Vector2(6.7291665, 6.7291665)
+texture = ExtResource("4_j5wjh")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=2094178589]
-position = Vector2(553, 305)
-texture = ExtResource("2_e2o6t")
+[node name="UpgradeManager" type="Node2D" parent="." unique_id=1817957434]
+unique_name_in_owner = true
+script = ExtResource("4_fc0e3")
 
-[node name="ImageLoadingTest" parent="." unique_id=2100472272 instance=ExtResource("3_feb5d")]
+[node name="DrawingManager" type="Node2D" parent="." unique_id=716532831 node_paths=PackedStringArray("drawing_sprite")]
+unique_name_in_owner = true
+script = ExtResource("5_vef74")
+drawing_sprite = NodePath("../Drawing")
+
+[node name="ImageLoader" type="Node2D" parent="DrawingManager" unique_id=141799161]
+unique_name_in_owner = true
+script = ExtResource("6_hve3p")
+drawings = Array[ExtResource("7_mfdv2")]([ExtResource("8_iotsf"), ExtResource("8_vef74"), ExtResource("9_hve3p")])

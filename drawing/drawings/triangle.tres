@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Drawing" format=3 uid="uid://7bgkcmf5ef3"]
+
+[ext_resource type="Texture2D" uid="uid://dvdpvi513jhay" path="res://drawing/drawings/triangle.png" id="1_x6iyd"]
+[ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="2_754qp"]
+
+[resource]
+script = ExtResource("2_754qp")
+id = "Triangle"
+image = ExtResource("1_x6iyd")
