@@ -55,7 +55,7 @@ func _precompute_goal_maps(goal_array: PackedInt64Array) -> Dictionary:
             lookup_map[current_pos] = data
     return lookup_map
 
-func _calculate_accuracy(user_array: PackedInt64Array) -> float:
+func calculate_accuracy(user_array: PackedInt64Array) -> float:
     var total_pixels_drawn := 0
     var cumulative_accuracy: float = 0.0
     

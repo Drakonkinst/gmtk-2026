@@ -21,9 +21,20 @@ func _ready() -> void:
     # HUD should only listen to game signals, pass everything up
     score_manager.update_score.connect(_on_update_score)
     
+func _calculate_score() -> int:
+    var user_array: PackedInt64Array = [] # TODO Grab this
+    var accuracy := drawing_manager.calculate_accuracy(user_array)
+    print("Accuracy: ", accuracy)
+    var drawing_info := drawing_manager.get_drawing_info()
+    # TODO: Time bonus for doing it quickly?
+    # TODO: Set bonus for doing a more complex drawing
+    # TODO: Gain 100 or 1000 points max?
+    return 5
+
 func _on_submit_drawing() -> void:
     drawing_manager.set_next_drawing()
-    score_manager.add_score(10)
+    var score_earned := _calculate_score()
+    score_manager.add_score(score_earned)
     submit_drawing.emit()
 
 func _on_update_score(score: int) -> void:
