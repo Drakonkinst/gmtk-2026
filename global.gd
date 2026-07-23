@@ -1,4 +1,4 @@
-﻿extends Node
+extends Node
 
 const CONFIG_PATH := "user://settings.cfg"
 

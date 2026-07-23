@@ -39,5 +39,3 @@ func _on_submit_drawing() -> void:
 
 func _on_update_score(score: int) -> void:
     update_score.emit(score)
-
-
