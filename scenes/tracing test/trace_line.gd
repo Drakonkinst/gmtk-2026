@@ -40,7 +40,7 @@ func _input(event: InputEvent) -> void:
             i += 1
 
 func split_line() -> void:
-    var new_line = TraceLine.new()
+    var new_line := TraceLine.new()
     new_line.default_color = Color.WEB_GREEN
     new_line.drawing = false
     
