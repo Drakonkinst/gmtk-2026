@@ -11,6 +11,7 @@ var image_data_array: Array[PackedInt64Array]
 
 func _ready() -> void:
     for drawing in drawings:
+        print("Loading image ", drawing.id)
         var image: Image = drawing.image.get_image()
         var image_data: PackedInt64Array = []
         if image.get_width() != Drawing.WIDTH || image.get_height() != Drawing.HEIGHT:
@@ -24,6 +25,7 @@ func _ready() -> void:
                 if color_value != -1:
                     image_data.set(y * image.get_width() + x, color_value)
         image_data_array.push_back(image_data)
+        print("Finished loading image ", drawing.id)
 
 func get_drawing_info(index: int) -> Drawing:
     return drawings[index]

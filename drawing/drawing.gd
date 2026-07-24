@@ -2,8 +2,9 @@ extends Resource
 
 class_name Drawing
 
-const WIDTH := 64
-const HEIGHT := 32
+const WIDTH := 160
+const HEIGHT := 120
+static var EMPTY_COLOR_INT := Color(0, 0, 0, 0).to_argb64()
 
 enum DrawingSet {
     SIMPLE

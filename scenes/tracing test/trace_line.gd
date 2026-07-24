@@ -42,7 +42,6 @@ func _input(event: InputEvent) -> void:
             i += 1
 
 func split_line() -> void:
-<<<<<<< Updated upstream
     var new_line := TraceLine.new()
     new_line.default_color = Color.WEB_GREEN
     new_line.drawing = false
@@ -52,17 +51,6 @@ func split_line() -> void:
     saved_points.clear()
     
     add_sibling(new_line)
-=======
-    var new_line = TraceLine.new()
-    new_line.default_color = Color.WEB_GREEN
-    new_line.drawing = false
-    
-    for point in saved_points:
-        new_line.add_point(point)
-    saved_points.clear()
-    
-    add_sibling(new_line)
->>>>>>> Stashed changes
 
 func _process(_delta: float) -> void:
     if !drawing:

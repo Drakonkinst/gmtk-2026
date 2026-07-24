@@ -54,8 +54,8 @@ grow_horizontal = 0
 
 [node name="Drawing" type="Sprite2D" parent="." unique_id=1676181911]
 modulate = Color(1, 1, 1, 0.5058824)
-position = Vector2(486, 280.00003)
-scale = Vector2(9.199219, 9.199219)
+position = Vector2(472.68228, 262.51172)
+scale = Vector2(3.391471, 3.3914711)
 texture = ExtResource("4_j5wjh")
 
 [node name="UpgradeManager" type="Node2D" parent="." unique_id=1817957434]
