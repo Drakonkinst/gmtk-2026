@@ -3,9 +3,12 @@ extends Line2D
 
 var drawing: bool = true
 var saved_points: Array[Vector2]
-#var image_data: PackedInt64Array = []
-#image_data.resize(Drawing.WIDTH * Drawing.HEIGHT)
-#image_data.fill(-1)
+var trace_data: PackedInt64Array
+
+func _ready() -> void:
+    #await get_tree().create_timer(0.1).timeout #Waits for lines with 0 pts to delete themselves
+    #trace_data.append_array(points)
+    pass
 
 func _input(event: InputEvent) -> void:
     if Input.is_action_pressed("draw"):
@@ -25,6 +28,7 @@ func _input(event: InputEvent) -> void:
         drawing = false
     
     if Input.is_action_pressed("erase"):
+        drawing = false
         var min_erase_distance: float = 10
         var mouse_pos: Vector2
         if event is InputEventMouseMotion:
@@ -33,7 +37,7 @@ func _input(event: InputEvent) -> void:
         var i: int = 0
         for point in points:
             if mouse_pos.distance_to(point) < min_erase_distance:
-                for j in (points.size() - i):
+                for j in (get_point_count() - i):
                     saved_points.append(get_point_position(i))
                     remove_point(i)
                 split_line()

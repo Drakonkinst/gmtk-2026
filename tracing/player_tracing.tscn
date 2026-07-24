@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bv0561twyu80q"]
+
+[ext_resource type="Script" uid="uid://bchm7ty2hvyet" path="res://tracing/player_tracing.gd" id="1_7e6ao"]
+
+[node name="PlayerTracing" type="Node2D" unique_id=459552152]
+script = ExtResource("1_7e6ao")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

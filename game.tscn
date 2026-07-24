@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://dbb16snhpmpfc" path="res://drawing/drawings/square.tres" id="8_vef74"]
 [ext_resource type="Resource" uid="uid://7bgkcmf5ef3" path="res://drawing/drawings/triangle.tres" id="9_hve3p"]
 [ext_resource type="Script" uid="uid://0ihfhxhut842" path="res://game/score_manager.gd" id="12_iotsf"]
+[ext_resource type="Script" uid="uid://bchm7ty2hvyet" path="res://tracing/player_tracing.gd" id="12_lc2xo"]
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
@@ -71,6 +72,11 @@ drawing_sprite = NodePath("../Drawing")
 unique_name_in_owner = true
 script = ExtResource("6_hve3p")
 drawings = Array[ExtResource("7_mfdv2")]([ExtResource("8_iotsf"), ExtResource("8_vef74"), ExtResource("9_hve3p")])
+
+[node name="PlayerTracing" type="Node2D" parent="DrawingManager" unique_id=1868572340]
+unique_name_in_owner = true
+script = ExtResource("12_lc2xo")
+metadata/_custom_type_script = "uid://bchm7ty2hvyet"
 
 [node name="ScoreManager" type="Node2D" parent="." unique_id=1200851758]
 unique_name_in_owner = true
