@@ -48,7 +48,7 @@ bus = &"UI"
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="." unique_id=1942323380]
 stream = SubResource("AudioStreamRandomizer_hlghp")
-volume_db = -10.0
+volume_db = -3.0
 bus = &"UI"
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1874000854]
