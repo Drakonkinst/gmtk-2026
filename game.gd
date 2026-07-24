@@ -35,14 +35,20 @@ func _calculate_score() -> int:
     # TODO: Gain 100 or 1000 points max?
     return 5
 
+func _get_accuracy() -> float:
+    var user_array: PackedInt64Array = player_drawing.pack_image()
+    var accuracy := drawing_manager.calculate_accuracy(user_array)
+    
+    return accuracy
+
 func _on_submit_drawing() -> void:
     var score_earned := _calculate_score()
+    var accuracy = _get_accuracy()
     score_manager.add_score(score_earned)
     player_drawing.reset_image()
     drawing_manager.set_next_drawing()
     submit_drawing.emit()
-    countdown_manager.add_time(10)
-    
+    countdown_manager.add_time(accuracy)
 
 func _on_update_score(score: int) -> void:
     update_score.emit(score)
