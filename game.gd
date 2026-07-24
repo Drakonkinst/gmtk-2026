@@ -12,6 +12,7 @@ signal submit_drawing
 @onready var drawing_manager: DrawingManager = %DrawingManager
 @onready var input_manager: InputManager = %InputManager
 @onready var player_drawing: PlayerDrawing = %PlayerDrawing
+@onready var countdown_manager: CountdownManager = %CountdownManager
 @onready var hud: HUD = %HUD
 
 func _ready() -> void:
@@ -40,6 +41,8 @@ func _on_submit_drawing() -> void:
     player_drawing.reset_image()
     drawing_manager.set_next_drawing()
     submit_drawing.emit()
+    countdown_manager.add_time(10)
+    
 
 func _on_update_score(score: int) -> void:
     update_score.emit(score)
