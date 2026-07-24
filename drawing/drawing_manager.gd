@@ -3,6 +3,7 @@ extends Node
 class_name DrawingManager
 
 @onready var image_loader: ImageLoader = %ImageLoader
+@onready var player_drawing: PlayerDrawing = %PlayerDrawing
 
 # The sprite the player needs to match
 @export var drawing_sprite: Sprite2D
@@ -42,6 +43,7 @@ func _precompute_goal_maps_2(goal_array: PackedInt64Array) -> Dictionary:
     if queue.is_empty():
         push_warning("Image has no drawn pixels")
         return lookup_map
+    print("Found ", len(queue), " goal pixels")
     
     var head := 0
     while head < queue.size():
@@ -140,7 +142,6 @@ func set_next_drawing() -> void:
     var image_data := get_image_data()
     print("Selected next drawing: ", drawing_info.id)
     drawing_sprite.texture = drawing_info.image
-    print("Precomputing goal maps for ", drawing_info.id)
     goal_map = _precompute_goal_maps_2(image_data)
     print("Finished precomputing goal maps for ", drawing_info.id)
     

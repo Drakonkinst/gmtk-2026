@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://botihjttrss8i" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://da7rifxflsrrg" path="res://ui/hud/hud.gd" id="2_hve3p"]
+[ext_resource type="Texture2D" uid="uid://vpexp42n6xj3" path="res://ui/hud/game_background.png" id="2_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://cqyd6c2u2yoag" path="res://ui/hud/score_counter.tscn" id="3_mfdv2"]
 [ext_resource type="Script" uid="uid://cc7nffoorgjkr" path="res://game/upgrade_manager.gd" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://b5pl7v4o3x0hf" path="res://drawing/drawings/circle.png" id="4_j5wjh"]
@@ -11,10 +12,50 @@
 [ext_resource type="Resource" uid="uid://c7c8our2jktyo" path="res://drawing/drawings/circle.tres" id="8_iotsf"]
 [ext_resource type="Resource" uid="uid://dbb16snhpmpfc" path="res://drawing/drawings/square.tres" id="8_vef74"]
 [ext_resource type="Resource" uid="uid://7bgkcmf5ef3" path="res://drawing/drawings/triangle.tres" id="9_hve3p"]
+[ext_resource type="Script" uid="uid://b6c5njwc8xkvv" path="res://drawing/player_drawing.gd" id="11_215e1"]
 [ext_resource type="Script" uid="uid://0ihfhxhut842" path="res://game/score_manager.gd" id="12_iotsf"]
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=72603153]
+position = Vector2(480, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("2_lc2xo")
+
+[node name="Drawing" type="Sprite2D" parent="." unique_id=1676181911]
+modulate = Color(1, 1, 1, 0.5058824)
+position = Vector2(480.01566, 361.01172)
+scale = Vector2(3, 3)
+texture = ExtResource("4_j5wjh")
+
+[node name="PlayerDrawingDisplay" type="Sprite2D" parent="." unique_id=1502104550]
+modulate = Color(1, 1, 1, 0.5058824)
+position = Vector2(480.01566, 361.01172)
+scale = Vector2(3, 3)
+
+[node name="UpgradeManager" type="Node2D" parent="." unique_id=1817957434]
+unique_name_in_owner = true
+script = ExtResource("4_fc0e3")
+
+[node name="DrawingManager" type="Node2D" parent="." unique_id=716532831 node_paths=PackedStringArray("drawing_sprite")]
+unique_name_in_owner = true
+script = ExtResource("5_vef74")
+drawing_sprite = NodePath("../Drawing")
+
+[node name="ImageLoader" type="Node2D" parent="DrawingManager" unique_id=141799161]
+unique_name_in_owner = true
+script = ExtResource("6_hve3p")
+drawings = Array[ExtResource("7_mfdv2")]([ExtResource("8_iotsf"), ExtResource("8_vef74"), ExtResource("9_hve3p")])
+
+[node name="PlayerDrawing" type="Node2D" parent="DrawingManager" unique_id=2066193327 node_paths=PackedStringArray("player_image_display")]
+unique_name_in_owner = true
+script = ExtResource("11_215e1")
+player_image_display = NodePath("../../PlayerDrawingDisplay")
+
+[node name="ScoreManager" type="Node2D" parent="." unique_id=1200851758]
+unique_name_in_owner = true
+script = ExtResource("12_iotsf")
 
 [node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1285114456]
 
@@ -31,16 +72,16 @@ script = ExtResource("2_hve3p")
 [node name="SubmitButton" type="Button" parent="HUDLayer/HUD" unique_id=1821586173]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -172.0
-offset_top = -104.0
-offset_right = -9.0
-offset_bottom = -40.0
-grow_horizontal = 0
+offset_left = -81.5
+offset_top = -165.0
+offset_right = 81.5
+offset_bottom = -101.0
+grow_horizontal = 2
 grow_vertical = 0
 text = "Submit"
 
@@ -50,28 +91,8 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
+offset_left = -27.0
+offset_top = 35.0
+offset_right = -27.0
+offset_bottom = 35.0
 grow_horizontal = 0
-
-[node name="Drawing" type="Sprite2D" parent="." unique_id=1676181911]
-modulate = Color(1, 1, 1, 0.5058824)
-position = Vector2(472.68228, 262.51172)
-scale = Vector2(3.391471, 3.3914711)
-texture = ExtResource("4_j5wjh")
-
-[node name="UpgradeManager" type="Node2D" parent="." unique_id=1817957434]
-unique_name_in_owner = true
-script = ExtResource("4_fc0e3")
-
-[node name="DrawingManager" type="Node2D" parent="." unique_id=716532831 node_paths=PackedStringArray("drawing_sprite")]
-unique_name_in_owner = true
-script = ExtResource("5_vef74")
-drawing_sprite = NodePath("../Drawing")
-
-[node name="ImageLoader" type="Node2D" parent="DrawingManager" unique_id=141799161]
-unique_name_in_owner = true
-script = ExtResource("6_hve3p")
-drawings = Array[ExtResource("7_mfdv2")]([ExtResource("8_iotsf"), ExtResource("8_vef74"), ExtResource("9_hve3p")])
-
-[node name="ScoreManager" type="Node2D" parent="." unique_id=1200851758]
-unique_name_in_owner = true
-script = ExtResource("12_iotsf")
