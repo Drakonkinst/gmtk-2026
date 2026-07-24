@@ -15,7 +15,6 @@
 [ext_resource type="Resource" uid="uid://7bgkcmf5ef3" path="res://drawing/drawings/triangle.tres" id="9_hve3p"]
 [ext_resource type="Script" uid="uid://b6c5njwc8xkvv" path="res://drawing/player_drawing.gd" id="11_215e1"]
 [ext_resource type="Script" uid="uid://0ihfhxhut842" path="res://game/score_manager.gd" id="12_iotsf"]
-[ext_resource type="Script" uid="uid://bchm7ty2hvyet" path="res://tracing/player_tracing.gd" id="12_lc2xo"]
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
@@ -53,11 +52,6 @@ unique_name_in_owner = true
 script = ExtResource("6_hve3p")
 drawings = Array[ExtResource("7_mfdv2")]([ExtResource("8_iotsf"), ExtResource("8_vef74"), ExtResource("9_hve3p")])
 
-[node name="PlayerTracing" type="Node2D" parent="DrawingManager" unique_id=1868572340]
-unique_name_in_owner = true
-script = ExtResource("12_lc2xo")
-metadata/_custom_type_script = "uid://bchm7ty2hvyet"
-
 [node name="ScoreManager" type="Node2D" parent="." unique_id=1200851758]
 unique_name_in_owner = true
 script = ExtResource("12_iotsf")
@@ -75,6 +69,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = 144.0
+offset_right = -136.0
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_hve3p")

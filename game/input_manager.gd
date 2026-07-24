@@ -4,32 +4,80 @@ class_name InputManager
 
 signal draw(draw_pos: Vector2i)
 
+const DRAWING_OFFSET_X := 240
+const DRAWING_OFFSET_Y := 180
+const SCALE_FACTOR := 3
+const NULL_DRAWING_POS := Vector2i(-1, -1)
+const AVOID_CORNER := 12
+
+# Drawing State
 var drawing_enabled := true
 var is_drawing := false
 var erase_override := false
 
-const DRAWING_OFFSET_X := 240
-const DRAWING_OFFSET_Y := 180
-const SCALE_FACTOR := 3
+# Input Tracking
+var last_drawing_pos := NULL_DRAWING_POS
 
-const NULL_DRAWING_POS := Vector2i(-1, -1)
+func _draw_if_in_frame(draw_pos: Vector2i):
+    if _is_inside_canvas(draw_pos.x, draw_pos.y):
+        draw.emit(draw_pos)
 
 func _process_drawing(delta: float):
     erase_override = Input.is_action_pressed("erase_override")
     if Input.is_action_pressed("draw"):
         var mouse_pos := get_viewport().get_mouse_position()
         var drawing_pos := _to_drawing_pos(mouse_pos)
-        if drawing_pos != NULL_DRAWING_POS:
-            draw.emit(drawing_pos)
-            is_drawing = true
+        
+        if last_drawing_pos == NULL_DRAWING_POS:
+            _draw_if_in_frame(drawing_pos)
+        else:
+            _interpolate_line(last_drawing_pos, drawing_pos) 
+           
+        is_drawing = true
+        last_drawing_pos = drawing_pos
+    else:
+        last_drawing_pos = NULL_DRAWING_POS
+    
+# Bresenham's line algorithm        
+func _interpolate_line(p0: Vector2i, p1: Vector2i) -> void:
+    var delta_x: int = abs(p1.x - p0.x)
+    var delta_y: int = abs(p1.y - p0.y)
+    var step_x := 1 if p0.x < p1.x else -1
+    var step_y := 1 if p0.y < p1.y else -1
+    var error := delta_x - delta_y
+    
+    while true:
+        if p0 != last_drawing_pos:
+            _draw_if_in_frame(p0)
+        if p0.x == p1.x and p0.y == p1.y:
+            break
+        var double_error := 2 * error
+        if double_error > -delta_y:
+            error -= delta_y
+            p0.x += step_x
+        if double_error < delta_x:
+            error += delta_x
+            p0.y += step_y
 
 func _to_drawing_pos(screen_pos: Vector2) -> Vector2i:
     var drawing_pos_x: int = round((screen_pos.x - DRAWING_OFFSET_X) / SCALE_FACTOR)
     var drawing_pos_y: int = round((screen_pos.y - DRAWING_OFFSET_Y) / SCALE_FACTOR)
-    if drawing_pos_x >= Drawing.WIDTH || drawing_pos_y >= Drawing.HEIGHT || drawing_pos_x < 0 || drawing_pos_y < 0:
-        return NULL_DRAWING_POS
     return Vector2i(drawing_pos_x, drawing_pos_y)
-    
+
+func _is_inside_canvas(drawing_pos_x: int, drawing_pos_y) -> bool:
+    if drawing_pos_x >= Drawing.WIDTH or drawing_pos_y >= Drawing.HEIGHT or drawing_pos_x < 0 or drawing_pos_y < 0:
+        return false
+    # Don't let them draw in the corners
+    if drawing_pos_x + drawing_pos_y < AVOID_CORNER:
+        return false
+    if (Drawing.WIDTH - 1 - drawing_pos_x) + drawing_pos_y < AVOID_CORNER:
+        return false
+    if drawing_pos_x + (Drawing.HEIGHT - 1 - drawing_pos_y) < AVOID_CORNER:
+        return false
+    if (Drawing.WIDTH - 1 - drawing_pos_x) + (Drawing.HEIGHT - 1 - drawing_pos_y) < AVOID_CORNER:
+        return false
+    return true
+
 func _reset_drawing_state() -> void:
     is_drawing = false
     erase_override = false
