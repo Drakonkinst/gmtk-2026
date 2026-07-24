@@ -23,9 +23,15 @@ func _ready() -> void:
     player_image_display.texture = player_image_texture
     reset_image()
 
+
 func _process(delta: float) -> void:
     if needs_update:
         update_image()
+
+func get_current_tool() -> Tool:
+    if Global.game.input_manager.erase_override:
+        return Tool.ERASER
+    return selected_tool
 
 func is_inside_canvas(drawing_pos_x: int, drawing_pos_y) -> bool:
     if drawing_pos_x >= Drawing.WIDTH or drawing_pos_y >= Drawing.HEIGHT or drawing_pos_x < 0 or drawing_pos_y < 0:
@@ -42,7 +48,7 @@ func is_inside_canvas(drawing_pos_x: int, drawing_pos_y) -> bool:
     return true
 
 func set_selected_tool(tool: Tool) -> bool:
-    if tool == Tool.ERASER and not Global.game.upgrade_manager.unlocked_eraser:
+    if not Global.game.upgrade_manager.unlocked_tools[tool]:
         return false
     selected_tool = tool
     return true
@@ -56,13 +62,11 @@ func set_brush_size(size: int) -> bool:
     return true
 
 func on_draw(draw_pos: Vector2i) -> void:
-    if Global.game.input_manager.erase_override:
+    var tool := get_current_tool()
+    if tool == Tool.BRUSH:
+        draw_pencil(draw_pos)
+    elif tool == Tool.ERASER:
         erase(draw_pos)
-    else:
-        if selected_tool == Tool.BRUSH:
-            draw_pencil(draw_pos)
-        elif selected_tool == Tool.ERASER:
-            erase(draw_pos)
 
 func draw_at_point(center_pos: Vector2i, color: Color) -> void:
     for brush_offset_x in range(-brush_size, brush_size + 1):

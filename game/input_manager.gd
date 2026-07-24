@@ -22,7 +22,7 @@ func _draw_if_in_frame(draw_pos: Vector2i):
         draw.emit(draw_pos)
 
 func _process_drawing(delta: float):
-    erase_override = Input.is_action_pressed("erase_override") and Global.game.upgrade_manager.unlocked_eraser
+    erase_override = Input.is_action_pressed("erase_override") and Global.game.upgrade_manager.unlocked_tools[PlayerDrawing.Tool.ERASER]
     if Input.is_action_pressed("draw") or erase_override:
         var mouse_pos := get_viewport().get_mouse_position()
         var drawing_pos := _to_drawing_pos(mouse_pos)
