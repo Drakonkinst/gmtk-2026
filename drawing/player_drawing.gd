@@ -4,6 +4,7 @@ class_name PlayerDrawing
 
 enum BrushMode { RADIAL }
 enum Tool { BRUSH, ERASER }
+enum BrushSize {SMALL, NORMAL, LARGE} # 0, 2, 4?
 
 var TRANSPARENT_COLOR = Color(0, 0, 0, 0)
 const AVOID_CORNER := 12
@@ -13,6 +14,7 @@ var player_image_texture: Texture2D
 var needs_update := false
 var player_image: Image
 var brush_size := 2
+var brush_size_label: BrushSize
 var brush_mode: BrushMode = BrushMode.RADIAL
 var brush_color := Color(0, 0, 0, 1)
 var selected_tool := Tool.BRUSH
@@ -22,7 +24,6 @@ func _ready() -> void:
     player_image_texture = ImageTexture.create_from_image(player_image)
     player_image_display.texture = player_image_texture
     reset_image()
-
 
 func _process(delta: float) -> void:
     if needs_update:
@@ -57,8 +58,14 @@ func set_brush_color(color: Color) -> bool:
     brush_color = color
     return true
 
-func set_brush_size(size: int) -> bool:
-    brush_size = size
+func set_brush_size(size: BrushSize) -> bool:
+    if size == BrushSize.SMALL:
+        brush_size = 0
+    if size == BrushSize.NORMAL:
+        brush_size = 2
+    if size == BrushSize.LARGE:
+        brush_size = 4
+    brush_size_label = size
     return true
 
 func on_draw(draw_pos: Vector2i) -> void:

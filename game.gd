@@ -24,6 +24,7 @@ func _ready() -> void:
     hud.clear_drawing.connect(_on_clear_drawing)
     hud.select_tool.connect(_on_select_tool)
     hud.select_color.connect(_on_select_color)
+    hud.select_size.connect(_on_select_size)
     
     # HUD should only listen to game signals, pass everything up
     score_manager.update_score.connect(_on_update_score)
@@ -32,10 +33,7 @@ func _ready() -> void:
     input_manager.select_tool.connect(_on_select_tool)
     input_manager.select_color_index.connect(_on_select_color_index)
     
-func _calculate_score() -> int:
-    var user_array: PackedInt64Array = player_drawing.pack_image()
-    var accuracy := drawing_manager.calculate_accuracy(user_array)
-    print("Accuracy: ", accuracy)
+func _calculate_score(accuracy: float) -> int:
     var drawing_info := drawing_manager.get_drawing_info()
     # TODO: Time bonus for doing it quickly?
     # TODO: Set bonus for doing a more complex drawing
@@ -45,12 +43,12 @@ func _calculate_score() -> int:
 func _get_accuracy() -> float:
     var user_array: PackedInt64Array = player_drawing.pack_image()
     var accuracy := drawing_manager.calculate_accuracy(user_array)
-    
     return accuracy
 
 func _on_submit_drawing() -> void:
-    var score_earned := _calculate_score()
-    var accuracy = _get_accuracy()
+    var accuracy := _get_accuracy()
+    print("Accuracy: ", accuracy)
+    var score_earned := _calculate_score(accuracy)
     
     score_manager.add_score(score_earned)
     player_drawing.reset_image()
@@ -76,3 +74,6 @@ func _on_select_color(color: Color) -> void:
 
 func _on_select_color_index(index: int) -> void:
     hud.select_color_index(index)
+
+func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
+    player_drawing.set_brush_size(size)

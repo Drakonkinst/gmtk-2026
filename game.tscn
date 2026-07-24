@@ -32,6 +32,16 @@
 [ext_resource type="Texture2D" uid="uid://bk6xg0bnn7nka" path="res://ui/hud/tools/button_brush_selected.png" id="21_qhcbd"]
 [ext_resource type="PackedScene" uid="uid://cn26uywgn1h5r" path="res://ui/hud/accuracy_display.tscn" id="25_i2p71"]
 [ext_resource type="Script" uid="uid://d1brb37rhwudm" path="res://ui/hud/accuracy_display.gd" id="26_xa8c5"]
+[ext_resource type="Script" uid="uid://6fycpfut6kfw" path="res://ui/hud/size/size_select.gd" id="30_7knny"]
+[ext_resource type="Texture2D" uid="uid://cpcuh7x5pwfhg" path="res://ui/hud/size/button_small_default.png" id="31_eu6ph"]
+[ext_resource type="Texture2D" uid="uid://bnnvjh8mrq8p" path="res://ui/hud/size/button_small_locked.png" id="32_edr7y"]
+[ext_resource type="Texture2D" uid="uid://bkht6muhwxg2s" path="res://ui/hud/size/button_small_selected.png" id="33_kq12w"]
+[ext_resource type="Texture2D" uid="uid://dkf58ppsirhvx" path="res://ui/hud/size/button_normal_default.png" id="34_t46w6"]
+[ext_resource type="Texture2D" uid="uid://y2b3cpjsnwaq" path="res://ui/hud/size/button_normal_locked.png" id="35_m28ev"]
+[ext_resource type="Texture2D" uid="uid://djqplpynero84" path="res://ui/hud/size/button_normal_selected.png" id="36_lwlx3"]
+[ext_resource type="Texture2D" uid="uid://dw3w5vku0kdtg" path="res://ui/hud/size/button_large_default.png" id="37_0de7l"]
+[ext_resource type="Texture2D" uid="uid://dbxhx071gpprn" path="res://ui/hud/size/button_large_locked.png" id="38_87ddb"]
+[ext_resource type="Texture2D" uid="uid://cb2we0ghhjvdh" path="res://ui/hud/size/button_large_selected.png" id="39_mljfx"]
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
@@ -307,6 +317,56 @@ texture_normal = ExtResource("19_hb5m1")
 texture_pressed = ExtResource("20_x5p1p")
 texture_hover = ExtResource("21_qhcbd")
 texture_disabled = ExtResource("20_x5p1p")
+
+[node name="SizeSelect" type="Control" parent="HUDLayer/HUD" unique_id=1607849559]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("30_7knny")
+
+[node name="SmallBrushButton" type="TextureButton" parent="HUDLayer/HUD/SizeSelect" unique_id=259684062]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -354.0
+offset_top = 118.0
+offset_right = -338.0
+offset_bottom = 134.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("31_eu6ph")
+texture_pressed = ExtResource("32_edr7y")
+texture_hover = ExtResource("33_kq12w")
+texture_disabled = ExtResource("32_edr7y")
+
+[node name="NormalBrushButton" type="TextureButton" parent="HUDLayer/HUD/SizeSelect" unique_id=1739355683]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -290.0
+offset_top = 118.00001
+offset_right = -274.0
+offset_bottom = 134.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("34_t46w6")
+texture_pressed = ExtResource("35_m28ev")
+texture_hover = ExtResource("36_lwlx3")
+texture_disabled = ExtResource("35_m28ev")
+
+[node name="LargeBrushButton" type="TextureButton" parent="HUDLayer/HUD/SizeSelect" unique_id=1861670252]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -226.0
+offset_top = 118.00001
+offset_right = -210.0
+offset_bottom = 134.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("37_0de7l")
+texture_pressed = ExtResource("38_87ddb")
+texture_hover = ExtResource("39_mljfx")
+texture_disabled = ExtResource("38_87ddb")
 
 [node name="CountdownTimer" parent="HUDLayer/HUD" unique_id=300404977 instance=ExtResource("16_80cx4")]
 unique_name_in_owner = true
