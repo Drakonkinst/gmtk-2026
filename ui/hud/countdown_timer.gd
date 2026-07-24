@@ -5,6 +5,7 @@ extends Control
 @onready var added_label: Label = %AddedLabel
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
+
 var time_left: int = 10:
     set(value):
         var time_gained = value - time_left
