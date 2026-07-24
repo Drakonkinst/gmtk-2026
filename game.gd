@@ -19,6 +19,8 @@ func _ready() -> void:
     
     # Register player inputs
     hud.submit_drawing.connect(_on_submit_drawing)
+    hud.clear_drawing.connect(_on_clear_drawing)
+    hud.select_tool.connect(_on_select_tool)
     
     # HUD should only listen to game signals, pass everything up
     score_manager.update_score.connect(_on_update_score)
@@ -40,9 +42,15 @@ func _on_submit_drawing() -> void:
     player_drawing.reset_image()
     drawing_manager.set_next_drawing()
     submit_drawing.emit()
+    
+func _on_clear_drawing() -> void:
+    player_drawing.reset_image()
 
 func _on_update_score(score: int) -> void:
     update_score.emit(score)
 
 func _on_draw(draw_pos: Vector2i) -> void:
     player_drawing.on_draw(draw_pos)
+
+func _on_select_tool(tool: PlayerDrawing.Tool) -> void:
+    player_drawing.set_selected_tool(tool)
