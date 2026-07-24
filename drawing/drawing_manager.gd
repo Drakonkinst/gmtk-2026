@@ -3,7 +3,6 @@ extends Node
 class_name DrawingManager
 
 @onready var image_loader: ImageLoader = %ImageLoader
-@onready var player_drawing: PlayerDrawing = %PlayerDrawing
 
 # The sprite the player needs to match
 @export var drawing_sprite: Sprite2D
@@ -114,11 +113,8 @@ func calculate_accuracy(user_array: PackedInt64Array) -> float:
         if user_color_int == Drawing.EMPTY_COLOR_INT:
             continue
         total_pixels_drawn += 1
-        var user_x = i % Drawing.WIDTH
-        var user_y = int(i * 1.0 / Drawing.WIDTH)
-        var user_pos = Vector2i(user_x, user_y)
         
-        var lookup: GoalLookup = goal_map[user_pos]
+        var lookup: GoalLookup = goal_map[i]
         # Geometric distance score (Exponential decay)
         var distance_accuracy = exp(-lookup.distance / K_FACTOR)
         
