@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dkrdgjdh3cfns"]
+
+[ext_resource type="Script" uid="uid://bnlpmjhy4gf13" path="res://ui/hud/countdown_timer.gd" id="1_5sxqa"]
+
+[node name="CountdownTimer" type="Control" unique_id=300404977]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5sxqa")
+
+[node name="TimeLabel" type="Label" parent="." unique_id=1845728302]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = 18.0
+offset_right = 39.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "10s"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=163530633]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

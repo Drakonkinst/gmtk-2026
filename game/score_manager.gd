@@ -12,4 +12,3 @@ func add_score(value: int) -> void:
 func set_score(value: int) -> void:
     score = value
     update_score.emit(score)
-

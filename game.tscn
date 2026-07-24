@@ -15,6 +15,8 @@
 [ext_resource type="Resource" uid="uid://7bgkcmf5ef3" path="res://drawing/drawings/triangle.tres" id="9_hve3p"]
 [ext_resource type="Script" uid="uid://b6c5njwc8xkvv" path="res://drawing/player_drawing.gd" id="11_215e1"]
 [ext_resource type="Script" uid="uid://0ihfhxhut842" path="res://game/score_manager.gd" id="12_iotsf"]
+[ext_resource type="Script" uid="uid://bmkmrmvnk0kp2" path="res://countdown_manager.gd" id="14_e8heu"]
+[ext_resource type="PackedScene" uid="uid://dkrdgjdh3cfns" path="res://ui/hud/countdown_timer.tscn" id="16_80cx4"]
 [ext_resource type="Texture2D" uid="uid://r5scba5aqwx6" path="res://ui/hud/tools/button_eraser_default.png" id="16_rvswv"]
 [ext_resource type="Script" uid="uid://06tm0gbxmwx1" path="res://ui/hud/tools/tool_select.gd" id="16_x5p1p"]
 [ext_resource type="Texture2D" uid="uid://p2qjac4gr2hu" path="res://ui/hud/tools/button_eraser_selected.png" id="17_boyg6"]
@@ -67,6 +69,10 @@ script = ExtResource("12_iotsf")
 unique_name_in_owner = true
 script = ExtResource("11_215e1")
 player_image_display = NodePath("../PlayerDrawingDisplay")
+
+[node name="CountdownManager" type="Node2D" parent="." unique_id=2067363775]
+unique_name_in_owner = true
+script = ExtResource("14_e8heu")
 
 [node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1285114456]
 
@@ -161,3 +167,11 @@ texture_normal = ExtResource("19_hb5m1")
 texture_pressed = ExtResource("20_x5p1p")
 texture_hover = ExtResource("21_qhcbd")
 texture_disabled = ExtResource("20_x5p1p")
+
+[node name="CountdownTimer" parent="HUDLayer/HUD" unique_id=300404977 instance=ExtResource("16_80cx4")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
