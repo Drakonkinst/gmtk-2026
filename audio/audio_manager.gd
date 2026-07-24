@@ -14,12 +14,11 @@ func play_submit_sfx() -> void:
 
 func play_good_sfx(accuracy: float) -> void:
     var pitch_shift: float = 0.5 + accuracy
-    print(pitch_shift)
     good_sfx.pitch_scale = pitch_shift
     good_sfx.play()
 
 func play_bad_sfx(accuracy: float) -> void:
-    var pitch_shift: float = 0.5 + accuracy
+    var pitch_shift: float = 0.8 + accuracy
     bad_sfx.pitch_scale = pitch_shift
     bad_sfx.play()
     

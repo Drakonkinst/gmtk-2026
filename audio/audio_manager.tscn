@@ -36,22 +36,24 @@ bgm = NodePath("BGM")
 [node name="SubmitSFX" type="AudioStreamPlayer" parent="." unique_id=1890721993]
 stream = SubResource("AudioStreamRandomizer_i1k7u")
 volume_db = 7.0
-bus = &"UI"
+bus = &"SFX"
 
 [node name="GoodSFX" type="AudioStreamPlayer" parent="." unique_id=1267219154]
 stream = SubResource("AudioStreamRandomizer_8j4p3")
-bus = &"UI"
+volume_db = 5.0
+bus = &"SFX"
 
 [node name="BadSFX" type="AudioStreamPlayer" parent="." unique_id=869871486]
 stream = SubResource("AudioStreamRandomizer_yf5fn")
-bus = &"UI"
+volume_db = 5.0
+bus = &"SFX"
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="." unique_id=1942323380]
 stream = SubResource("AudioStreamRandomizer_hlghp")
 volume_db = -3.0
-bus = &"UI"
+bus = &"SFX"
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1874000854]
 stream = ExtResource("6_i1k7u")
 volume_db = -10.0
-bus = &"UI"
+bus = &"Music"

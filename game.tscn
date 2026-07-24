@@ -42,6 +42,8 @@
 [ext_resource type="Texture2D" uid="uid://dw3w5vku0kdtg" path="res://ui/hud/size/button_large_default.png" id="37_0de7l"]
 [ext_resource type="Texture2D" uid="uid://dbxhx071gpprn" path="res://ui/hud/size/button_large_locked.png" id="38_87ddb"]
 [ext_resource type="Texture2D" uid="uid://cb2we0ghhjvdh" path="res://ui/hud/size/button_large_selected.png" id="39_mljfx"]
+[ext_resource type="Script" uid="uid://dwhxqb43wiyuo" path="res://ui/hud/h_slider.gd" id="43_edr7y"]
+[ext_resource type="FontFile" uid="uid://da35yew8fgybf" path="res://ui/fonts/ari-w9500-condensed-display.ttf" id="43_kq12w"]
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
@@ -385,3 +387,93 @@ grow_horizontal = 2
 unique_name_in_owner = true
 layout_mode = 1
 script = ExtResource("26_xa8c5")
+
+[node name="VolumeSliders" type="Control" parent="HUDLayer/HUD" unique_id=2042766448]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+scale = Vector2(0.54, 0.54)
+
+[node name="Label" type="Label" parent="HUDLayer/HUD/VolumeSliders" unique_id=1741628299]
+layout_mode = 0
+offset_left = 41.70687
+offset_top = -112.963005
+offset_right = 270.70688
+offset_bottom = -70.963005
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9367016, 0.9367016, 0.93670154, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("43_kq12w")
+theme_override_font_sizes/font_size = 30
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="HUDLayer/HUD/VolumeSliders" unique_id=806844224]
+modulate = Color(1.034, 1.034, 1.034, 1)
+layout_mode = 0
+offset_left = 18.518517
+offset_top = -83.86156
+offset_right = 290.51852
+offset_bottom = -67.86156
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("43_edr7y")
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="HUDLayer/HUD/VolumeSliders" unique_id=1779627629]
+layout_mode = 0
+offset_left = 54.75042
+offset_top = -52.093384
+offset_right = 258.75043
+offset_bottom = -10.093384
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9367016, 0.9367016, 0.93670154, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("43_kq12w")
+theme_override_font_sizes/font_size = 30
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="HUDLayer/HUD/VolumeSliders" unique_id=784063445]
+modulate = Color(1.034, 1.034, 1.034, 1)
+layout_mode = 0
+offset_left = 18.518517
+offset_top = -23.861557
+offset_right = 290.51852
+offset_bottom = -7.861557
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("43_edr7y")
+bus_name = "Music"
+
+[node name="Label3" type="Label" parent="HUDLayer/HUD/VolumeSliders" unique_id=87088533]
+layout_mode = 0
+offset_left = 66.34457
+offset_top = 10.225418
+offset_right = 243.34457
+offset_bottom = 52.225418
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9367016, 0.9367016, 0.93670154, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("43_kq12w")
+theme_override_font_sizes/font_size = 30
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="HSlider3" type="HSlider" parent="HUDLayer/HUD/VolumeSliders" unique_id=454318464]
+modulate = Color(1.034, 1.034, 1.034, 1)
+layout_mode = 0
+offset_left = 18.518517
+offset_top = 36.138443
+offset_right = 290.51852
+offset_bottom = 52.138443
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("43_edr7y")
+bus_name = "SFX"

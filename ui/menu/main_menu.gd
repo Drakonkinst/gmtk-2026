@@ -4,6 +4,9 @@ class_name MainMenu
 
 signal start_game
 
+@onready var volume_sliders: Control = %VolumeSliders
+
+
 func _ready() -> void:
     get_tree().paused = false
     AudioManager.start_bgm()
@@ -21,6 +24,9 @@ func _on_startbutton_pressed():
     start_game.emit()
 
 func _on_creditsbutton_pressed():
+    AudioManager.play_button_sfx()
+    %VolumeSliders.hide()
+    
     if %Background.modulate == Color(1.0, 1.0, 1.0, 1.0):
         AudioManager.play_button_sfx()
         var tween = get_tree().create_tween().set_parallel(true)
@@ -35,7 +41,10 @@ func _on_creditsbutton_pressed():
             menu_tween.tween_property(node,"position:x", node.position.x - 1000,0.1)
         
     
-func _on_backbutton_pressed():
+func _on_backbutton_pressed():    
+    AudioManager.play_button_sfx()
+    %VolumeSliders.show()
+
     if %Background.modulate == Color(0.5, 0.5, 0.5, 1.0):
         AudioManager.play_button_sfx()
         var tween = get_tree().create_tween().set_parallel(true)
@@ -48,3 +57,4 @@ func _on_backbutton_pressed():
         menu_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
         for node: CanvasItem in [%StartButton,%OptionsButton,%CreditsButton,%Title]:
             menu_tween.tween_property(node,"position:x", node.position.x + 1000,0.2)
+    
