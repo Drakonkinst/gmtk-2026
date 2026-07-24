@@ -26,6 +26,8 @@ func _ready() -> void:
     # HUD should only listen to game signals, pass everything up
     score_manager.update_score.connect(_on_update_score)
     input_manager.draw.connect(_on_draw)
+    input_manager.submit_drawing.connect(_on_submit_drawing)
+    input_manager.select_tool.connect(_on_select_tool)
     
 func _calculate_score() -> int:
     var user_array: PackedInt64Array = player_drawing.pack_image()

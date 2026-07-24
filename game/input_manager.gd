@@ -3,6 +3,8 @@ extends Node
 class_name InputManager
 
 signal draw(draw_pos: Vector2i)
+signal select_tool(tool: PlayerDrawing.Tool)
+signal submit_drawing
 
 const DRAWING_OFFSET_X := 240
 const DRAWING_OFFSET_Y := 180
@@ -36,6 +38,13 @@ func _process_drawing(delta: float):
         last_drawing_pos = drawing_pos
     else:
         last_drawing_pos = NULL_DRAWING_POS
+    
+    if Input.is_action_just_pressed("select_brush"):
+        select_tool.emit(PlayerDrawing.Tool.BRUSH)
+    if Input.is_action_just_pressed("select_eraser"):
+        select_tool.emit(PlayerDrawing.Tool.ERASER)
+    if Input.is_action_just_pressed("submit"):
+        submit_drawing.emit()
     
 # Bresenham's line algorithm        
 func _interpolate_line(p0: Vector2i, p1: Vector2i) -> void:
