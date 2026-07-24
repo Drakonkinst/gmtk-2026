@@ -10,6 +10,7 @@ signal submit_drawing
 @onready var upgrade_manager: UpgradeManager = %UpgradeManager
 @onready var score_manager: ScoreManager = %ScoreManager
 @onready var drawing_manager: DrawingManager = %DrawingManager
+@onready var input_manager: InputManager = %InputManager
 @onready var hud: HUD = %HUD
 
 func _ready() -> void:

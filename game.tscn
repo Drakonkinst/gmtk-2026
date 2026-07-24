@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://da7rifxflsrrg" path="res://ui/hud/hud.gd" id="2_hve3p"]
 [ext_resource type="Texture2D" uid="uid://vpexp42n6xj3" path="res://ui/hud/game_background.png" id="2_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://cqyd6c2u2yoag" path="res://ui/hud/score_counter.tscn" id="3_mfdv2"]
+[ext_resource type="Script" uid="uid://b85vccuexu5ts" path="res://game/input_manager.gd" id="4_7sc4i"]
 [ext_resource type="Script" uid="uid://cc7nffoorgjkr" path="res://game/upgrade_manager.gd" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://b5pl7v4o3x0hf" path="res://drawing/drawings/circle.png" id="4_j5wjh"]
 [ext_resource type="Script" uid="uid://jbnk6ktenqkq" path="res://drawing/drawing_manager.gd" id="5_vef74"]
@@ -25,7 +26,7 @@ texture = ExtResource("2_lc2xo")
 
 [node name="Drawing" type="Sprite2D" parent="." unique_id=1676181911]
 modulate = Color(1, 1, 1, 0.5058824)
-position = Vector2(480.01566, 361.01172)
+position = Vector2(480, 360)
 scale = Vector2(3, 3)
 texture = ExtResource("4_j5wjh")
 
@@ -33,6 +34,10 @@ texture = ExtResource("4_j5wjh")
 modulate = Color(1, 1, 1, 0.5058824)
 position = Vector2(480.01566, 361.01172)
 scale = Vector2(3, 3)
+
+[node name="InputManager" type="Node2D" parent="." unique_id=1115121594]
+unique_name_in_owner = true
+script = ExtResource("4_7sc4i")
 
 [node name="UpgradeManager" type="Node2D" parent="." unique_id=1817957434]
 unique_name_in_owner = true
