@@ -16,10 +16,12 @@ class GoalLookup:
     var target_color_int: int
 
 var current_drawing_index: int = -1
+var total_goal_pixels := 0
 var goal_map: Dictionary
 
 # Faster O(N) approach
 func _precompute_goal_maps_2(goal_array: PackedInt64Array) -> Dictionary:
+    total_goal_pixels = 0
     var lookup_map: Dictionary = {}
     for i in range(Drawing.WIDTH * Drawing.HEIGHT):
         var default_data := GoalLookup.new()
@@ -37,6 +39,7 @@ func _precompute_goal_maps_2(goal_array: PackedInt64Array) -> Dictionary:
              var data: GoalLookup = lookup_map[i]
              data.distance = 0.0
              data.target_color_int = color_int
+             total_goal_pixels += 1
              queue.append(pos)
     
     if queue.is_empty():
@@ -107,6 +110,7 @@ func _precompute_goal_maps(goal_array: PackedInt64Array) -> Dictionary:
 func calculate_accuracy(user_array: PackedInt64Array) -> float:
     var total_pixels_drawn := 0
     var cumulative_accuracy: float = 0.0
+    var goal_pixels_covered := 0
     
     for i in range(user_array.size()):
         var user_color_int = user_array[i]
@@ -124,11 +128,17 @@ func calculate_accuracy(user_array: PackedInt64Array) -> float:
             color_accuracy -= INCORRECT_COLOR_PENALTY
             
         var pixel_accuracy = max(0.0, distance_accuracy * color_accuracy)
-        cumulative_accuracy += pixel_accuracy 
+        cumulative_accuracy += pixel_accuracy
+        
+        if lookup.distance <= 2.0:
+            goal_pixels_covered += 1
     
     if total_pixels_drawn == 0:
         return 0
-    return cumulative_accuracy / total_pixels_drawn
+    print(total_pixels_drawn, " pixels drawn vs ", total_goal_pixels, " goal pixels")
+    var precision = cumulative_accuracy / max(total_pixels_drawn, total_goal_pixels)
+    var coverage = min(1.0, goal_pixels_covered * 1.0 / total_goal_pixels)
+    return precision
 
 func set_next_drawing() -> void:
     current_drawing_index = image_loader.pick_next_drawing_index(current_drawing_index)
