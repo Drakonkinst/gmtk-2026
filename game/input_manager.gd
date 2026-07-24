@@ -8,7 +8,6 @@ const DRAWING_OFFSET_X := 240
 const DRAWING_OFFSET_Y := 180
 const SCALE_FACTOR := 3
 const NULL_DRAWING_POS := Vector2i(-1, -1)
-const AVOID_CORNER := 12
 
 # Drawing State
 var drawing_enabled := true
@@ -19,12 +18,12 @@ var erase_override := false
 var last_drawing_pos := NULL_DRAWING_POS
 
 func _draw_if_in_frame(draw_pos: Vector2i):
-    if _is_inside_canvas(draw_pos.x, draw_pos.y):
+    if Global.game.player_drawing.is_inside_canvas(draw_pos.x, draw_pos.y):
         draw.emit(draw_pos)
 
 func _process_drawing(delta: float):
-    erase_override = Input.is_action_pressed("erase_override")
-    if Input.is_action_pressed("draw"):
+    erase_override = Input.is_action_pressed("erase_override") and Global.game.upgrade_manager.unlocked_eraser
+    if Input.is_action_pressed("draw") or erase_override:
         var mouse_pos := get_viewport().get_mouse_position()
         var drawing_pos := _to_drawing_pos(mouse_pos)
         
@@ -63,20 +62,6 @@ func _to_drawing_pos(screen_pos: Vector2) -> Vector2i:
     var drawing_pos_x: int = round((screen_pos.x - DRAWING_OFFSET_X) / SCALE_FACTOR)
     var drawing_pos_y: int = round((screen_pos.y - DRAWING_OFFSET_Y) / SCALE_FACTOR)
     return Vector2i(drawing_pos_x, drawing_pos_y)
-
-func _is_inside_canvas(drawing_pos_x: int, drawing_pos_y) -> bool:
-    if drawing_pos_x >= Drawing.WIDTH or drawing_pos_y >= Drawing.HEIGHT or drawing_pos_x < 0 or drawing_pos_y < 0:
-        return false
-    # Don't let them draw in the corners
-    if drawing_pos_x + drawing_pos_y < AVOID_CORNER:
-        return false
-    if (Drawing.WIDTH - 1 - drawing_pos_x) + drawing_pos_y < AVOID_CORNER:
-        return false
-    if drawing_pos_x + (Drawing.HEIGHT - 1 - drawing_pos_y) < AVOID_CORNER:
-        return false
-    if (Drawing.WIDTH - 1 - drawing_pos_x) + (Drawing.HEIGHT - 1 - drawing_pos_y) < AVOID_CORNER:
-        return false
-    return true
 
 func _reset_drawing_state() -> void:
     is_drawing = false
