@@ -20,9 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://dkrdgjdh3cfns" path="res://ui/hud/countdown_timer.tscn" id="16_80cx4"]
 [ext_resource type="Texture2D" uid="uid://r5scba5aqwx6" path="res://ui/hud/tools/button_eraser_default.png" id="16_rvswv"]
 [ext_resource type="Script" uid="uid://06tm0gbxmwx1" path="res://ui/hud/tools/tool_select.gd" id="16_x5p1p"]
+[ext_resource type="Script" uid="uid://c4icfclae4nwk" path="res://ui/hud/color/color_select.gd" id="17_bnpwn"]
 [ext_resource type="Texture2D" uid="uid://p2qjac4gr2hu" path="res://ui/hud/tools/button_eraser_selected.png" id="17_boyg6"]
+[ext_resource type="Texture2D" uid="uid://dqda01qg36118" path="res://ui/hud/color/color_button_default.png" id="17_vaj68"]
 [ext_resource type="Texture2D" uid="uid://vdprlc7hfssc" path="res://ui/hud/tools/button_eraser_locked.png" id="18_e36ub"]
+[ext_resource type="Texture2D" uid="uid://bmefa0l4lis1x" path="res://ui/hud/color/color_button_disabled.png" id="18_xa8c5"]
+[ext_resource type="Texture2D" uid="uid://d0rutm6ooshmo" path="res://ui/hud/color/color_button_selected.png" id="19_5b14r"]
 [ext_resource type="Texture2D" uid="uid://cijwfb02o4og4" path="res://ui/hud/tools/button_brush_default.png" id="19_hb5m1"]
+[ext_resource type="Texture2D" uid="uid://cf73lihrqxvsq" path="res://ui/hud/color/color_button_mask.png" id="20_5b14r"]
 [ext_resource type="Texture2D" uid="uid://nok8fgprgqs5" path="res://ui/hud/tools/button_brush_locked.png" id="20_x5p1p"]
 [ext_resource type="Texture2D" uid="uid://bk6xg0bnn7nka" path="res://ui/hud/tools/button_brush_selected.png" id="21_qhcbd"]
 [ext_resource type="PackedScene" uid="uid://cn26uywgn1h5r" path="res://ui/hud/accuracy_display.tscn" id="25_i2p71"]
@@ -136,6 +141,134 @@ offset_top = 35.0
 offset_right = -27.0
 offset_bottom = 35.0
 grow_horizontal = 0
+
+[node name="ColorSelect" type="Control" parent="HUDLayer/HUD" unique_id=1987601810 node_paths=PackedStringArray("buttons")]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("17_bnpwn")
+buttons = [NodePath("ColorBlack"), NodePath("ColorRed"), NodePath("ColorBlue"), NodePath("ColorYellow"), NodePath("ColorGreen")]
+
+[node name="ColorBlack" type="TextureButton" parent="HUDLayer/HUD/ColorSelect" unique_id=574762465]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 267.0
+offset_top = 117.0
+offset_right = 243.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = ExtResource("17_vaj68")
+texture_pressed = ExtResource("18_xa8c5")
+texture_hover = ExtResource("19_5b14r")
+texture_disabled = ExtResource("18_xa8c5")
+
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/ColorSelect/ColorBlack" unique_id=2040219320]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("20_5b14r")
+
+[node name="ColorRed" type="TextureButton" parent="HUDLayer/HUD/ColorSelect" unique_id=2082170834]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 323.0
+offset_top = 117.0
+offset_right = 299.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = ExtResource("17_vaj68")
+texture_pressed = ExtResource("18_xa8c5")
+texture_hover = ExtResource("19_5b14r")
+texture_disabled = ExtResource("18_xa8c5")
+
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/ColorSelect/ColorRed" unique_id=983445224]
+modulate = Color(0.8392157, 0.27058825, 0.25490198, 1)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("20_5b14r")
+
+[node name="ColorBlue" type="TextureButton" parent="HUDLayer/HUD/ColorSelect" unique_id=1267538433]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 379.0
+offset_top = 117.0
+offset_right = 355.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = ExtResource("17_vaj68")
+texture_pressed = ExtResource("18_xa8c5")
+texture_hover = ExtResource("19_5b14r")
+texture_disabled = ExtResource("18_xa8c5")
+
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/ColorSelect/ColorBlue" unique_id=1371294217]
+modulate = Color(0.22745098, 0.4862745, 0.64705884, 1)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("20_5b14r")
+
+[node name="ColorYellow" type="TextureButton" parent="HUDLayer/HUD/ColorSelect" unique_id=2004978372]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 435.00003
+offset_top = 117.0
+offset_right = 411.00003
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = ExtResource("17_vaj68")
+texture_pressed = ExtResource("18_xa8c5")
+texture_hover = ExtResource("19_5b14r")
+texture_disabled = ExtResource("18_xa8c5")
+
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/ColorSelect/ColorYellow" unique_id=1896967894]
+modulate = Color(0.95686275, 0.7058824, 0.101960786, 1)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("20_5b14r")
+
+[node name="ColorGreen" type="TextureButton" parent="HUDLayer/HUD/ColorSelect" unique_id=1020245618]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 491.0
+offset_top = 117.0
+offset_right = 467.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = ExtResource("17_vaj68")
+texture_pressed = ExtResource("18_xa8c5")
+texture_hover = ExtResource("19_5b14r")
+texture_disabled = ExtResource("18_xa8c5")
+
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/ColorSelect/ColorGreen" unique_id=1664048825]
+modulate = Color(0.4862745, 0.7019608, 0.25882354, 1)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("20_5b14r")
 
 [node name="ToolSelect" type="Control" parent="HUDLayer/HUD" unique_id=1290582873]
 unique_name_in_owner = true

@@ -23,12 +23,14 @@ func _ready() -> void:
     hud.submit_drawing.connect(_on_submit_drawing)
     hud.clear_drawing.connect(_on_clear_drawing)
     hud.select_tool.connect(_on_select_tool)
+    hud.select_color.connect(_on_select_color)
     
     # HUD should only listen to game signals, pass everything up
     score_manager.update_score.connect(_on_update_score)
     input_manager.draw.connect(_on_draw)
     input_manager.submit_drawing.connect(_on_submit_drawing)
     input_manager.select_tool.connect(_on_select_tool)
+    input_manager.select_color_index.connect(_on_select_color_index)
     
 func _calculate_score() -> int:
     var user_array: PackedInt64Array = player_drawing.pack_image()
@@ -68,3 +70,9 @@ func _on_draw(draw_pos: Vector2i) -> void:
 
 func _on_select_tool(tool: PlayerDrawing.Tool) -> void:
     player_drawing.set_selected_tool(tool)
+    
+func _on_select_color(color: Color) -> void:
+    player_drawing.set_brush_color(color)
+
+func _on_select_color_index(index: int) -> void:
+    hud.select_color_index(index)

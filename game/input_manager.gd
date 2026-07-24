@@ -4,6 +4,7 @@ class_name InputManager
 
 signal draw(draw_pos: Vector2i)
 signal select_tool(tool: PlayerDrawing.Tool)
+signal select_color_index(index: int)
 signal submit_drawing
 
 const DRAWING_OFFSET_X := 240
@@ -46,6 +47,11 @@ func _process_drawing(delta: float):
     if Input.is_action_just_pressed("submit"):
         submit_drawing.emit()
     
+    var num_colors := 5
+    for i in range(num_colors + 1):
+        if Input.is_action_just_pressed("select_color_" + str(i)):
+            select_color_index.emit(i - 1)
+
 # Bresenham's line algorithm        
 func _interpolate_line(p0: Vector2i, p1: Vector2i) -> void:
     var delta_x: int = abs(p1.x - p0.x)
