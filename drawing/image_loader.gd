@@ -11,19 +11,21 @@ var image_data_array: Array[PackedInt64Array]
 
 func _ready() -> void:
     for drawing in drawings:
+        print("Loading image ", drawing.id)
         var image: Image = drawing.image.get_image()
         var image_data: PackedInt64Array = []
         if image.get_width() != Drawing.WIDTH || image.get_height() != Drawing.HEIGHT:
             push_warning("Invalid dimensions for ", drawing.id, ": ", image.get_width(), " by ", image.get_height())
         image_data.resize(image.get_height() * image.get_width())
-        image_data.fill(-1)
+        image_data.fill(Drawing.EMPTY_COLOR_INT)
         for y in image.get_height():
             for x in image.get_width():
                 var color = image.get_pixel(x, y)
                 var color_value = color.to_argb64()
-                if color_value != -1:
+                if color_value != Drawing.EMPTY_COLOR_INT:
                     image_data.set(y * image.get_width() + x, color_value)
         image_data_array.push_back(image_data)
+        print("Finished loading image ", drawing.id)
 
 func get_drawing_info(index: int) -> Drawing:
     return drawings[index]

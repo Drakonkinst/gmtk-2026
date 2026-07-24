@@ -9,7 +9,7 @@ class_name DrawingManager
 
 const K_FACTOR := 2.0 # Lower = requires more precision, higher = more forgiving
 const INCORRECT_COLOR_PENALTY := 0.4 # Deducts a percentage if the wrong color is used
-static var EMPTY_COLOR_INT := Color(1, 1, 1, 1).to_argb64()
+static var OFFSETS := [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
 
 class GoalLookup:
     var distance: float
@@ -18,6 +18,54 @@ class GoalLookup:
 var current_drawing_index: int = -1
 var goal_map: Dictionary
 
+# Faster O(N) approach
+func _precompute_goal_maps_2(goal_array: PackedInt64Array) -> Dictionary:
+    var lookup_map: Dictionary = {}
+    for i in range(Drawing.WIDTH * Drawing.HEIGHT):
+        var default_data := GoalLookup.new()
+        default_data.distance = INF
+        default_data.target_color_int = Drawing.EMPTY_COLOR_INT
+        lookup_map[i] = default_data
+    
+    var queue: Array[Vector2i] = []
+    for i in range(goal_array.size()):
+        var color_int = goal_array[i]
+        if color_int != Drawing.EMPTY_COLOR_INT:
+             var goal_x := i % Drawing.WIDTH
+             var goal_y := int(i * 1.0 / Drawing.WIDTH) # Getting around the silly syntax warnings
+             var pos := Vector2i(goal_x, goal_y)
+             var data: GoalLookup = lookup_map[i]
+             data.distance = 0.0
+             data.target_color_int = color_int
+             queue.append(pos)
+    
+    if queue.is_empty():
+        push_warning("Image has no drawn pixels")
+        return lookup_map
+    print("Found ", len(queue), " goal pixels")
+    
+    var head := 0
+    while head < queue.size():
+        var current_pos := queue[head]
+        head += 1
+        
+        var current_index = current_pos.y * Drawing.WIDTH + current_pos.x
+        var current_lookup: GoalLookup = lookup_map[current_index]
+        
+        for dir in OFFSETS:
+            var next_pos = current_pos + dir
+            if next_pos.x >= 0 and next_pos.x < Drawing.WIDTH and next_pos.y >= 0 and next_pos.y < Drawing.HEIGHT:
+                var next_index: int = next_pos.y * Drawing.WIDTH + next_pos.x
+                var next_lookup: GoalLookup = lookup_map[next_index]
+                var new_dist = current_lookup.distance + 1.0
+                if new_dist < next_lookup.distance:
+                    next_lookup.distance = new_dist
+                    next_lookup.target_color_int = current_lookup.target_color_int
+                    queue.append(next_pos)
+    
+    return lookup_map
+
+# Older O(N x M) approach
 func _precompute_goal_maps(goal_array: PackedInt64Array) -> Dictionary:
     var lookup_map: Dictionary = {}
     
@@ -25,7 +73,7 @@ func _precompute_goal_maps(goal_array: PackedInt64Array) -> Dictionary:
     var goal_pixels: Array = []
     for i in range(goal_array.size()):
         var color_int = goal_array[i]
-        if color_int != EMPTY_COLOR_INT:
+        if color_int != Drawing.EMPTY_COLOR_INT:
             var goal_x := i % Drawing.WIDTH
             var goal_y := int(i * 1.0 / Drawing.WIDTH) # Getting around the silly syntax warnings
             goal_pixels.push_back({
@@ -35,10 +83,11 @@ func _precompute_goal_maps(goal_array: PackedInt64Array) -> Dictionary:
     
     # Generate closest-neighbor map for every coordinate
     for y in range(Drawing.HEIGHT):
+        print("y=", y)
         for x in range(Drawing.WIDTH):
             var current_pos = Vector2i(x, y)
             var min_distance: float = INF
-            var closest_color_int: int = EMPTY_COLOR_INT
+            var closest_color_int: int = Drawing.EMPTY_COLOR_INT
             
             for goal_pixel in goal_pixels:
                 var dist = current_pos.distance_to(goal_pixel.pos)
@@ -61,14 +110,11 @@ func calculate_accuracy(user_array: PackedInt64Array) -> float:
     
     for i in range(user_array.size()):
         var user_color_int = user_array[i]
-        if user_color_int == EMPTY_COLOR_INT:
+        if user_color_int == Drawing.EMPTY_COLOR_INT:
             continue
         total_pixels_drawn += 1
-        var user_x = i % Drawing.WIDTH
-        var user_y = int(i * 1.0 / Drawing.WIDTH)
-        var user_pos = Vector2i(user_x, user_y)
         
-        var lookup: GoalLookup = goal_map[user_pos]
+        var lookup: GoalLookup = goal_map[i]
         # Geometric distance score (Exponential decay)
         var distance_accuracy = exp(-lookup.distance / K_FACTOR)
         
@@ -92,7 +138,8 @@ func set_next_drawing() -> void:
     var image_data := get_image_data()
     print("Selected next drawing: ", drawing_info.id)
     drawing_sprite.texture = drawing_info.image
-    goal_map = _precompute_goal_maps(image_data)
+    goal_map = _precompute_goal_maps_2(image_data)
+    print("Finished precomputing goal maps for ", drawing_info.id)
     
 func get_drawing_info() -> Drawing:
     return image_loader.get_drawing_info(current_drawing_index)
