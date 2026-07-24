@@ -49,8 +49,9 @@ func _process_drawing(delta: float):
     
     var num_colors := 5
     for i in range(num_colors + 1):
-        if Input.is_action_just_pressed("select_color_" + str(i)):
-            select_color_index.emit(i - 1)
+        if i > 0:
+            if Input.is_action_just_pressed("select_color_" + str(i)):
+                select_color_index.emit(i - 1)
 
 # Bresenham's line algorithm        
 func _interpolate_line(p0: Vector2i, p1: Vector2i) -> void:

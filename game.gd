@@ -57,6 +57,12 @@ func _on_submit_drawing() -> void:
     countdown_manager.add_time(accuracy)
     accuracy_manager.update_accuracy(accuracy)
     
+    AudioManager.play_submit_sfx()
+    if accuracy >= 0.5:
+        AudioManager.play_good_sfx(accuracy)
+    else:
+        AudioManager.play_bad_sfx(accuracy)
+    
 func _on_clear_drawing() -> void:
     player_drawing.reset_image()
 
@@ -68,12 +74,15 @@ func _on_draw(draw_pos: Vector2i) -> void:
 
 func _on_select_tool(tool: PlayerDrawing.Tool) -> void:
     player_drawing.set_selected_tool(tool)
+    AudioManager.play_button_sfx()
     
 func _on_select_color(color: Color) -> void:
     player_drawing.set_brush_color(color)
+    AudioManager.play_button_sfx()
 
 func _on_select_color_index(index: int) -> void:
     hud.select_color_index(index)
 
 func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
     player_drawing.set_brush_size(size)
+    AudioManager.play_button_sfx()

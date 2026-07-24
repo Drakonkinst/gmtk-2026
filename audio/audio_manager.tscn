@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b4os27b2e6tsa"]
+
+[ext_resource type="Script" uid="uid://d0pgs154unya1" path="res://audio/audio_manager.gd" id="1_5jhky"]
+[ext_resource type="AudioStream" uid="uid://b4chvl0j0pbce" path="res://audio/sfx/startsoundeffect2.ogg" id="2_drlug"]
+[ext_resource type="AudioStream" uid="uid://ct8gp8fvbbmvo" path="res://audio/sfx/goodscoresoundeffect2.ogg" id="3_vxw8f"]
+[ext_resource type="AudioStream" uid="uid://hp2ftocsbmg" path="res://audio/sfx/badscoresoundeffect2.ogg" id="4_mhfhn"]
+[ext_resource type="AudioStream" uid="uid://ctjvpj7hvink6" path="res://audio/sfx/menubuttonsound2.ogg" id="5_mhfhn"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i1k7u"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("2_drlug")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8j4p3"]
+streams_count = 1
+stream_0/stream = ExtResource("3_vxw8f")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yf5fn"]
+streams_count = 1
+stream_0/stream = ExtResource("4_mhfhn")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hlghp"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("5_mhfhn")
+
+[node name="AudioManager" type="Node" unique_id=1337921936 node_paths=PackedStringArray("submit_sfx", "good_sfx", "bad_sfx", "button_sfx")]
+script = ExtResource("1_5jhky")
+submit_sfx = NodePath("SubmitSFX")
+good_sfx = NodePath("GoodSFX")
+bad_sfx = NodePath("BadSFX")
+button_sfx = NodePath("ButtonSFX")
+
+[node name="SubmitSFX" type="AudioStreamPlayer" parent="." unique_id=1890721993]
+stream = SubResource("AudioStreamRandomizer_i1k7u")
+volume_db = 7.0
+bus = &"UI"
+
+[node name="GoodSFX" type="AudioStreamPlayer" parent="." unique_id=1267219154]
+stream = SubResource("AudioStreamRandomizer_8j4p3")
+bus = &"UI"
+
+[node name="BadSFX" type="AudioStreamPlayer" parent="." unique_id=869871486]
+stream = SubResource("AudioStreamRandomizer_yf5fn")
+bus = &"UI"
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="." unique_id=1942323380]
+stream = SubResource("AudioStreamRandomizer_hlghp")
+volume_db = -10.0
+bus = &"UI"
