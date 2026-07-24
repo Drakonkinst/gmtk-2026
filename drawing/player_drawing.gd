@@ -76,6 +76,7 @@ func on_draw(draw_pos: Vector2i) -> void:
         erase(draw_pos)
 
 func draw_at_point(center_pos: Vector2i, color: Color) -> void:
+    
     for brush_offset_x in range(-brush_size, brush_size + 1):
         for brush_offset_y in range(-brush_size, brush_size + 1):
             var x := center_pos.x + brush_offset_x
@@ -86,10 +87,12 @@ func draw_at_point(center_pos: Vector2i, color: Color) -> void:
             needs_update = true
 
 func erase(center_pos: Vector2i) -> void:
-   draw_at_point(center_pos, TRANSPARENT_COLOR)
+    draw_at_point(center_pos, TRANSPARENT_COLOR)
+    AudioManager.erase_sfx.play()
 
 func draw_pencil(center_pos: Vector2i) -> void:
     draw_at_point(center_pos, brush_color)
+    AudioManager.draw_sfx.play()
 
 func _is_in_radial_distance(center_pos: Vector2i, x: int, y: int, radius: int) -> bool:
     var delta_x := center_pos.x - x

@@ -6,6 +6,8 @@ extends Node
 @export var good_sfx: AudioStreamPlayer
 @export var bad_sfx: AudioStreamPlayer
 @export var button_sfx: AudioStreamPlayer
+@export var draw_sfx: AudioStreamPlayer
+@export var erase_sfx: AudioStreamPlayer
 @export var bgm: AudioStreamPlayer
 
 
@@ -25,6 +27,12 @@ func play_bad_sfx(accuracy: float) -> void:
     
 func play_button_sfx() -> void:
     button_sfx.play()
+    
+func play_draw_sfx() -> void:
+    draw_sfx.play()
+
+func play_erase_sfx() -> void:
+    erase_sfx.play()
 
 func start_bgm() -> void:
     bgm.play()
