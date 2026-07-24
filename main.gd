@@ -12,9 +12,8 @@ var menu: MainMenu
 func _ready() -> void:
     Global.audio = audio
     
-    # Dev shortcut - just go directly to new game for now
-    # init_main_menu()
-    start_new_game()
+    init_main_menu()
+    # start_new_game()
     
 func init_main_menu() -> void:
     menu = main_menu_scene.instantiate()
