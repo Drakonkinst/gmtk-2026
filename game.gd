@@ -46,6 +46,7 @@ func _get_accuracy() -> float:
 func _on_submit_drawing() -> void:
     var score_earned := _calculate_score()
     var accuracy = _get_accuracy()
+    
     score_manager.add_score(score_earned)
     player_drawing.reset_image()
     drawing_manager.set_next_drawing()

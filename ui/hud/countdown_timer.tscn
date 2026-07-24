@@ -2,6 +2,66 @@
 
 [ext_resource type="Script" uid="uid://bnlpmjhy4gf13" path="res://ui/hud/countdown_timer.gd" id="1_5sxqa"]
 
+[sub_resource type="Animation" id="Animation_5sxqa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AddedLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-29, 42)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AddedLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b1kc4"]
+resource_name = "adding_time"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AddedLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.39229208, 1),
+"update": 0,
+"values": [Vector2(-11, 42), Vector2(-11, -24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AddedLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.0000005, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jcdv0"]
+_data = {
+&"RESET": SubResource("Animation_5sxqa"),
+&"adding_time": SubResource("Animation_b1kc4")
+}
+
 [node name="CountdownTimer" type="Control" unique_id=300404977]
 layout_mode = 3
 anchors_preset = 0
@@ -20,9 +80,30 @@ offset_right = 39.0
 offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 48
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 64
 text = "10s"
 horizontal_alignment = 1
+
+[node name="AddedLabel" type="Label" parent="." unique_id=312955900]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -29.0
+offset_top = 42.0
+offset_right = 49.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0, 0.8039216, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 48
+text = "+1s"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AddedLabel" unique_id=1959995551]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_jcdv0")
+next/adding_time = &"RESET"
 
 [node name="Timer" type="Timer" parent="." unique_id=163530633]
 autostart = true
