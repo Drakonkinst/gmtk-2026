@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://bk6xg0bnn7nka" path="res://ui/hud/tools/button_brush_selected.png" id="21_qhcbd"]
 [ext_resource type="PackedScene" uid="uid://cn26uywgn1h5r" path="res://ui/hud/accuracy_display.tscn" id="25_i2p71"]
 [ext_resource type="Script" uid="uid://d1brb37rhwudm" path="res://ui/hud/accuracy_display.gd" id="26_xa8c5"]
+[ext_resource type="Script" uid="uid://cc0rhyh8d71w2" path="res://ui/hud/reveal_elements.gd" id="27_ple6s"]
 [ext_resource type="Script" uid="uid://6fycpfut6kfw" path="res://ui/hud/size/size_select.gd" id="30_7knny"]
 [ext_resource type="Texture2D" uid="uid://cpcuh7x5pwfhg" path="res://ui/hud/size/button_small_default.png" id="31_eu6ph"]
 [ext_resource type="Texture2D" uid="uid://caf1vqr57t57e" path="res://ui/hud/tools/button_bucket_default.png" id="32_87ddb"]
@@ -57,11 +58,13 @@
 [ext_resource type="Texture2D" uid="uid://djqplpynero84" path="res://ui/hud/size/button_normal_selected.png" id="36_lwlx3"]
 [ext_resource type="Texture2D" uid="uid://dw3w5vku0kdtg" path="res://ui/hud/size/button_large_default.png" id="37_0de7l"]
 [ext_resource type="Texture2D" uid="uid://dbxhx071gpprn" path="res://ui/hud/size/button_large_locked.png" id="38_87ddb"]
+[ext_resource type="Texture2D" uid="uid://qo48lkqp27ir" path="res://ui/hud/button_locked.png" id="38_jo4nb"]
 [ext_resource type="Texture2D" uid="uid://cb2we0ghhjvdh" path="res://ui/hud/size/button_large_selected.png" id="39_mljfx"]
 [ext_resource type="Script" uid="uid://dwhxqb43wiyuo" path="res://ui/hud/h_slider.gd" id="43_edr7y"]
 [ext_resource type="FontFile" uid="uid://da35yew8fgybf" path="res://ui/fonts/ari-w9500-condensed-display.ttf" id="43_kq12w"]
 [ext_resource type="FontFile" uid="uid://csdil41k4yke5" path="res://ui/fonts/pico12.ttf" id="52_tb2lt"]
 [ext_resource type="Script" uid="uid://unhqjyw1ah55" path="res://upgrade/upgrade_panel.gd" id="61_wj41c"]
+[ext_resource type="Texture2D" uid="uid://qmoiepqka1xf" path="res://ui/hud/1x1.png" id="63_ra4rb"]
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
@@ -136,6 +139,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_hve3p")
+
+[node name="RevealElements" type="Control" parent="HUDLayer/HUD" unique_id=1460300616 node_paths=PackedStringArray("on_color_reveal", "on_tools_reveal", "on_sizes_reveal")]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("27_ple6s")
+on_color_reveal = [NodePath("../ColorSelect/ColorBlack/TextureRect"), NodePath("../ColorSelect/ColorRed/TextureRect"), NodePath("../ColorSelect/ColorBlue/TextureRect"), NodePath("../ColorSelect/ColorYellow/TextureRect"), NodePath("../ColorSelect/ColorGreen/TextureRect"), NodePath("../ColorSelect/Label"), NodePath("../ColorSelect/Label2"), NodePath("../ColorSelect/Label3"), NodePath("../ColorSelect/Label4"), NodePath("../ColorSelect/Label5")]
+on_tools_reveal = [NodePath("../ToolSelect/BrushButton"), NodePath("../ToolSelect/EraserButton"), NodePath("../ToolSelect/BucketButton"), NodePath("../ToolSelect/Label"), NodePath("../ToolSelect/Label2"), NodePath("../ToolSelect/Label3")]
+on_sizes_reveal = [NodePath("../SizeSelect/SmallBrushButton"), NodePath("../SizeSelect/NormalBrushButton"), NodePath("../SizeSelect/LargeBrushButton")]
 
 [node name="SubmitButton" type="Button" parent="HUDLayer/HUD" unique_id=1821586173]
 unique_name_in_owner = true
@@ -396,13 +409,40 @@ offset_bottom = -340.0
 grow_vertical = 2
 script = ExtResource("16_x5p1p")
 
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/ToolSelect" unique_id=429294709]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 215.00002
+offset_right = 182.0
+offset_bottom = 231.00002
+scale = Vector2(3, 3)
+texture = ExtResource("38_jo4nb")
+
+[node name="TextureRect2" type="TextureRect" parent="HUDLayer/HUD/ToolSelect" unique_id=502439000]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 270.0
+offset_right = 182.0
+offset_bottom = 286.0
+scale = Vector2(3, 3)
+texture = ExtResource("38_jo4nb")
+
+[node name="TextureRect3" type="TextureRect" parent="HUDLayer/HUD/ToolSelect" unique_id=980610929]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 325.0
+offset_right = 182.0
+offset_bottom = 341.0
+scale = Vector2(3, 3)
+texture = ExtResource("38_jo4nb")
+
 [node name="BrushButton" type="TextureButton" parent="HUDLayer/HUD/ToolSelect" unique_id=863032596]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 166.0
-offset_top = 220.0
+offset_top = 215.0
 offset_right = 182.0
-offset_bottom = 236.0
+offset_bottom = 231.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("19_hb5m1")
 texture_pressed = ExtResource("20_x5p1p")
@@ -413,9 +453,9 @@ texture_disabled = ExtResource("20_x5p1p")
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 166.0
-offset_top = 275.0
+offset_top = 270.0
 offset_right = 182.0
-offset_bottom = 291.0
+offset_bottom = 286.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("16_rvswv")
 texture_pressed = ExtResource("18_e36ub")
@@ -426,9 +466,9 @@ texture_disabled = ExtResource("18_e36ub")
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 166.0
-offset_top = 330.0
+offset_top = 324.99997
 offset_right = 182.0
-offset_bottom = 346.0
+offset_bottom = 340.99997
 scale = Vector2(3, 3)
 texture_normal = ExtResource("32_87ddb")
 texture_pressed = ExtResource("33_mljfx")
@@ -438,9 +478,9 @@ texture_disabled = ExtResource("33_mljfx")
 [node name="Label" type="Label" parent="HUDLayer/HUD/ToolSelect" unique_id=716612405]
 layout_mode = 0
 offset_left = 218.0
-offset_top = 237.0
+offset_top = 232.0
 offset_right = 233.0
-offset_bottom = 254.0
+offset_bottom = 249.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_color = Color(0.050980393, 0.25490198, 0.007843138, 1)
 theme_override_font_sizes/font_size = 15
@@ -449,9 +489,9 @@ text = "B"
 [node name="Label2" type="Label" parent="HUDLayer/HUD/ToolSelect" unique_id=758123761]
 layout_mode = 0
 offset_left = 217.0
-offset_top = 292.0
+offset_top = 287.0
 offset_right = 232.0
-offset_bottom = 309.0
+offset_bottom = 304.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_color = Color(0.050980393, 0.25490198, 0.007843138, 1)
 theme_override_font_sizes/font_size = 15
@@ -460,9 +500,9 @@ text = "E"
 [node name="Label3" type="Label" parent="HUDLayer/HUD/ToolSelect" unique_id=857909077]
 layout_mode = 0
 offset_left = 217.0
-offset_top = 347.0
+offset_top = 342.0
 offset_right = 232.0
-offset_bottom = 364.0
+offset_bottom = 359.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_color = Color(0.050980393, 0.25490198, 0.007843138, 1)
 theme_override_font_sizes/font_size = 15
@@ -481,13 +521,40 @@ offset_bottom = -340.0
 grow_vertical = 2
 script = ExtResource("30_7knny")
 
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/SizeSelect" unique_id=443705818]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 393.0
+offset_right = 183.0
+offset_bottom = 409.0
+scale = Vector2(3, 3)
+texture = ExtResource("38_jo4nb")
+
+[node name="TextureRect2" type="TextureRect" parent="HUDLayer/HUD/SizeSelect" unique_id=1290701802]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 448.0
+offset_right = 184.0
+offset_bottom = 464.0
+scale = Vector2(3, 3)
+texture = ExtResource("38_jo4nb")
+
+[node name="TextureRect3" type="TextureRect" parent="HUDLayer/HUD/SizeSelect" unique_id=58283523]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 503.00003
+offset_right = 183.0
+offset_bottom = 519.0
+scale = Vector2(3, 3)
+texture = ExtResource("38_jo4nb")
+
 [node name="SmallBrushButton" type="TextureButton" parent="HUDLayer/HUD/SizeSelect" unique_id=259684062]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 167.0
-offset_top = 385.0
-offset_right = 183.0
-offset_bottom = 401.0
+offset_left = 166.99998
+offset_top = 393.0
+offset_right = 182.99998
+offset_bottom = 409.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("31_eu6ph")
 texture_pressed = ExtResource("32_edr7y")
@@ -497,10 +564,10 @@ texture_disabled = ExtResource("32_edr7y")
 [node name="NormalBrushButton" type="TextureButton" parent="HUDLayer/HUD/SizeSelect" unique_id=1739355683]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 168.0
-offset_top = 440.0
-offset_right = 184.0
-offset_bottom = 456.0
+offset_left = 167.99998
+offset_top = 448.0
+offset_right = 183.99998
+offset_bottom = 464.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("34_t46w6")
 texture_pressed = ExtResource("35_m28ev")
@@ -510,10 +577,10 @@ texture_disabled = ExtResource("35_m28ev")
 [node name="LargeBrushButton" type="TextureButton" parent="HUDLayer/HUD/SizeSelect" unique_id=1861670252]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 167.0
-offset_top = 495.0
-offset_right = 183.0
-offset_bottom = 511.0
+offset_left = 166.99998
+offset_top = 502.99997
+offset_right = 182.99998
+offset_bottom = 519.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("37_0de7l")
 texture_pressed = ExtResource("38_87ddb")
@@ -734,3 +801,12 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 21
 text = "UNLOCK"
 horizontal_alignment = 1
+
+[node name="Divider" type="TextureRect" parent="HUDLayer/HUD" unique_id=583322741]
+modulate = Color(0.050980393, 0.3254902, 0.007843138, 1)
+layout_mode = 0
+offset_left = 168.0
+offset_top = 361.0
+offset_right = 217.0
+offset_bottom = 365.0
+texture = ExtResource("63_ra4rb")

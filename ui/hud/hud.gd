@@ -14,6 +14,7 @@ signal select_size(size: PlayerDrawing.BrushSize)
 @onready var tool_select: ToolSelect = %ToolSelect
 @onready var color_select: ColorSelect = %ColorSelect
 @onready var size_select: SizeSelect = %SizeSelect
+@onready var reveal_elements: RevealElements = %RevealElements
 
 func _ready() -> void:
     submit_button.pressed.connect(_on_submit_button_pressed)
@@ -21,6 +22,9 @@ func _ready() -> void:
     tool_select.tool_button_pressed.connect(_on_tool_button_pressed)
     color_select.select_color.connect(_on_select_color)
     size_select.select_size.connect(_on_select_size)
+
+func on_upgrade_unlocked(upgrade: Upgrade) -> void:
+    reveal_elements.on_upgrade_unlocked(upgrade)
 
 func select_color_index(index: int) -> void:
     color_select.select_color_index(index)

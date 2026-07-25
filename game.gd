@@ -105,11 +105,13 @@ func _on_attempt_upgrade_1(upgrade: Upgrade) -> void:
     if _has_enough_time(upgrade.cost):
         _spend_time(upgrade.cost)
         upgrade_manager.unlock_upgrade_1()
+        hud.on_upgrade_unlocked(upgrade)
 
 func _on_attempt_upgrade_2(upgrade: Upgrade) -> void:
     if _has_enough_time(upgrade.cost):
         _spend_time(upgrade.cost)
         upgrade_manager.unlock_upgrade_2()
+        hud.on_upgrade_unlocked(upgrade)
 
 func _has_enough_time(seconds: int) -> bool:
     return DEBUG_MODE or countdown_manager.get_seconds_left()

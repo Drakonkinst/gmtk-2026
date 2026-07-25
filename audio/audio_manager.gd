@@ -20,6 +20,7 @@ func start_bgm() -> void:
     bgm.play()
 
 func play_submit_sfx() -> void:
+    button_sfx.play()
     submit_sfx.play()
 
 func play_good_sfx(accuracy: float) -> void:
@@ -57,6 +58,7 @@ func play_erase_sfx() -> void:
     erase_sfx.play()
 
 func play_clear_sfx() -> void:
+    button_sfx.play()
     clear_sfx.play()
 
 func play_brush_select_sfx() -> void:
