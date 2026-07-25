@@ -19,6 +19,7 @@ const MAX_DRAWINGS := 20
 @onready var end_screen: EndScreen = %EndScreen
 
 const DEBUG_MODE := false
+const ACCURACY_THRESHOLD := 0.5
 
 var freedraw_mode := false
 var drawings_completed := 0
@@ -79,7 +80,7 @@ func _on_submit_drawing() -> void:
     hud.on_complete_drawing(accuracy)
     
     AudioManager.play_submit_sfx()
-    if accuracy >= 0.2:
+    if accuracy >= ACCURACY_THRESHOLD:
         AudioManager.play_good_sfx(accuracy)
     else:
         AudioManager.play_bad_sfx(accuracy)
