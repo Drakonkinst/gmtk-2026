@@ -107,7 +107,3 @@ unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_jcdv0")
 next/adding_time = &"RESET"
-
-[node name="Timer" type="Timer" parent="." unique_id=163530633]
-unique_name_in_owner = true
-autostart = true

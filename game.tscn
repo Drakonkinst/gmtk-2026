@@ -124,6 +124,9 @@ player_image_display = NodePath("../PlayerDrawingDisplay")
 unique_name_in_owner = true
 script = ExtResource("14_e8heu")
 
+[node name="Timer" type="Timer" parent="CountdownManager" unique_id=700563108]
+autostart = true
+
 [node name="AccuracyManager" type="Node2D" parent="." unique_id=790866997]
 unique_name_in_owner = true
 script = ExtResource("15_xa8c5")

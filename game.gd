@@ -39,7 +39,7 @@ func _ready() -> void:
     upgrade_manager.attempt_upgrade_1.connect(_on_attempt_upgrade_1)
     upgrade_manager.attempt_upgrade_2.connect(_on_attempt_upgrade_2)
     
-    countdown_manager.countdown_timer.game_lose.connect(_on_game_lose)
+    countdown_manager.game_lose.connect(_on_game_lose)
     
     AudioManager.play_tick_tock_sfx()
     
@@ -108,6 +108,8 @@ func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
     AudioManager.play_brush_select_sfx()
 
 func _on_game_lose() -> void:
+    input_manager.drawing_enabled = false
+    hud.on_game_lose()
     AudioManager.play_time_up_sfx()
     
 func _on_attempt_upgrade_1(upgrade: Upgrade) -> void:

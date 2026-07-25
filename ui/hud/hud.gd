@@ -35,6 +35,9 @@ func _on_tool_button_pressed(tool: PlayerDrawing.Tool) -> void:
 func _on_submit_button_pressed() -> void:
     submit_drawing.emit()
 
+func on_game_lose() -> void:
+    submit_button.disabled = true
+
 func _input(event: InputEvent) -> void:
     if Input.is_action_just_pressed("clear"):
         clear_drawing.emit()

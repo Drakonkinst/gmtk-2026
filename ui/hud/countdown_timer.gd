@@ -1,42 +1,30 @@
 class_name CountdownTimer
 extends Control
 
-signal game_lose
-
 @onready var time_label: Label = %TimeLabel
 @onready var added_label: Label = %AddedLabel
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
-@onready var timer: Timer = %Timer
 
+const RED_TEXT_THRESHOLD := 5
 
-var time_left: int = 10:
-    set(value):
-        var time_gained = value - time_left
-        if time_gained >= 0:
-            added_label.text = "+%ss" % (time_gained)
-            animation_player.play("adding_time")
-            added_label.add_theme_color_override("font_color", Color.GREEN)
-            if time_gained == 0:
-                added_label.add_theme_color_override("font_color", Color.RED)
-            
-        time_left = value
-        if time_left < 0:
-            time_left = 0
-            timer.stop()
-            game_lose.emit()
-            AudioManager.stop_tick_tock_sfx()
-        elif time_left <= 3:
-            time_label.self_modulate = Color.RED
-        else:
-            time_label.self_modulate = Color.WHITE
-            
-        time_label.text = "%ss" % time_left
-        
-        AudioManager.adjust_tick_tock_db(time_left)
+var displayed_time_left: int
 
-func _ready() -> void:
-    timer.timeout.connect(_on_timer_timeout)
+func change_time(delta_time: int):
+    if delta_time >= 0:
+        added_label.text = "+%ss" % (delta_time)
+        animation_player.play("adding_time")
+        added_label.add_theme_color_override("font_color", Color.GREEN)
+        if delta_time == 0:
+            added_label.add_theme_color_override("font_color", Color.RED)
+    # TODO: Add effects for removing time (spending time for an upgrade)
 
-func _on_timer_timeout() -> void:
-    time_left -= 1
+func update_displayed_time(time_left: int):
+    displayed_time_left = max(0, time_left)
+    if displayed_time_left <= RED_TEXT_THRESHOLD:
+        time_label.self_modulate = Color.RED
+    else:
+        time_label.self_modulate = Color.WHITE
+    time_label.text = "%ss" % displayed_time_left
+    AudioManager.adjust_tick_tock_db(displayed_time_left)
+
     
