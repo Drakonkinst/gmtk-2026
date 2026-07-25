@@ -23,4 +23,5 @@ func _process(delta: float) -> void:
         return
     var seconds_left := Global.game.countdown_manager.get_seconds_left()
     disabled = locked or seconds_left < current_upgrade.cost
+    cost_label.add_theme_color_override("default_color", Color.RED if disabled else Color.GREEN)
         

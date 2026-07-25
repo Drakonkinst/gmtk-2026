@@ -81,6 +81,13 @@
 [ext_resource type="Texture2D" uid="uid://dsbe0g7ipktte" path="res://ui/hud/mouse_scroll_vertical_outline.png" id="66_vyqle"]
 [ext_resource type="Script" uid="uid://dw8k5cekg68yt" path="res://lose_screen.gd" id="74_3xib3"]
 [ext_resource type="Shader" uid="uid://djr3t7bhrp3qa" path="res://Blur.gdshader" id="74_7noa1"]
+[ext_resource type="Texture2D" uid="uid://bv7extlajf0e7" path="res://ui/hud/button_ninepatch.png" id="76_vqo61"]
+[ext_resource type="Script" uid="uid://dhhxtf8opx43x" path="res://ui/hud/hourglass/hourglass.gd" id="80_vvpk2"]
+[ext_resource type="Texture2D" uid="uid://cexwymuu4mh1d" path="res://ui/hud/hourglass/hourglass.png" id="81_o46vb"]
+[ext_resource type="Texture2D" uid="uid://df4vo71i6s8t8" path="res://ui/hud/hourglass/sand_base.png" id="82_vqo61"]
+[ext_resource type="Texture2D" uid="uid://b0asaqm3jentf" path="res://ui/hud/hourglass/sand_top.png" id="83_o46vb"]
+[ext_resource type="Texture2D" uid="uid://b6vis86pu1g1r" path="res://ui/hud/hourglass/sand_fall.png" id="83_pwsyv"]
+[ext_resource type="Texture2D" uid="uid://w74ayqhqhmhk" path="res://ui/hud/hourglass/hourglass_overlay.png" id="84_lon8v"]
 
 [sub_resource type="Animation" id="Animation_5sxqa"]
 length = 0.001
@@ -140,6 +147,49 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_5sxqa"),
 &"adding_time": SubResource("Animation_b1kc4")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vden3"]
+atlas = ExtResource("83_pwsyv")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="Animation" id="Animation_vvpk2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 32, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_o46vb"]
+resource_name = "falling_sand"
+length = 0.6
+loop_mode = 1
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 32, 64), Rect2(32, 0, 32, 64), Rect2(64, 0, 32, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vqo61"]
+_data = {
+&"RESET": SubResource("Animation_vvpk2"),
+&"falling_sand": SubResource("Animation_o46vb")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
@@ -1020,14 +1070,26 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Label" type="Label" parent="HUDLayer/HUD/Upgrades" unique_id=1699560162]
+[node name="NinePatchRect" type="NinePatchRect" parent="HUDLayer/HUD/Upgrades" unique_id=327085150]
 layout_mode = 0
-offset_left = 772.0
-offset_top = 180.0
-offset_right = 940.0
-offset_bottom = 216.0
+offset_left = 780.0
+offset_top = 159.0
+offset_right = 930.0
+offset_bottom = 203.0
+texture = ExtResource("76_vqo61")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="HUDLayer/HUD/Upgrades/NinePatchRect" unique_id=1699560162]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 11.0
+offset_right = 160.0
+offset_bottom = 47.0
 theme = ExtResource("18_qpefm")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 21
 text = "UNLOCK"
@@ -1070,6 +1132,66 @@ offset_right = 279.0
 offset_bottom = 504.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("66_vyqle")
+
+[node name="Hourglass" type="Control" parent="HUDLayer/HUD" unique_id=528516156]
+unique_name_in_owner = true
+anchors_preset = 0
+script = ExtResource("80_vvpk2")
+
+[node name="BaseHourglass" type="TextureRect" parent="HUDLayer/HUD/Hourglass" unique_id=215782338]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 242.0
+offset_right = 57.0
+offset_bottom = 306.0
+scale = Vector2(3, 3)
+texture = ExtResource("81_o46vb")
+
+[node name="BaseSand" type="TextureRect" parent="HUDLayer/HUD/Hourglass" unique_id=1280807612]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 242.0
+offset_right = 57.0
+offset_bottom = 306.0
+scale = Vector2(3, 3)
+texture = ExtResource("82_vqo61")
+
+[node name="SandProgress" type="TextureProgressBar" parent="HUDLayer/HUD/Hourglass" unique_id=396899916]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 25.0
+offset_top = 242.00002
+offset_right = 57.0
+offset_bottom = 306.0
+scale = Vector2(3, 3)
+max_value = 1.0
+step = 0.01
+value = 0.75
+fill_mode = 3
+texture_progress = ExtResource("83_o46vb")
+
+[node name="FallingSand" type="TextureRect" parent="HUDLayer/HUD/Hourglass" unique_id=802875904]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 25.000002
+offset_top = 242.0
+offset_right = 57.0
+offset_bottom = 306.0
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_vden3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer/HUD/Hourglass/FallingSand" unique_id=1303796936]
+libraries/ = SubResource("AnimationLibrary_vqo61")
+autoplay = &"falling_sand"
+
+[node name="Overlay" type="TextureRect" parent="HUDLayer/HUD/Hourglass" unique_id=170352539]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 242.0
+offset_right = 57.0
+offset_bottom = 306.0
+scale = Vector2(3, 3)
+texture = ExtResource("84_lon8v")
 
 [node name="EndScreen" type="Control" parent="HUDLayer" unique_id=488366321]
 visible = false

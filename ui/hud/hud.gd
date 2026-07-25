@@ -17,6 +17,7 @@ signal select_size(size: PlayerDrawing.BrushSize)
 @onready var reveal_elements: RevealElements = %RevealElements
 @onready var accuracy_display: RichTextLabel = %AccuracyValue
 @onready var drawing_count: RichTextLabel = %DrawingCount
+@onready var hourglass: Hourglass = %Hourglass
 
 func _ready() -> void:
     submit_button.pressed.connect(_on_submit_button_pressed)
@@ -56,6 +57,7 @@ func on_game_end() -> void:
 
 func on_game_lose() -> void:
     on_game_end()
+    hourglass.falling_sand.hide()
 
 func _input(event: InputEvent) -> void:
     if Input.is_action_just_pressed("clear"):
