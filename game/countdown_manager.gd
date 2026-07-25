@@ -27,14 +27,14 @@ func change_time_big(delta_time: int) -> void:
 
 func set_time(time: int, big_change: bool) -> void:
     var prev_time := time_left
-    time_left = time
+    time_left = min(time, MAX_TIME)
     countdown_timer.update_displayed_time(time_left)
     if time_left < 0:
         time_left = 0
         timer.stop()
         game_lose.emit()
         AudioManager.stop_tick_tock_sfx()
-    var delta := time - prev_time
+    var delta := time_left - prev_time
     if big_change:
         countdown_timer.change_time(delta)
 

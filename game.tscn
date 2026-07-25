@@ -63,6 +63,9 @@
 [ext_resource type="Script" uid="uid://bnlpmjhy4gf13" path="res://ui/hud/countdown_timer.gd" id="59_ra4rb"]
 [ext_resource type="Script" uid="uid://unhqjyw1ah55" path="res://upgrade/upgrade_panel.gd" id="61_wj41c"]
 [ext_resource type="Texture2D" uid="uid://qmoiepqka1xf" path="res://ui/hud/1x1.png" id="63_ra4rb"]
+[ext_resource type="Texture2D" uid="uid://bsmsinbsyoiho" path="res://ui/hud/keyboard_space_outline.png" id="64_56gn1"]
+[ext_resource type="Texture2D" uid="uid://cqx7u0ak7tl2y" path="res://ui/hud/keyboard_backspace_icon_outline.png" id="65_avmo2"]
+[ext_resource type="Texture2D" uid="uid://dsbe0g7ipktte" path="res://ui/hud/mouse_scroll_vertical_outline.png" id="66_vyqle"]
 
 [sub_resource type="Animation" id="Animation_5sxqa"]
 length = 0.001
@@ -201,15 +204,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_hve3p")
 
-[node name="RevealElements" type="Control" parent="HUDLayer/HUD" unique_id=1460300616 node_paths=PackedStringArray("on_color_reveal", "on_tools_reveal", "on_sizes_reveal")]
+[node name="RevealElements" type="Control" parent="HUDLayer/HUD" unique_id=1460300616 node_paths=PackedStringArray("on_color_reveal", "on_tools_reveal", "on_sizes_reveal", "on_bucket_reveal")]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("27_ple6s")
 on_color_reveal = [NodePath("../ColorSelect/ColorBlack/TextureRect"), NodePath("../ColorSelect/ColorRed/TextureRect"), NodePath("../ColorSelect/ColorBlue/TextureRect"), NodePath("../ColorSelect/ColorYellow/TextureRect"), NodePath("../ColorSelect/ColorGreen/TextureRect"), NodePath("../ColorSelect/Label"), NodePath("../ColorSelect/Label2"), NodePath("../ColorSelect/Label3"), NodePath("../ColorSelect/Label4"), NodePath("../ColorSelect/Label5")]
-on_tools_reveal = [NodePath("../ToolSelect/BrushButton"), NodePath("../ToolSelect/EraserButton"), NodePath("../ToolSelect/BucketButton"), NodePath("../ToolSelect/Label"), NodePath("../ToolSelect/Label2"), NodePath("../ToolSelect/Label3")]
-on_sizes_reveal = [NodePath("../SizeSelect/SmallBrushButton"), NodePath("../SizeSelect/NormalBrushButton"), NodePath("../SizeSelect/LargeBrushButton")]
+on_tools_reveal = [NodePath("../ToolSelect/BrushButton"), NodePath("../ToolSelect/EraserButton"), NodePath("../ToolSelect/Label"), NodePath("../ToolSelect/Label2")]
+on_sizes_reveal = [NodePath("../SizeSelect/SmallBrushButton"), NodePath("../SizeSelect/NormalBrushButton"), NodePath("../SizeSelect/LargeBrushButton"), NodePath("../TextureRect3")]
+on_bucket_reveal = [NodePath("../ToolSelect/BucketButton"), NodePath("../ToolSelect/Label3")]
 
 [node name="SubmitButton" type="Button" parent="HUDLayer/HUD" unique_id=1821586173]
 unique_name_in_owner = true
@@ -219,10 +223,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -81.5
-offset_top = -165.0
-offset_right = 81.5
-offset_bottom = -101.0
+offset_left = -81.0
+offset_top = -172.0
+offset_right = 82.0
+offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("18_qpefm")
@@ -239,10 +243,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -175.0
-offset_top = -161.0
-offset_right = -159.0
-offset_bottom = -145.0
+offset_left = -227.99998
+offset_top = -162.0
+offset_right = -212.0
+offset_bottom = -146.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(3, 3)
@@ -1022,3 +1026,32 @@ offset_top = 361.0
 offset_right = 217.0
 offset_bottom = 365.0
 texture = ExtResource("63_ra4rb")
+
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD" unique_id=831142178]
+modulate = Color(0.050980393, 0.25490198, 0.007843138, 1)
+layout_mode = 0
+offset_left = 564.0
+offset_top = 548.0
+offset_right = 628.0
+offset_bottom = 612.0
+texture = ExtResource("64_56gn1")
+
+[node name="TextureRect2" type="TextureRect" parent="HUDLayer/HUD" unique_id=1649302192]
+modulate = Color(0.050980393, 0.25490198, 0.007843138, 1)
+layout_mode = 0
+offset_left = 302.0
+offset_top = 558.0
+offset_right = 366.0
+offset_bottom = 622.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("65_avmo2")
+
+[node name="TextureRect3" type="TextureRect" parent="HUDLayer/HUD" unique_id=1377440018]
+modulate = Color(0.050980393, 0.25490198, 0.007843138, 1)
+layout_mode = 0
+offset_left = 215.0
+offset_top = 440.0
+offset_right = 279.0
+offset_bottom = 504.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("66_vyqle")
