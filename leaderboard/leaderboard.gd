@@ -6,9 +6,6 @@ class_name Leaderboard
 @onready var single_score: PackedScene = preload("uid://dlvrj547ca4f6")
 @onready var loading_label := %LoadingLabel as Label
 @onready var high_scores_label := %HighScoresLabel as Label
-@onready var switch : Button = %Switch
-@onready var sfx : AudioStreamPlayer = $uisfx
-@onready var sfx_hover : AudioStreamPlayer = $uiHoversfx
 
 func _ready() -> void:
     refresh_scores()

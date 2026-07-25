@@ -129,9 +129,12 @@ func _on_game_lose() -> void:
     
     # Calculate endgame stats
     Global.drawings_made = drawings_completed
-    var overall_accuracy := accuracy_sum / drawings_completed
-    var accuracy_as_int := int(overall_accuracy * 100)
-    Global.average_accuracy_str = str(accuracy_as_int) + "%"
+    if drawings_completed > 0:
+        var overall_accuracy := accuracy_sum / drawings_completed
+        var accuracy_as_int := int(overall_accuracy * 100)
+        Global.average_accuracy_str = str(accuracy_as_int) + "%"
+    else:
+        Global.average_accuracy_str = "0%"
     var num_minutes := int(total_time_spent / 60)
     var num_seconds := int(total_time_spent) - num_minutes * 60
     Global.total_time_str = str(num_minutes) + "m " + str(num_seconds) + "s"
