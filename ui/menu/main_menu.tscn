@@ -174,31 +174,31 @@ metadata/_edit_lock_ = true
 [node name="StartButton" type="Button" parent="." unique_id=1243298960]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 460.0
-offset_top = 465.0
-offset_right = 644.0
-offset_bottom = 530.0
+offset_left = 365.0
+offset_top = 466.0
+offset_right = 611.0
+offset_bottom = 549.0
 theme = ExtResource("6_u4nky")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 32
 text = "start"
 
 [node name="OptionsButton" type="Button" parent="." unique_id=569448089]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 59.0
-offset_top = 534.0
-offset_right = 191.0
-offset_bottom = 589.0
+offset_left = 55.0
+offset_top = 433.0
+offset_right = 187.0
+offset_bottom = 488.0
 theme = ExtResource("6_u4nky")
 text = "options"
 
 [node name="CreditsButton" type="Button" parent="." unique_id=1993232127]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 61.0
-offset_top = 630.0
-offset_right = 193.0
-offset_bottom = 682.0
+offset_left = 55.0
+offset_top = 538.0
+offset_right = 187.0
+offset_bottom = 590.0
 theme = ExtResource("6_u4nky")
 text = "credits"
 
