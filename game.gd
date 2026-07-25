@@ -16,6 +16,8 @@ signal submit_drawing
 @onready var accuracy_manager: AccuracyManager = %AccuracyManager
 @onready var hud: HUD = %HUD
 
+const DEBUG_MODE := false # TODO: Make everything free if this is on
+
 func _ready() -> void:
     drawing_manager.set_next_drawing()
     
@@ -32,6 +34,8 @@ func _ready() -> void:
     input_manager.submit_drawing.connect(_on_submit_drawing)
     input_manager.select_tool.connect(_on_select_tool)
     input_manager.select_color_index.connect(_on_select_color_index)
+    upgrade_manager.attempt_upgrade_1.connect(_on_attempt_upgrade_1)
+    upgrade_manager.attempt_upgrade_2.connect(_on_attempt_upgrade_2)
     
     countdown_manager.countdown_timer.game_lose.connect(_on_game_lose)
     
@@ -103,3 +107,20 @@ func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
 
 func _on_game_lose() -> void:
     AudioManager.play_time_up_sfx()
+    
+func _on_attempt_upgrade_1(upgrade: Upgrade) -> void:
+    if _has_enough_time(upgrade.cost):
+        _spend_time(upgrade.cost)
+        upgrade_manager.unlock_upgrade_1()
+
+func _on_attempt_upgrade_2(upgrade: Upgrade) -> void:
+    if _has_enough_time(upgrade.cost):
+        _spend_time(upgrade.cost)
+        upgrade_manager.unlock_upgrade_2()
+
+func _has_enough_time(seconds: int) -> bool:
+    return DEBUG_MODE or countdown_manager.get_seconds_left()
+
+func _spend_time(seconds: int) -> void:
+    if not DEBUG_MODE:
+        countdown_manager.spend_seconds(seconds)

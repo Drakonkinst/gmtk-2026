@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bfrbj7i0adf5x"]
+
+[ext_resource type="Script" uid="uid://cyqjkk6ec601k" path="res://upgrade/upgrade.gd" id="1_3cfhg"]
+
+[resource]
+script = ExtResource("1_3cfhg")
+id = "Drawing3"
+text = "MORE Drawings"
+score_multiplier = 2.0
+cost = 5
+metadata/_custom_type_script = "uid://cyqjkk6ec601k"
