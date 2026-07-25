@@ -7,7 +7,7 @@ class_name DrawingManager
 # The sprite the player needs to match
 @export var drawing_sprite: Sprite2D
 
-const K_FACTOR := 2.0 # Lower = requires more precision, higher = more forgiving
+const K_FACTOR := 3.5 # Lower = requires more precision, higher = more forgiving
 const INCORRECT_COLOR_PENALTY := 0.4 # Deducts a percentage if the wrong color is used
 static var OFFSETS := [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
 
