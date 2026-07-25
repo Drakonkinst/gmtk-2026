@@ -27,10 +27,10 @@ func _ready() -> void:
     options_button.pressed.connect(_on_options_button_pressed)
     back_button.pressed.connect(_on_backbutton_pressed)
     
-    start_button.mouse_entered.connect(_on_start_button_mouse_entered)
-    credits_button.mouse_entered.connect(_on_credits_button_mouse_entered)
-    options_button.mouse_entered.connect(_on_options_button_mouse_entered)
-    back_button.mouse_entered.connect(_on_back_button_mouse_entered)
+    start_button.mouse_entered.connect(_on_button_mouse_entered)
+    credits_button.mouse_entered.connect(_on_button_mouse_entered)
+    options_button.mouse_entered.connect(_on_button_mouse_entered)
+    back_button.mouse_entered.connect(_on_button_mouse_entered)
     options_bg.mouse_exited.connect(_on_options_bg_mouse_exited)
     
     # can't press buttons until animation ended
@@ -84,14 +84,5 @@ func _on_backbutton_pressed():
         for node: CanvasItem in [start_button,options_button,credits_button,title]:
             menu_tween.tween_property(node,"position:x", node.position.x + 1000,0.2)
     
-func _on_start_button_mouse_entered() -> void:
-    AudioManager.play_hover_sfx()
-    
-func _on_credits_button_mouse_entered() -> void:
-    AudioManager.play_hover_sfx()
-    
-func _on_options_button_mouse_entered():
-    AudioManager.play_hover_sfx()
-
-func _on_back_button_mouse_entered() -> void:
+func _on_button_mouse_entered() -> void:
     AudioManager.play_hover_sfx()

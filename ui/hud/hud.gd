@@ -20,6 +20,7 @@ signal select_size(size: PlayerDrawing.BrushSize)
 @onready var hourglass: Hourglass = %Hourglass
 @onready var countdown_timer: CountdownTimer = %CountdownTimer
 
+
 func _ready() -> void:
     submit_button.pressed.connect(_on_submit_button_pressed)
     clear_button.pressed.connect(_on_clear_button_pressed)
@@ -61,7 +62,7 @@ func on_game_lose() -> void:
     on_game_end()
     hourglass.falling_sand.hide()
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
     if Input.is_action_just_pressed("clear"):
         clear_drawing.emit()
 
@@ -73,5 +74,3 @@ func _on_select_color(color: Color) -> void:
 
 func _on_select_size(brush_size: PlayerDrawing.BrushSize) -> void:
     select_size.emit(brush_size)
-
-    

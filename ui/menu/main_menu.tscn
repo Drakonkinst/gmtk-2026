@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bytpnprwy030i" path="res://ui/menu/cloud.png" id="4_8gmgf"]
 [ext_resource type="Theme" uid="uid://bqa8hn3hsplq2" path="res://ui/hud/hud_theme.tres" id="6_u4nky"]
 [ext_resource type="FontFile" uid="uid://da35yew8fgybf" path="res://ui/fonts/ari-w9500-condensed-display.ttf" id="7_8gmgf"]
+[ext_resource type="Texture2D" uid="uid://bv7extlajf0e7" path="res://ui/hud/button_ninepatch.png" id="7_t3kfx"]
 [ext_resource type="FontFile" uid="uid://caov6fnyg0n1r" path="res://ui/fonts/KenneyThick.ttf" id="8_h2671"]
 [ext_resource type="Script" uid="uid://dwhxqb43wiyuo" path="res://ui/hud/h_slider.gd" id="9_umht6"]
 [ext_resource type="FontFile" uid="uid://csdil41k4yke5" path="res://ui/fonts/pico12.ttf" id="10_r5t3j"]
@@ -198,11 +199,23 @@ offset_bottom = 473.0
 [node name="OptionsBG" type="ColorRect" parent="OptionsMenu" unique_id=332017184]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = -45.0
-offset_top = -48.0
-offset_right = 181.0
+offset_left = -46.0
+offset_top = -50.0
+offset_right = 183.0
 offset_bottom = 86.0
-color = Color(0.24313726, 0.15294118, 0.13725491, 1)
+color = Color(0.24313726, 0.15294118, 0.13725491, 0)
+
+[node name="VolumeBG" type="NinePatchRect" parent="OptionsMenu" unique_id=1995904396]
+layout_mode = 0
+offset_left = -46.0
+offset_top = -50.0
+offset_right = 183.0
+offset_bottom = 86.0
+texture = ExtResource("7_t3kfx")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
 [node name="VolumeSliders" type="Control" parent="OptionsMenu" unique_id=2021290022]
 unique_name_in_owner = true
@@ -227,8 +240,8 @@ offset_top = -127.536255
 offset_right = 35.85504
 offset_bottom = -85.536255
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("10_r5t3j")
 theme_override_font_sizes/font_size = 36
 text = "Master Volume"
@@ -254,8 +267,8 @@ offset_top = -68.115906
 offset_right = 21.797073
 offset_bottom = -26.115906
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("10_r5t3j")
 theme_override_font_sizes/font_size = 36
 text = "Music Volume"
@@ -281,8 +294,8 @@ offset_top = -5.7971067
 offset_right = 6.2898407
 offset_bottom = 36.202892
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("10_r5t3j")
 theme_override_font_sizes/font_size = 36
 text = "SFX Volume"

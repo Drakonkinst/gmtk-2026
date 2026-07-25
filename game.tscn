@@ -71,7 +71,6 @@
 [ext_resource type="Texture2D" uid="uid://qo48lkqp27ir" path="res://ui/hud/button_locked.png" id="38_jo4nb"]
 [ext_resource type="Texture2D" uid="uid://cb2we0ghhjvdh" path="res://ui/hud/size/button_large_selected.png" id="39_mljfx"]
 [ext_resource type="Script" uid="uid://dwhxqb43wiyuo" path="res://ui/hud/h_slider.gd" id="43_edr7y"]
-[ext_resource type="FontFile" uid="uid://da35yew8fgybf" path="res://ui/fonts/ari-w9500-condensed-display.ttf" id="43_kq12w"]
 [ext_resource type="FontFile" uid="uid://csdil41k4yke5" path="res://ui/fonts/pico12.ttf" id="52_tb2lt"]
 [ext_resource type="Script" uid="uid://bnlpmjhy4gf13" path="res://ui/hud/countdown_timer.gd" id="59_ra4rb"]
 [ext_resource type="Script" uid="uid://unhqjyw1ah55" path="res://upgrade/upgrade_panel.gd" id="61_wj41c"]
@@ -88,6 +87,7 @@
 [ext_resource type="Texture2D" uid="uid://b0asaqm3jentf" path="res://ui/hud/hourglass/sand_top.png" id="83_o46vb"]
 [ext_resource type="Texture2D" uid="uid://b6vis86pu1g1r" path="res://ui/hud/hourglass/sand_fall.png" id="83_pwsyv"]
 [ext_resource type="Texture2D" uid="uid://w74ayqhqhmhk" path="res://ui/hud/hourglass/hourglass_overlay.png" id="84_lon8v"]
+[ext_resource type="Script" uid="uid://cgbyeqdvqmnti" path="res://ui/hud/pause_menu.gd" id="85_pwsyv"]
 [ext_resource type="PackedScene" uid="uid://cppg62i68ikb7" path="res://leaderboard/leaderboard.tscn" id="89_pwsyv"]
 
 [sub_resource type="Animation" id="Animation_5sxqa"]
@@ -192,6 +192,10 @@ _data = {
 &"RESET": SubResource("Animation_vvpk2"),
 &"falling_sand": SubResource("Animation_o46vb")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o46vb"]
+shader = ExtResource("74_7noa1")
+shader_parameter/blur_amount = 2.000000095
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
 shader = ExtResource("74_7noa1")
@@ -1017,96 +1021,6 @@ text = "--%
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="VolumeSliders" type="Control" parent="HUDLayer/HUD" unique_id=2042766448]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-scale = Vector2(0.54, 0.54)
-
-[node name="Label" type="Label" parent="HUDLayer/HUD/VolumeSliders" unique_id=1741628299]
-layout_mode = 0
-offset_left = 41.70687
-offset_top = -112.963005
-offset_right = 270.70688
-offset_bottom = -70.963005
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.9367016, 0.9367016, 0.93670154, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("43_kq12w")
-theme_override_font_sizes/font_size = 30
-text = "Master Volume"
-
-[node name="HSlider" type="HSlider" parent="HUDLayer/HUD/VolumeSliders" unique_id=806844224]
-modulate = Color(1.034, 1.034, 1.034, 1)
-layout_mode = 0
-offset_left = 18.518517
-offset_top = -83.86156
-offset_right = 290.51852
-offset_bottom = -67.86156
-max_value = 2.0
-step = 0.1
-value = 2.0
-script = ExtResource("43_edr7y")
-bus_name = "Master"
-
-[node name="Label2" type="Label" parent="HUDLayer/HUD/VolumeSliders" unique_id=1779627629]
-layout_mode = 0
-offset_left = 54.75042
-offset_top = -52.093384
-offset_right = 258.75043
-offset_bottom = -10.093384
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.9367016, 0.9367016, 0.93670154, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("43_kq12w")
-theme_override_font_sizes/font_size = 30
-text = "Music Volume"
-horizontal_alignment = 1
-
-[node name="HSlider2" type="HSlider" parent="HUDLayer/HUD/VolumeSliders" unique_id=784063445]
-modulate = Color(1.034, 1.034, 1.034, 1)
-layout_mode = 0
-offset_left = 18.518517
-offset_top = -23.861557
-offset_right = 290.51852
-offset_bottom = -7.861557
-max_value = 2.0
-step = 0.1
-value = 2.0
-script = ExtResource("43_edr7y")
-bus_name = "Music"
-
-[node name="Label3" type="Label" parent="HUDLayer/HUD/VolumeSliders" unique_id=87088533]
-layout_mode = 0
-offset_left = 66.34457
-offset_top = 10.225418
-offset_right = 243.34457
-offset_bottom = 52.225418
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.9367016, 0.9367016, 0.93670154, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("43_kq12w")
-theme_override_font_sizes/font_size = 30
-text = "SFX Volume"
-horizontal_alignment = 1
-
-[node name="HSlider3" type="HSlider" parent="HUDLayer/HUD/VolumeSliders" unique_id=454318464]
-modulate = Color(1.034, 1.034, 1.034, 1)
-layout_mode = 0
-offset_left = 18.518517
-offset_top = 36.138443
-offset_right = 290.51852
-offset_bottom = 52.138443
-max_value = 2.0
-step = 0.1
-value = 2.0
-script = ExtResource("43_edr7y")
-bus_name = "UI"
-
 [node name="Upgrades" type="Control" parent="HUDLayer/HUD" unique_id=1663861140]
 anchors_preset = 0
 offset_top = 15.0
@@ -1328,6 +1242,182 @@ offset_right = 57.0
 offset_bottom = 306.0
 scale = Vector2(3, 3)
 texture = ExtResource("84_lon8v")
+
+[node name="PauseButton" type="Button" parent="HUDLayer/HUD" unique_id=575008747]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = 660.0
+offset_right = 139.0
+offset_bottom = 713.0
+theme = ExtResource("18_qpefm")
+text = "Pause `P`"
+
+[node name="PauseMenu" type="Control" parent="HUDLayer/HUD" unique_id=1004422991]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("85_pwsyv")
+
+[node name="BlurRect" type="ColorRect" parent="HUDLayer/HUD/PauseMenu" unique_id=1371695654]
+material = SubResource("ShaderMaterial_o46vb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PausedMenuButton" type="Button" parent="HUDLayer/HUD/PauseMenu" unique_id=1164601840]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 406.0
+offset_top = 361.0
+offset_right = 556.0
+offset_bottom = 415.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 10
+text = "Main Menu"
+
+[node name="RestartButton" type="Button" parent="HUDLayer/HUD/PauseMenu" unique_id=2145298173]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 406.0
+offset_top = 419.0
+offset_right = 556.0
+offset_bottom = 473.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 10
+text = "Restart"
+
+[node name="BackButton" type="Button" parent="HUDLayer/HUD/PauseMenu" unique_id=1155530067]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 406.0
+offset_top = 478.0
+offset_right = 556.0
+offset_bottom = 532.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 10
+text = "Back"
+
+[node name="VolumeBG" type="NinePatchRect" parent="HUDLayer/HUD/PauseMenu" unique_id=1200464404]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 203.0
+offset_right = 596.0
+offset_bottom = 339.0
+texture = ExtResource("76_vqo61")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="VolumeSliders" type="Control" parent="HUDLayer/HUD/PauseMenu" unique_id=145361386]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -419.0
+offset_top = -420.0
+offset_right = -379.0
+offset_bottom = -380.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.69, 0.69)
+
+[node name="Label" type="Label" parent="HUDLayer/HUD/PauseMenu/VolumeSliders" unique_id=662347358]
+layout_mode = 0
+offset_left = -210.14496
+offset_top = -127.536255
+offset_right = 35.85504
+offset_bottom = -85.536255
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 36
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="HUDLayer/HUD/PauseMenu/VolumeSliders" unique_id=1609067252]
+modulate = Color(1.034, 1.034, 1.034, 1)
+layout_mode = 0
+offset_left = -221.7391
+offset_top = -95.536255
+offset_right = 50.260895
+offset_bottom = -79.536255
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("43_edr7y")
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="HUDLayer/HUD/PauseMenu/VolumeSliders" unique_id=1457611299]
+layout_mode = 0
+offset_left = -194.20293
+offset_top = -68.115906
+offset_right = 21.797073
+offset_bottom = -26.115906
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 36
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="HUDLayer/HUD/PauseMenu/VolumeSliders" unique_id=1846109323]
+modulate = Color(1.034, 1.034, 1.034, 1)
+layout_mode = 0
+offset_left = -221.7391
+offset_top = -35.536255
+offset_right = 50.260895
+offset_bottom = -19.536255
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("43_edr7y")
+bus_name = "Music"
+
+[node name="Label3" type="Label" parent="HUDLayer/HUD/PauseMenu/VolumeSliders" unique_id=289132221]
+layout_mode = 0
+offset_left = -179.71016
+offset_top = -5.7971067
+offset_right = 6.2898407
+offset_bottom = 36.202892
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 36
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="HSlider3" type="HSlider" parent="HUDLayer/HUD/PauseMenu/VolumeSliders" unique_id=1602076286]
+modulate = Color(1.034, 1.034, 1.034, 1)
+layout_mode = 0
+offset_left = -221.7391
+offset_top = 24.463745
+offset_right = 50.260895
+offset_bottom = 40.463745
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("43_edr7y")
+bus_name = "UI"
 
 [node name="EndScreen" type="Control" parent="HUDLayer" unique_id=488366321]
 unique_name_in_owner = true

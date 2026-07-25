@@ -82,6 +82,7 @@ streams_count = 1
 stream_0/stream = ExtResource("16_ji21h")
 
 [node name="AudioManager" type="Node" unique_id=1337921936 node_paths=PackedStringArray("bgm", "submit_sfx", "good_sfx", "bad_sfx", "button_sfx", "hover_sfx", "unlock_sfx", "draw_sfx", "erase_sfx", "clear_sfx", "brush_select_sfx", "color_select_sfx", "bucket_fill_sfx", "tick_tock_sfx", "time_up_sfx")]
+process_mode = 3
 script = ExtResource("1_5jhky")
 bgm = NodePath("BGM")
 submit_sfx = NodePath("SubmitSFX")
@@ -107,59 +108,74 @@ bus = &"Music"
 [node name="SubmitSFX" type="AudioStreamPlayer" parent="." unique_id=1890721993]
 stream = SubResource("AudioStreamRandomizer_i1k7u")
 volume_db = 7.0
+bus = &"UI"
 
 [node name="GoodSFX" type="AudioStreamPlayer" parent="." unique_id=1267219154]
 stream = SubResource("AudioStreamRandomizer_8j4p3")
 volume_db = 5.0
+bus = &"UI"
 
 [node name="BadSFX" type="AudioStreamPlayer" parent="." unique_id=869871486]
 stream = SubResource("AudioStreamRandomizer_yf5fn")
 volume_db = 5.0
+bus = &"UI"
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="." unique_id=1942323380]
 stream = SubResource("AudioStreamRandomizer_hlghp")
 volume_db = 2.0
+bus = &"UI"
 
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=552402759]
 stream = SubResource("AudioStreamRandomizer_h3g62")
 volume_db = -2.0
 pitch_scale = 0.8
+bus = &"UI"
 
 [node name="UnlockSFX" type="AudioStreamPlayer" parent="." unique_id=871061633]
 stream = SubResource("AudioStreamRandomizer_tu6k2")
 volume_db = 10.0
 pitch_scale = 1.3
+bus = &"UI"
 
 [node name="DrawSFXOneshot" type="AudioStreamPlayer" parent="." unique_id=1073738185]
 stream = SubResource("AudioStreamRandomizer_todq8")
 volume_db = -10.0
 pitch_scale = 2.0
 max_polyphony = 8
+bus = &"UI"
 
 [node name="EraseSFXOneshot" type="AudioStreamPlayer" parent="." unique_id=918809805]
 stream = SubResource("AudioStreamRandomizer_tmngx")
 volume_db = -10.0
 max_polyphony = 8
+bus = &"UI"
 
 [node name="ClearSFX" type="AudioStreamPlayer" parent="." unique_id=75116472]
 stream = SubResource("AudioStreamRandomizer_gnfy0")
+bus = &"UI"
 
 [node name="BrushSelectSFX" type="AudioStreamPlayer" parent="." unique_id=1157530454]
 stream = SubResource("AudioStreamRandomizer_pyj8m")
 volume_db = 10.0
+bus = &"UI"
 
 [node name="ColorSelectSFX" type="AudioStreamPlayer" parent="." unique_id=383473584]
 stream = SubResource("AudioStreamRandomizer_ji21h")
 volume_db = 5.0
+bus = &"UI"
 
 [node name="BucketFillSFX" type="AudioStreamPlayer" parent="." unique_id=1173505437]
 stream = SubResource("AudioStreamRandomizer_sgp2o")
 volume_db = 5.0
+bus = &"UI"
 
 [node name="TickTockSFX" type="AudioStreamPlayer" parent="." unique_id=748352712]
+process_mode = 1
 stream = ExtResource("17_sgp2o")
 volume_db = -80.0
+bus = &"UI"
 
 [node name="TimeUpSFX" type="AudioStreamPlayer" parent="." unique_id=1326563602]
 stream = ExtResource("17_qus7j")
 volume_db = 12.0
+bus = &"UI"
