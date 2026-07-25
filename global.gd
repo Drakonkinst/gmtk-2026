@@ -11,7 +11,7 @@ var ui := AudioServer.get_bus_index("UI")
 var environment := AudioServer.get_bus_index("Environment")
 var audio: AudioManager
 
-var user_name: String
+var user_name: String = ""
 var posting_score: bool = false
 var score: int
 

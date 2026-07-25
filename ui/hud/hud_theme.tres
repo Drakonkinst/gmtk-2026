@@ -33,6 +33,8 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iy7aa"]
+
 [resource]
 Button/font_sizes/font_size = 14
 Button/fonts/font = ExtResource("1_67fxd")
@@ -41,3 +43,4 @@ Button/styles/hover = SubResource("StyleBoxTexture_lta3a")
 Button/styles/normal = SubResource("StyleBoxTexture_ochnt")
 Button/styles/pressed = SubResource("StyleBoxTexture_67fxd")
 Label/fonts/font = ExtResource("1_67fxd")
+Panel/styles/panel = SubResource("StyleBoxEmpty_iy7aa")

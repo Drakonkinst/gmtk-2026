@@ -88,6 +88,7 @@
 [ext_resource type="Texture2D" uid="uid://b0asaqm3jentf" path="res://ui/hud/hourglass/sand_top.png" id="83_o46vb"]
 [ext_resource type="Texture2D" uid="uid://b6vis86pu1g1r" path="res://ui/hud/hourglass/sand_fall.png" id="83_pwsyv"]
 [ext_resource type="Texture2D" uid="uid://w74ayqhqhmhk" path="res://ui/hud/hourglass/hourglass_overlay.png" id="84_lon8v"]
+[ext_resource type="PackedScene" uid="uid://cppg62i68ikb7" path="res://leaderboard/leaderboard.tscn" id="89_pwsyv"]
 
 [sub_resource type="Animation" id="Animation_5sxqa"]
 length = 0.001
@@ -1330,7 +1331,6 @@ texture = ExtResource("84_lon8v")
 
 [node name="EndScreen" type="Control" parent="HUDLayer" unique_id=488366321]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1355,25 +1355,33 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Leaderboard" parent="HUDLayer/EndScreen/AnimElements" unique_id=1539792604 instance=ExtResource("89_pwsyv")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 503.0
+offset_top = 150.0
+offset_right = 888.0
+offset_bottom = 535.0
+
 [node name="UserEntry" type="LineEdit" parent="HUDLayer/EndScreen/AnimElements" unique_id=599717787]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 359.5
-offset_top = 370.0
-offset_right = 601.0
-offset_bottom = 408.0
+offset_left = 503.0
+offset_top = 95.0
+offset_right = 757.0
+offset_bottom = 133.0
 theme_override_fonts/font = ExtResource("52_tb2lt")
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Enter your name"
-alignment = 1
+max_length = 20
 
 [node name="PostButton" type="Button" parent="HUDLayer/EndScreen/AnimElements" unique_id=842048962]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 403.0
-offset_top = 423.0
-offset_right = 553.0
-offset_bottom = 477.0
+offset_left = 768.0
+offset_top = 77.0
+offset_right = 929.0
+offset_bottom = 146.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
@@ -1383,10 +1391,10 @@ text = "Post Score"
 [node name="MenuButton" type="Button" parent="HUDLayer/EndScreen/AnimElements" unique_id=2086451058]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 39.0
-offset_top = 639.0
-offset_right = 189.0
-offset_bottom = 693.0
+offset_left = 236.0
+offset_top = 594.0
+offset_right = 424.8889
+offset_bottom = 662.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
@@ -1396,10 +1404,10 @@ text = "Main Menu"
 [node name="ReplayButton" type="Button" parent="HUDLayer/EndScreen/AnimElements" unique_id=1150478561]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 783.0
-offset_top = 641.0
-offset_right = 933.0
-offset_bottom = 695.0
+offset_left = 474.0
+offset_top = 593.0
+offset_right = 651.7778
+offset_bottom = 657.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
@@ -1408,10 +1416,10 @@ text = "Play again"
 
 [node name="EndScoreText" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=524128082]
 layout_mode = 0
-offset_left = 326.0
-offset_top = 291.0
-offset_right = 529.0
-offset_bottom = 356.0
+offset_left = 21.0
+offset_top = 171.0
+offset_right = 224.0
+offset_bottom = 236.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("52_tb2lt")
@@ -1421,10 +1429,10 @@ text = "SCORE:"
 [node name="EndScoreValue" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=1973818723]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 530.0
-offset_top = 292.0
-offset_right = 658.0
-offset_bottom = 357.0
+offset_left = 242.0
+offset_top = 173.0
+offset_right = 370.0
+offset_bottom = 238.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("52_tb2lt")
@@ -1435,3 +1443,4 @@ horizontal_alignment = 1
 [node name="EndAnimPlayer" type="AnimationPlayer" parent="HUDLayer/EndScreen" unique_id=2084029946]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_0s2o4")
+speed_scale = 2.0

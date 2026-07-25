@@ -27,6 +27,7 @@ var total_time_spent := 0.0 # Can use for leaderboard
 
 func _ready() -> void:
     drawing_manager.set_next_drawing()
+    end_screen.hide()
     
     # Register player inputs
     hud.submit_drawing.connect(_on_submit_drawing)

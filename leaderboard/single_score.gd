@@ -5,6 +5,6 @@ extends Panel
 @onready var user_name := %Name as Label
 
 func constructor(params):
-	rank.text = '%d' % [params['rank']]
-	score.text = '%d' % [params['score']]
-	user_name.text = params['name']
+    rank.text = '%d' % [params['rank']]
+    score.text = '%d' % [params['score']]
+    user_name.text = params['name']
