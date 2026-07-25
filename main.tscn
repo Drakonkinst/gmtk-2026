@@ -3,20 +3,10 @@
 [ext_resource type="Script" uid="uid://cgp0nf81dy7xa" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bqs8nmjb61r2v" path="res://game.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dwl71rxjb5i4j" path="res://ui/menu/main_menu.tscn" id="3_lquwl"]
-[ext_resource type="Script" uid="uid://d0pgs154unya1" path="res://audio/audio_manager.gd" id="4_7mycd"]
-[ext_resource type="AudioStream" uid="uid://dkxba4c7ispum" path="res://audio/chill drawing.ogg" id="5_lquwl"]
 
-[node name="Main" type="Node2D" unique_id=2095924333 node_paths=PackedStringArray("audio")]
+[node name="Main" type="Node2D" unique_id=2095924333]
 script = ExtResource("1_ig7tw")
 game_scene = ExtResource("2_1bvp3")
 main_menu_scene = ExtResource("3_lquwl")
-audio = NodePath("AudioManager")
+audio = Object(Node2D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"oversampling_with_scale":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://audio/audio_manager.gd"),"bgm":null,"submit_sfx":null,"good_sfx":null,"bad_sfx":null,"button_sfx":null,"hover_sfx":null,"draw_sfx":null,"erase_sfx":null,"clear_sfx":null,"brush_select_sfx":null,"color_select_sfx":null)
 
-[node name="AudioManager" type="Node2D" parent="." unique_id=405682857 node_paths=PackedStringArray("bgm")]
-script = ExtResource("4_7mycd")
-bgm = NodePath("BGM")
-
-[node name="BGM" type="AudioStreamPlayer" parent="AudioManager" unique_id=1737723784]
-stream = ExtResource("5_lquwl")
-volume_db = -10.0
-bus = &"UI"
