@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Drawing" format=3 uid="uid://cn2wqayavvyt1"]
+
+[ext_resource type="Texture2D" uid="uid://d2r8heyw4bycd" path="res://drawing/drawings/abstract3.png" id="1_cp4or"]
+[ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="2_o4aeh"]
+
+[resource]
+script = ExtResource("2_o4aeh")
+id = "Abstract3"
+image = ExtResource("1_cp4or")
+drawing_set = 4
+weight = 6.0
+is_colored = true
+metadata/_custom_type_script = "uid://bj4uga4l46xp4"

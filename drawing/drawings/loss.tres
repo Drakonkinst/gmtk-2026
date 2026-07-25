@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Drawing" format=3 uid="uid://b122vw3vgpf2r"]
+
+[ext_resource type="Texture2D" uid="uid://don13yekl562s" path="res://drawing/drawings/loss.png" id="1_pr2of"]
+[ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="2_7imjb"]
+
+[resource]
+script = ExtResource("2_7imjb")
+id = "Loss"
+image = ExtResource("1_pr2of")
+weight = 0.2
+metadata/_custom_type_script = "uid://bj4uga4l46xp4"

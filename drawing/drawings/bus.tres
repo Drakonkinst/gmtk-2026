@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Drawing" format=3 uid="uid://3kbxx186kpa2"]
+
+[ext_resource type="Texture2D" uid="uid://dagsgbrhq0w7s" path="res://drawing/drawings/bus.png" id="1_od8vs"]
+[ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="2_kl8ng"]
+
+[resource]
+script = ExtResource("2_kl8ng")
+id = "Bus"
+image = ExtResource("1_od8vs")
+drawing_set = 3
+weight = 4.0
+is_colored = true
+metadata/_custom_type_script = "uid://bj4uga4l46xp4"

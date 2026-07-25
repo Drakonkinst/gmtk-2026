@@ -8,5 +8,5 @@ script = ExtResource("2_3byrq")
 id = "House"
 image = ExtResource("1_a0ldd")
 drawing_set = 2
-weight = 7
+weight = 7.0
 metadata/_custom_type_script = "uid://bj4uga4l46xp4"

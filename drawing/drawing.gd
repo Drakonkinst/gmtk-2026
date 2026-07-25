@@ -10,10 +10,12 @@ enum DrawingSet {
     SIMPLE,
     ANIMALS,
     PARK,
+    VEHICLE,
+    ABSTRACT
 }
 
 @export var id: String
 @export var image: Texture2D
 @export var drawing_set: DrawingSet
-@export var weight := 1
+@export var weight := 1.0
 @export var is_colored := false

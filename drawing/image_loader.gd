@@ -8,6 +8,7 @@ var _max_attempts := 3
 
 # Array of the same length as drawings to hold image data
 var image_data_array: Array[PackedInt64Array]
+var is_first_drawing := true
 
 func _ready() -> void:
     for drawing in drawings:
@@ -20,8 +21,8 @@ func _ready() -> void:
         image_data.fill(Drawing.EMPTY_COLOR_INT)
         for y in image.get_height():
             for x in image.get_width():
-                var color = image.get_pixel(x, y)
-                var color_value = color.to_argb64()
+                var color := image.get_pixel(x, y)
+                var color_value := color.to_argb64()
                 if color_value != Drawing.EMPTY_COLOR_INT:
                     image_data.set(y * image.get_width() + x, color_value)
         image_data_array.push_back(image_data)
@@ -35,32 +36,37 @@ func get_image_data(index: int) -> PackedInt64Array:
 
 # Best effort to pick a different drawing
 func pick_next_drawing_index(prev_index: int) -> int:
-    var attempts_remaining := _max_attempts
-    var valid_drawing_indexes := _collect_valid_drawing_indexes()
+    var valid_drawing_indexes := _collect_valid_drawing_indexes().filter(func (index):
+        if index == prev_index:
+            return false
+        if is_first_drawing and drawings.get(index).id == "Loss":
+            return false
+        return true
+    )
+    if is_first_drawing:
+        is_first_drawing = false
+    
     var next_index := prev_index
     if len(valid_drawing_indexes) <= 0:
         push_warning("WARN: No valid drawing indexes")
-        return -1
+        return prev_index
     
-    var valid_drawing_weights: Array[int] = []
-    var total_weight := 0
+    var valid_drawing_weights: Array[float] = []
+    var total_weight := 0.0
     for index in valid_drawing_indexes:
         var drawing: Drawing = drawings.get(index)
         valid_drawing_weights.push_back(drawing.weight) 
         total_weight += drawing.weight
 
-    while attempts_remaining > 0 && next_index == prev_index:
-        var target_weight := randi_range(0, total_weight)
-        var track_weight := 0
-        var track_index := 0
-        next_index = 0
-        while track_weight < total_weight:
-            track_weight += valid_drawing_weights.get(track_index)
-            if track_weight >= target_weight:
-                next_index = valid_drawing_indexes[track_index]
-                break
-            track_index += 1
-        attempts_remaining -= 1
+    var target_weight := randf_range(0.0, total_weight)
+    var track_weight := 0.0
+    var track_index := 0
+    while track_index < len(valid_drawing_indexes):
+        track_weight += valid_drawing_weights[track_index]
+        if track_weight >= target_weight:
+            next_index = valid_drawing_indexes[track_index]
+            break
+        track_index += 1
     print("Picked ", next_index)
     return next_index
     

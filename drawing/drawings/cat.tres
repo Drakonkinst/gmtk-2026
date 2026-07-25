@@ -8,5 +8,5 @@ script = ExtResource("2_oj5kn")
 id = "Cat"
 image = ExtResource("1_sw0y1")
 drawing_set = 1
-weight = 5
+weight = 5.0
 metadata/_custom_type_script = "uid://bj4uga4l46xp4"

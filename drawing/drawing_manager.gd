@@ -31,7 +31,7 @@ func _precompute_goal_maps_2(goal_array: PackedInt64Array) -> Dictionary:
     
     var queue: Array[Vector2i] = []
     for i in range(goal_array.size()):
-        var color_int = goal_array[i]
+        var color_int := goal_array[i]
         if color_int != Drawing.EMPTY_COLOR_INT:
              var goal_x := i % Drawing.WIDTH
              var goal_y := int(i * 1.0 / Drawing.WIDTH) # Getting around the silly syntax warnings
@@ -52,7 +52,7 @@ func _precompute_goal_maps_2(goal_array: PackedInt64Array) -> Dictionary:
         var current_pos := queue[head]
         head += 1
         
-        var current_index = current_pos.y * Drawing.WIDTH + current_pos.x
+        var current_index := current_pos.y * Drawing.WIDTH + current_pos.x
         var current_lookup: GoalLookup = lookup_map[current_index]
         
         for dir in OFFSETS:
@@ -60,7 +60,7 @@ func _precompute_goal_maps_2(goal_array: PackedInt64Array) -> Dictionary:
             if next_pos.x >= 0 and next_pos.x < Drawing.WIDTH and next_pos.y >= 0 and next_pos.y < Drawing.HEIGHT:
                 var next_index: int = next_pos.y * Drawing.WIDTH + next_pos.x
                 var next_lookup: GoalLookup = lookup_map[next_index]
-                var new_dist = current_lookup.distance + 1.0
+                var new_dist := current_lookup.distance + 1.0
                 if new_dist < next_lookup.distance:
                     next_lookup.distance = new_dist
                     next_lookup.target_color_int = current_lookup.target_color_int
@@ -110,7 +110,6 @@ func _precompute_goal_maps(goal_array: PackedInt64Array) -> Dictionary:
 func calculate_accuracy(user_array: PackedInt64Array) -> float:
     var total_pixels_drawn := 0
     var cumulative_accuracy: float = 0.0
-    var goal_pixels_covered := 0
     
     for i in range(user_array.size()):
         var user_color_int := user_array[i]
@@ -130,9 +129,6 @@ func calculate_accuracy(user_array: PackedInt64Array) -> float:
         var pixel_accuracy = max(0.0, distance_accuracy * color_accuracy)
         cumulative_accuracy += pixel_accuracy
         
-        if lookup.distance <= 2.0:
-            goal_pixels_covered += 1
-    
     if total_pixels_drawn == 0:
         return 0
     print(total_pixels_drawn, " pixels drawn vs ", total_goal_pixels, " goal pixels")
