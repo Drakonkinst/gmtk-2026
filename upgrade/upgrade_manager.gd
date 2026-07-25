@@ -43,8 +43,10 @@ func _process_upgrade(upgrade_id: String):
         unlocked_tools[PlayerDrawing.Tool.ERASER] = true
     elif upgrade_id == "Bucket":
         unlocked_tools[PlayerDrawing.Tool.BUCKET] = true
+        unlocked_drawing_sets.push_back(Drawing.DrawingSet.ABSTRACT)
     elif upgrade_id == "Colors":
         unlocked_colors = true
+        unlocked_drawing_sets.push_back(Drawing.DrawingSet.VEHICLE)
     elif upgrade_id == "Sizes":
         unlocked_sizes = true
     elif upgrade_id == "Drawing1":
@@ -55,11 +57,8 @@ func _process_upgrade(upgrade_id: String):
         set_score_multiplier(3.0)
     elif upgrade_id == "Drawing3":
         set_score_multiplier(4.0)
-        pass
-    elif upgrade_id == "Drawing4":
+    elif upgrade_id == "Drawing3":
         set_score_multiplier(5.0)
-        pass
-        
     else:
         push_warning("Unknown upgrade ", upgrade_id)
 

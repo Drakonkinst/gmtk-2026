@@ -23,8 +23,6 @@
 [ext_resource type="Script" uid="uid://0ihfhxhut842" path="res://game/score_manager.gd" id="12_iotsf"]
 [ext_resource type="Resource" uid="uid://cleyb3hgr4vju" path="res://upgrade/upgrade_drawing_2.tres" id="13_vyqle"]
 [ext_resource type="Script" uid="uid://bmkmrmvnk0kp2" path="res://game/countdown_manager.gd" id="14_e8heu"]
-[ext_resource type="Resource" uid="uid://bfrbj7i0adf5x" path="res://upgrade/upgrade_drawing_3.tres" id="14_xoeau"]
-[ext_resource type="Resource" uid="uid://b8bygg82fsffi" path="res://upgrade/upgrade_drawing_4.tres" id="15_6qn5j"]
 [ext_resource type="Texture2D" uid="uid://r5scba5aqwx6" path="res://ui/hud/tools/button_eraser_default.png" id="16_rvswv"]
 [ext_resource type="Script" uid="uid://06tm0gbxmwx1" path="res://ui/hud/tools/tool_select.gd" id="16_x5p1p"]
 [ext_resource type="Script" uid="uid://c4icfclae4nwk" path="res://ui/hud/color/color_select.gd" id="17_bnpwn"]
@@ -175,7 +173,7 @@ script = ExtResource("4_fc0e3")
 upgrade_panel_1 = NodePath("../HUDLayer/HUD/Upgrades/Panel1")
 upgrade_panel_2 = NodePath("../HUDLayer/HUD/Upgrades/Panel2")
 upgrade_list_1 = Array[ExtResource("7_du4n2")]([ExtResource("8_ra4rb"), ExtResource("9_ple6s"), ExtResource("10_jo4nb"), ExtResource("11_56gn1")])
-upgrade_list_2 = Array[ExtResource("7_du4n2")]([ExtResource("12_avmo2"), ExtResource("13_vyqle"), ExtResource("14_xoeau"), ExtResource("15_6qn5j")])
+upgrade_list_2 = Array[ExtResource("7_du4n2")]([ExtResource("12_avmo2"), ExtResource("13_vyqle")])
 
 [node name="DrawingManager" type="Node2D" parent="." unique_id=716532831 node_paths=PackedStringArray("drawing_sprite")]
 unique_name_in_owner = true
