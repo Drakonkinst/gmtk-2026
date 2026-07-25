@@ -43,7 +43,7 @@ func play_draw_sfx() -> void:
     if starting_draw_db == 0:
         starting_draw_db = draw_sfx.volume_db
         starting_draw_pitch = draw_sfx.pitch_scale
-    draw_sfx.volume_db = starting_draw_db + sqrt(times_played_recently)
+    draw_sfx.volume_db = starting_draw_db + sqrt(times_played_recently) / 2
     draw_sfx.pitch_scale = starting_draw_pitch + sqrt(times_played_recently / 10)
     draw_sfx.play()
     
