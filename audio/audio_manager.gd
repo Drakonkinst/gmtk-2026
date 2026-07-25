@@ -15,7 +15,6 @@ extends Node
 @export var color_select_sfx: AudioStreamPlayer
 
 func start_bgm() -> void:
-    print("play")
     bgm.play()
 
 func play_submit_sfx() -> void:
