@@ -15,6 +15,7 @@ extends Node
 @export var color_select_sfx: AudioStreamPlayer
 @export var bucket_fill_sfx: AudioStreamPlayer
 @export var tick_tock_sfx: AudioStreamPlayer
+@export var time_up_sfx: AudioStreamPlayer
 
 
 func start_bgm() -> void:
@@ -75,3 +76,9 @@ func adjust_tick_tock_db(time_left: int) -> void:
 
 func play_tick_tock_sfx() -> void:
     tick_tock_sfx.play()
+
+func stop_tick_tock_sfx() -> void:
+    tick_tock_sfx.stop()
+
+func play_time_up_sfx() -> void:
+    time_up_sfx.play()

@@ -164,16 +164,8 @@ texture_disabled = ExtResource("17_m28ev")
 [node name="ScoreCounter" parent="HUDLayer/HUD" unique_id=821451000 instance=ExtResource("3_mfdv2")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -27.0
-offset_top = 35.0
-offset_right = -27.0
-offset_bottom = 35.0
-grow_horizontal = 0
 
-[node name="ColorSelect" type="Control" parent="HUDLayer/HUD" unique_id=1987601810 node_paths=PackedStringArray("buttons")]
+[node name="ColorSelect" type="Control" parent="HUDLayer/HUD" unique_id=1987601810]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
@@ -185,7 +177,6 @@ offset_right = 20.0
 offset_bottom = 45.0
 grow_horizontal = 2
 script = ExtResource("17_bnpwn")
-buttons = [NodePath("ColorBlack"), NodePath("ColorRed"), NodePath("ColorBlue"), NodePath("ColorYellow"), NodePath("ColorGreen")]
 
 [node name="ColorBlack" type="TextureButton" parent="HUDLayer/HUD/ColorSelect" unique_id=574762465]
 layout_mode = 1

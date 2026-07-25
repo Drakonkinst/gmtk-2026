@@ -33,6 +33,8 @@ func _ready() -> void:
     input_manager.select_tool.connect(_on_select_tool)
     input_manager.select_color_index.connect(_on_select_color_index)
     
+    countdown_manager.countdown_timer.game_lose.connect(_on_game_lose)
+    
     AudioManager.play_tick_tock_sfx()
     
 func _calculate_score(accuracy: float) -> int:
@@ -98,3 +100,6 @@ func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
     player_drawing.set_brush_size(size)
     AudioManager.play_button_sfx()
     AudioManager.play_brush_select_sfx()
+
+func _on_game_lose() -> void:
+    AudioManager.play_time_up_sfx()

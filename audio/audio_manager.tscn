@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://hp2ftocsbmg" path="res://audio/sfx/badscoresoundeffect2.ogg" id="4_mhfhn"]
 [ext_resource type="AudioStream" uid="uid://ctjvpj7hvink6" path="res://audio/sfx/menubuttonsound2.ogg" id="5_mhfhn"]
 [ext_resource type="AudioStream" uid="uid://dkxba4c7ispum" path="res://audio/chill drawing.ogg" id="6_i1k7u"]
-[ext_resource type="AudioStream" uid="uid://cl2pikvcvlkdh" path="res://audio/sfx/drawingsound3.ogg" id="7_8j4p3"]
 [ext_resource type="AudioStream" uid="uid://cbyjjlsucsgkp" path="res://audio/sfx/hoversoundeffect1.ogg" id="7_tmngx"]
 [ext_resource type="AudioStream" uid="uid://c4vci3u0hkw41" path="res://audio/sfx/drawingsound3a.ogg" id="8_hlghp"]
 [ext_resource type="AudioStream" uid="uid://bw4nuv0id3nm" path="res://audio/sfx/drawingsound3b.ogg" id="9_0xv67"]
@@ -16,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://doc8jvuqmhcfh" path="res://audio/sfx/brushsoundeffect1.ogg" id="14_pyj8m"]
 [ext_resource type="AudioStream" uid="uid://cuul5ys48blgx" path="res://audio/sfx/coloursoundeffect1.ogg" id="15_ji21h"]
 [ext_resource type="AudioStream" uid="uid://dnr3b7hspc8w6" path="res://audio/sfx/fillsoundeffect2.ogg" id="16_ji21h"]
+[ext_resource type="AudioStream" uid="uid://bt8i8rcmss38o" path="res://audio/sfx/timeupsoundeffect3.ogg" id="17_qus7j"]
 [ext_resource type="AudioStream" uid="uid://c0tpcsf1gnj3r" path="res://audio/sfx/ticktocksoundeffect1.ogg" id="17_sgp2o"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i1k7u"]
@@ -75,11 +75,7 @@ random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("16_ji21h")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qus7j"]
-streams_count = 1
-stream_0/stream = ExtResource("17_sgp2o")
-
-[node name="AudioManager" type="Node" unique_id=1337921936 node_paths=PackedStringArray("bgm", "submit_sfx", "good_sfx", "bad_sfx", "button_sfx", "hover_sfx", "draw_sfx", "erase_sfx", "clear_sfx", "brush_select_sfx", "color_select_sfx", "bucket_fill_sfx", "tick_tock_sfx")]
+[node name="AudioManager" type="Node" unique_id=1337921936 node_paths=PackedStringArray("bgm", "submit_sfx", "good_sfx", "bad_sfx", "button_sfx", "hover_sfx", "draw_sfx", "erase_sfx", "clear_sfx", "brush_select_sfx", "color_select_sfx", "bucket_fill_sfx", "tick_tock_sfx", "time_up_sfx")]
 script = ExtResource("1_5jhky")
 bgm = NodePath("BGM")
 submit_sfx = NodePath("SubmitSFX")
@@ -94,6 +90,7 @@ brush_select_sfx = NodePath("BrushSelectSFX")
 color_select_sfx = NodePath("ColorSelectSFX")
 bucket_fill_sfx = NodePath("BucketFillSFX")
 tick_tock_sfx = NodePath("TickTockSFX")
+time_up_sfx = NodePath("TimeUpSFX")
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1874000854]
 stream = ExtResource("6_i1k7u")
@@ -120,10 +117,6 @@ volume_db = 2.0
 stream = SubResource("AudioStreamRandomizer_h3g62")
 volume_db = -2.0
 pitch_scale = 0.8
-
-[node name="DrawSFXLoop" type="AudioStreamPlayer" parent="." unique_id=1332670052]
-stream = ExtResource("7_8j4p3")
-volume_db = -10.0
 
 [node name="DrawSFXOneshot" type="AudioStreamPlayer" parent="." unique_id=1073738185]
 stream = SubResource("AudioStreamRandomizer_todq8")
@@ -152,5 +145,9 @@ stream = SubResource("AudioStreamRandomizer_sgp2o")
 volume_db = 5.0
 
 [node name="TickTockSFX" type="AudioStreamPlayer" parent="." unique_id=748352712]
-stream = SubResource("AudioStreamRandomizer_qus7j")
+stream = ExtResource("17_sgp2o")
 volume_db = -80.0
+
+[node name="TimeUpSFX" type="AudioStreamPlayer" parent="." unique_id=1326563602]
+stream = ExtResource("17_qus7j")
+volume_db = 12.0
