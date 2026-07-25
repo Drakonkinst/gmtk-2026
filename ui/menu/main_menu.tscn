@@ -56,12 +56,6 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 default_font = ExtResource("7_8gmgf")
 default_font_size = 11
 
-[sub_resource type="LabelSettings" id="LabelSettings_q6vxt"]
-font = ExtResource("7_8gmgf")
-font_size = 11
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="Animation" id="Animation_yc8k7"]
 length = 0.001
 tracks/0/type = "value"
@@ -192,6 +186,121 @@ offset_bottom = 488.0
 theme = ExtResource("6_u4nky")
 text = "options"
 
+[node name="OptionsMenu" type="Control" parent="." unique_id=412140229]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_left = 55.0
+offset_top = 433.0
+offset_right = 95.0
+offset_bottom = 473.0
+
+[node name="OptionsBG" type="ColorRect" parent="OptionsMenu" unique_id=332017184]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -45.0
+offset_top = -48.0
+offset_right = 181.0
+offset_bottom = 86.0
+color = Color(0.24313726, 0.15294118, 0.13725491, 1)
+
+[node name="VolumeSliders" type="Control" parent="OptionsMenu" unique_id=2021290022]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 86.0
+offset_top = 7.0
+offset_right = 126.0
+offset_bottom = 47.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.69, 0.69)
+
+[node name="Label" type="Label" parent="OptionsMenu/VolumeSliders" unique_id=1267097435]
+layout_mode = 0
+offset_left = -210.14496
+offset_top = -127.536255
+offset_right = 35.85504
+offset_bottom = -85.536255
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("10_r5t3j")
+theme_override_font_sizes/font_size = 36
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="OptionsMenu/VolumeSliders" unique_id=1255431171]
+modulate = Color(1.034, 1.034, 1.034, 1)
+layout_mode = 0
+offset_left = -221.7391
+offset_top = -95.536255
+offset_right = 50.260895
+offset_bottom = -79.536255
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("9_umht6")
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="OptionsMenu/VolumeSliders" unique_id=1910104492]
+layout_mode = 0
+offset_left = -194.20293
+offset_top = -68.115906
+offset_right = 21.797073
+offset_bottom = -26.115906
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("10_r5t3j")
+theme_override_font_sizes/font_size = 36
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="OptionsMenu/VolumeSliders" unique_id=1538273406]
+modulate = Color(1.034, 1.034, 1.034, 1)
+layout_mode = 0
+offset_left = -221.7391
+offset_top = -35.536255
+offset_right = 50.260895
+offset_bottom = -19.536255
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("9_umht6")
+bus_name = "Music"
+
+[node name="Label3" type="Label" parent="OptionsMenu/VolumeSliders" unique_id=1623420087]
+layout_mode = 0
+offset_left = -179.71016
+offset_top = -5.7971067
+offset_right = 6.2898407
+offset_bottom = 36.202892
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("10_r5t3j")
+theme_override_font_sizes/font_size = 36
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="HSlider3" type="HSlider" parent="OptionsMenu/VolumeSliders" unique_id=1308194089]
+modulate = Color(1.034, 1.034, 1.034, 1)
+layout_mode = 0
+offset_left = -221.7391
+offset_top = 24.463745
+offset_right = 50.260895
+offset_bottom = 40.463745
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("9_umht6")
+bus_name = "UI"
+
 [node name="CreditsButton" type="Button" parent="." unique_id=1993232127]
 unique_name_in_owner = true
 layout_mode = 0
@@ -220,9 +329,9 @@ scale = Vector2(3, 3)
 theme = SubResource("Theme_q6vxt")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 0
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 6
 theme_override_fonts/bold_font = ExtResource("8_h2671")
-theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_font_size = 14
 bbcode_enabled = true
 text = "
 [b]drakonkist[/b]
@@ -238,7 +347,10 @@ music, programming, sfx
 art
 
 [b]fattei[/b]
-sfx"
+sfx
+
+[b]Chimp peen[/b]
+leaderboard wizard"
 scroll_active = false
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Credits" unique_id=702019857]
@@ -272,18 +384,6 @@ offset_bottom = 692.0
 theme = ExtResource("6_u4nky")
 text = "back"
 
-[node name="note" type="Label" parent="." unique_id=1296144491]
-layout_mode = 0
-offset_left = 1003.0
-offset_top = 37.0
-offset_right = 1280.3334
-offset_bottom = 87.666664
-scale = Vector2(3, 3)
-text = "idea:
-tablet says start on it
-the drawers on the left are the other buttons"
-label_settings = SubResource("LabelSettings_q6vxt")
-
 [node name="Fader" type="ColorRect" parent="." unique_id=424014970]
 unique_name_in_owner = true
 z_index = 5
@@ -307,98 +407,3 @@ texture = ExtResource("3_4gkdq")
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_8gmgf")
 autoplay = &"intro"
-
-[node name="VolumeSliders" type="Control" parent="." unique_id=2021290022]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.69, 0.69)
-
-[node name="Label" type="Label" parent="VolumeSliders" unique_id=1267097435]
-layout_mode = 0
-offset_left = -210.14496
-offset_top = -127.536255
-offset_right = 35.85504
-offset_bottom = -85.536255
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("10_r5t3j")
-theme_override_font_sizes/font_size = 36
-text = "Master Volume"
-horizontal_alignment = 1
-
-[node name="HSlider" type="HSlider" parent="VolumeSliders" unique_id=1255431171]
-modulate = Color(1.034, 1.034, 1.034, 1)
-layout_mode = 0
-offset_left = -221.7391
-offset_top = -95.536255
-offset_right = 50.260895
-offset_bottom = -79.536255
-max_value = 2.0
-step = 0.1
-value = 2.0
-script = ExtResource("9_umht6")
-bus_name = "Master"
-
-[node name="Label2" type="Label" parent="VolumeSliders" unique_id=1910104492]
-layout_mode = 0
-offset_left = -194.20293
-offset_top = -68.115906
-offset_right = 21.797073
-offset_bottom = -26.115906
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("10_r5t3j")
-theme_override_font_sizes/font_size = 36
-text = "Music Volume"
-horizontal_alignment = 1
-
-[node name="HSlider2" type="HSlider" parent="VolumeSliders" unique_id=1538273406]
-modulate = Color(1.034, 1.034, 1.034, 1)
-layout_mode = 0
-offset_left = -221.7391
-offset_top = -35.536255
-offset_right = 50.260895
-offset_bottom = -19.536255
-max_value = 2.0
-step = 0.1
-value = 2.0
-script = ExtResource("9_umht6")
-bus_name = "Music"
-
-[node name="Label3" type="Label" parent="VolumeSliders" unique_id=1623420087]
-layout_mode = 0
-offset_left = -179.71016
-offset_top = -5.7971067
-offset_right = 6.2898407
-offset_bottom = 36.202892
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("10_r5t3j")
-theme_override_font_sizes/font_size = 36
-text = "SFX Volume"
-horizontal_alignment = 1
-
-[node name="HSlider3" type="HSlider" parent="VolumeSliders" unique_id=1308194089]
-modulate = Color(1.034, 1.034, 1.034, 1)
-layout_mode = 0
-offset_left = -221.7391
-offset_top = 24.463745
-offset_right = 50.260895
-offset_bottom = 40.463745
-max_value = 2.0
-step = 0.1
-value = 2.0
-script = ExtResource("9_umht6")
-bus_name = "UI"
