@@ -13,6 +13,7 @@ extends Node
 @export var clear_sfx: AudioStreamPlayer
 @export var brush_select_sfx: AudioStreamPlayer
 @export var color_select_sfx: AudioStreamPlayer
+@export var bucket_fill_sfx: AudioStreamPlayer
 
 
 func start_bgm() -> void:
@@ -63,3 +64,6 @@ func play_brush_select_sfx() -> void:
     
 func play_color_select_sfx() -> void:
     color_select_sfx.play()
+
+func play_bucket_fill_sfx() -> void:
+    bucket_fill_sfx.play()
