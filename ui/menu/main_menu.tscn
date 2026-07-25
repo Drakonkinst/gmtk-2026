@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://da35yew8fgybf" path="res://ui/fonts/ari-w9500-condensed-display.ttf" id="7_8gmgf"]
 [ext_resource type="FontFile" uid="uid://caov6fnyg0n1r" path="res://ui/fonts/KenneyThick.ttf" id="8_h2671"]
 [ext_resource type="Script" uid="uid://dwhxqb43wiyuo" path="res://ui/hud/h_slider.gd" id="9_umht6"]
+[ext_resource type="FontFile" uid="uid://csdil41k4yke5" path="res://ui/fonts/pico12.ttf" id="10_r5t3j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yc8k7"]
 atlas = ExtResource("2_4gkdq")
@@ -268,6 +269,7 @@ offset_left = 775.0
 offset_top = 644.0
 offset_right = 935.0
 offset_bottom = 692.0
+theme = ExtResource("6_u4nky")
 text = "back"
 
 [node name="note" type="Label" parent="." unique_id=1296144491]
@@ -322,16 +324,17 @@ scale = Vector2(0.69, 0.69)
 
 [node name="Label" type="Label" parent="VolumeSliders" unique_id=1267097435]
 layout_mode = 0
-offset_left = -198.55075
-offset_top = -124.6377
-offset_right = 30.44925
-offset_bottom = -82.6377
+offset_left = -210.14496
+offset_top = -127.536255
+offset_right = 35.85504
+offset_bottom = -85.536255
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.9367016, 0.9367016, 0.93670154, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("7_8gmgf")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("10_r5t3j")
+theme_override_font_sizes/font_size = 36
 text = "Master Volume"
+horizontal_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="VolumeSliders" unique_id=1255431171]
 modulate = Color(1.034, 1.034, 1.034, 1)
@@ -348,15 +351,15 @@ bus_name = "Master"
 
 [node name="Label2" type="Label" parent="VolumeSliders" unique_id=1910104492]
 layout_mode = 0
-offset_left = -185.5072
-offset_top = -63.76808
-offset_right = 18.492798
-offset_bottom = -21.768082
+offset_left = -194.20293
+offset_top = -68.115906
+offset_right = 21.797073
+offset_bottom = -26.115906
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.9367016, 0.9367016, 0.93670154, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("7_8gmgf")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("10_r5t3j")
+theme_override_font_sizes/font_size = 36
 text = "Music Volume"
 horizontal_alignment = 1
 
@@ -375,15 +378,15 @@ bus_name = "Music"
 
 [node name="Label3" type="Label" parent="VolumeSliders" unique_id=1623420087]
 layout_mode = 0
-offset_left = -173.91306
-offset_top = -1.4492805
-offset_right = 3.0869446
-offset_bottom = 40.55072
+offset_left = -179.71016
+offset_top = -5.7971067
+offset_right = 6.2898407
+offset_bottom = 36.202892
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.9367016, 0.9367016, 0.93670154, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("7_8gmgf")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("10_r5t3j")
+theme_override_font_sizes/font_size = 36
 text = "SFX Volume"
 horizontal_alignment = 1
 

@@ -37,6 +37,10 @@ func _ready() -> void:
     upgrade_manager.attempt_upgrade_1.connect(_on_attempt_upgrade_1)
     upgrade_manager.attempt_upgrade_2.connect(_on_attempt_upgrade_2)
     
+    countdown_manager.countdown_timer.game_lose.connect(_on_game_lose)
+    
+    AudioManager.play_tick_tock_sfx()
+    
 func _calculate_score(accuracy: float) -> int:
     var drawing_info := drawing_manager.get_drawing_info()
     # TODO: Time bonus for doing it quickly?
@@ -62,7 +66,7 @@ func _on_submit_drawing() -> void:
     accuracy_manager.update_accuracy(accuracy)
     
     AudioManager.play_submit_sfx()
-    if accuracy >= 0.5:
+    if accuracy >= 0.2:
         AudioManager.play_good_sfx(accuracy)
     else:
         AudioManager.play_bad_sfx(accuracy)
@@ -100,6 +104,9 @@ func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
     player_drawing.set_brush_size(size)
     AudioManager.play_button_sfx()
     AudioManager.play_brush_select_sfx()
+
+func _on_game_lose() -> void:
+    AudioManager.play_time_up_sfx()
     
 func _on_attempt_upgrade_1(upgrade: Upgrade) -> void:
     if _has_enough_time(upgrade.cost):

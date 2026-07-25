@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dkrdgjdh3cfns"]
 
 [ext_resource type="Script" uid="uid://bnlpmjhy4gf13" path="res://ui/hud/countdown_timer.gd" id="1_5sxqa"]
+[ext_resource type="FontFile" uid="uid://csdil41k4yke5" path="res://ui/fonts/pico12.ttf" id="2_b1kc4"]
 
 [sub_resource type="Animation" id="Animation_5sxqa"]
 length = 0.001
@@ -80,8 +81,9 @@ offset_right = 39.0
 offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/outline_size = 9
-theme_override_font_sizes/font_size = 64
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_b1kc4")
+theme_override_font_sizes/font_size = 100
 text = "10s"
 horizontal_alignment = 1
 
@@ -91,12 +93,13 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -29.0
 offset_top = 42.0
-offset_right = 49.0
-offset_bottom = 109.0
+offset_right = 91.0
+offset_bottom = 114.0
 theme_override_colors/font_color = Color(0, 0.8039216, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
-theme_override_font_sizes/font_size = 48
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_b1kc4")
+theme_override_font_sizes/font_size = 72
 text = "+1s"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AddedLabel" unique_id=1959995551]
@@ -106,6 +109,5 @@ libraries/ = SubResource("AnimationLibrary_jcdv0")
 next/adding_time = &"RESET"
 
 [node name="Timer" type="Timer" parent="." unique_id=163530633]
+unique_name_in_owner = true
 autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
