@@ -79,8 +79,8 @@
 [ext_resource type="Texture2D" uid="uid://bsmsinbsyoiho" path="res://ui/hud/keyboard_space_outline.png" id="64_56gn1"]
 [ext_resource type="Texture2D" uid="uid://cqx7u0ak7tl2y" path="res://ui/hud/keyboard_backspace_icon_outline.png" id="65_avmo2"]
 [ext_resource type="Texture2D" uid="uid://dsbe0g7ipktte" path="res://ui/hud/mouse_scroll_vertical_outline.png" id="66_vyqle"]
-[ext_resource type="Script" uid="uid://dw8k5cekg68yt" path="res://lose_screen.gd" id="74_3xib3"]
-[ext_resource type="Shader" uid="uid://djr3t7bhrp3qa" path="res://Blur.gdshader" id="74_7noa1"]
+[ext_resource type="Script" uid="uid://dw8k5cekg68yt" path="res://ui/hud/end_screen.gd" id="74_3xib3"]
+[ext_resource type="Shader" uid="uid://djr3t7bhrp3qa" path="res://ui/hud/Blur.gdshader" id="74_7noa1"]
 [ext_resource type="Texture2D" uid="uid://bv7extlajf0e7" path="res://ui/hud/button_ninepatch.png" id="76_vqo61"]
 [ext_resource type="Script" uid="uid://dhhxtf8opx43x" path="res://ui/hud/hourglass/hourglass.gd" id="80_vvpk2"]
 [ext_resource type="Texture2D" uid="uid://cexwymuu4mh1d" path="res://ui/hud/hourglass/hourglass.png" id="81_o46vb"]
@@ -194,6 +194,141 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
 shader = ExtResource("74_7noa1")
+shader_parameter/blur_amount = 0.0
+
+[sub_resource type="Animation" id="Animation_0s2o4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%BlurRect:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimElements:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%PostButton:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%MenuButton:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%ReplayButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_66xay"]
+resource_name = "end_game"
+length = 3.0000000000000004
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%BlurRect:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.50000016625]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimElements:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%PostButton:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%MenuButton:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%ReplayButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0s2o4"]
+_data = {
+&"RESET": SubResource("Animation_0s2o4"),
+&"end_game": SubResource("Animation_66xay")
+}
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
@@ -1194,6 +1329,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("84_lon8v")
 
 [node name="EndScreen" type="Control" parent="HUDLayer" unique_id=488366321]
+unique_name_in_owner = true
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -1203,7 +1339,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("74_3xib3")
 
-[node name="ColorRect" type="ColorRect" parent="HUDLayer/EndScreen" unique_id=1286395726]
+[node name="BlurRect" type="ColorRect" parent="HUDLayer/EndScreen" unique_id=1286395726]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_g4v7s")
 layout_mode = 1
 anchors_preset = 15
@@ -1212,7 +1349,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerEntry" type="LineEdit" parent="HUDLayer/EndScreen" unique_id=599717787]
+[node name="AnimElements" type="Control" parent="HUDLayer/EndScreen" unique_id=1428863048]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UserEntry" type="LineEdit" parent="HUDLayer/EndScreen/AnimElements" unique_id=599717787]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 359.5
@@ -1224,21 +1367,50 @@ theme_override_font_sizes/font_size = 24
 placeholder_text = "Enter your name"
 alignment = 1
 
-[node name="PostButton" type="Button" parent="HUDLayer/EndScreen" unique_id=842048962]
+[node name="PostButton" type="Button" parent="HUDLayer/EndScreen/AnimElements" unique_id=842048962]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 403.0
-offset_top = 419.0
+offset_top = 423.0
 offset_right = 553.0
-offset_bottom = 451.0
+offset_bottom = 477.0
 theme = ExtResource("18_qpefm")
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 10
+disabled = true
 text = "Post Score"
 
-[node name="ScoreText" type="Label" parent="HUDLayer/EndScreen" unique_id=524128082]
+[node name="MenuButton" type="Button" parent="HUDLayer/EndScreen/AnimElements" unique_id=2086451058]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 39.0
+offset_top = 639.0
+offset_right = 189.0
+offset_bottom = 693.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 10
+disabled = true
+text = "Main Menu"
+
+[node name="ReplayButton" type="Button" parent="HUDLayer/EndScreen/AnimElements" unique_id=1150478561]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 783.0
+offset_top = 641.0
+offset_right = 933.0
+offset_bottom = 695.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 10
+disabled = true
+text = "Play again"
+
+[node name="EndScoreText" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=524128082]
 layout_mode = 0
 offset_left = 326.0
 offset_top = 291.0
-offset_right = 513.0
+offset_right = 529.0
 offset_bottom = 356.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 22
@@ -1246,7 +1418,8 @@ theme_override_fonts/font = ExtResource("52_tb2lt")
 theme_override_font_sizes/font_size = 64
 text = "SCORE:"
 
-[node name="ScoreValue" type="Label" parent="HUDLayer/EndScreen" unique_id=1973818723]
+[node name="EndScoreValue" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=1973818723]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 530.0
 offset_top = 292.0
@@ -1256,5 +1429,9 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("52_tb2lt")
 theme_override_font_sizes/font_size = 64
-text = "50"
+text = "###"
 horizontal_alignment = 1
+
+[node name="EndAnimPlayer" type="AnimationPlayer" parent="HUDLayer/EndScreen" unique_id=2084029946]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_0s2o4")

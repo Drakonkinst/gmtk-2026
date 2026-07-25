@@ -16,6 +16,7 @@ const MAX_DRAWINGS := 20
 @onready var player_drawing: PlayerDrawing = %PlayerDrawing
 @onready var countdown_manager: CountdownManager = %CountdownManager
 @onready var hud: HUD = %HUD
+@onready var end_screen: EndScreen = %EndScreen
 
 const DEBUG_MODE := false
 
@@ -124,6 +125,7 @@ func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
 func _on_game_lose() -> void:
     input_manager.drawing_enabled = false
     hud.on_game_lose()
+    end_screen.on_game_end()
     AudioManager.play_time_up_sfx()
     
 func _on_upgrade_unlock(upgrade: Upgrade) -> void:
