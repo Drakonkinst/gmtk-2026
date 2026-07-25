@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://c2xytf6tslmu3" path="res://audio/sfx/clearsoundeffect2.ogg" id="13_h3g62"]
 [ext_resource type="AudioStream" uid="uid://doc8jvuqmhcfh" path="res://audio/sfx/brushsoundeffect1.ogg" id="14_pyj8m"]
 [ext_resource type="AudioStream" uid="uid://cuul5ys48blgx" path="res://audio/sfx/coloursoundeffect1.ogg" id="15_ji21h"]
+[ext_resource type="AudioStream" uid="uid://dnr3b7hspc8w6" path="res://audio/sfx/fillsoundeffect2.ogg" id="16_ji21h"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i1k7u"]
 random_pitch = 1.122462
@@ -68,7 +69,12 @@ random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("15_ji21h")
 
-[node name="AudioManager" type="Node" unique_id=1337921936 node_paths=PackedStringArray("bgm", "submit_sfx", "good_sfx", "bad_sfx", "button_sfx", "hover_sfx", "draw_sfx", "erase_sfx", "clear_sfx", "brush_select_sfx", "color_select_sfx")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sgp2o"]
+random_pitch = 1.1892071
+streams_count = 1
+stream_0/stream = ExtResource("16_ji21h")
+
+[node name="AudioManager" type="Node" unique_id=1337921936 node_paths=PackedStringArray("bgm", "submit_sfx", "good_sfx", "bad_sfx", "button_sfx", "hover_sfx", "draw_sfx", "erase_sfx", "clear_sfx", "brush_select_sfx", "color_select_sfx", "bucket_fill_sfx")]
 script = ExtResource("1_5jhky")
 bgm = NodePath("BGM")
 submit_sfx = NodePath("SubmitSFX")
@@ -81,6 +87,7 @@ erase_sfx = NodePath("EraseSFXOneshot")
 clear_sfx = NodePath("ClearSFX")
 brush_select_sfx = NodePath("BrushSelectSFX")
 color_select_sfx = NodePath("ColorSelectSFX")
+bucket_fill_sfx = NodePath("BucketFillSFX")
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1874000854]
 stream = ExtResource("6_i1k7u")
@@ -132,4 +139,8 @@ volume_db = 10.0
 
 [node name="ColorSelectSFX" type="AudioStreamPlayer" parent="." unique_id=383473584]
 stream = SubResource("AudioStreamRandomizer_ji21h")
+volume_db = 5.0
+
+[node name="BucketFillSFX" type="AudioStreamPlayer" parent="." unique_id=1173505437]
+stream = SubResource("AudioStreamRandomizer_sgp2o")
 volume_db = 5.0

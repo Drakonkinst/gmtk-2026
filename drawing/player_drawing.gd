@@ -98,8 +98,8 @@ func fill(draw_pos: Vector2i, color: Color) -> void:
                     player_image.set_pixelv(next_pos, color)
                     queue.append(next_pos)
     needs_update = true
-    # TODO: Change to bucket
-    AudioManager.play_draw_sfx()
+    
+    AudioManager.play_bucket_fill_sfx()
 
 func draw_at_point(center_pos: Vector2i, color: Color) -> void:
     for brush_offset_x in range(-brush_size, brush_size + 1):
