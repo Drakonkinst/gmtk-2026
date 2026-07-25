@@ -49,9 +49,9 @@ func _process_drawing(delta: float):
     if Input.is_action_just_pressed("submit"):
         submit_drawing.emit()
     
-    if Input.is_action_just_pressed("erase_override"):
+    if Input.is_action_just_pressed("erase_override") and Global.game.upgrade_manager.unlocked_tools[PlayerDrawing.Tool.ERASER]:
         AudioManager.play_brush_select_sfx()
-    if Input.is_action_just_released("erase_override"):
+    if Input.is_action_just_released("erase_override") and Global.game.upgrade_manager.unlocked_tools[PlayerDrawing.Tool.ERASER]:
         AudioManager.play_brush_select_sfx()
         
     var num_colors := 5

@@ -18,6 +18,8 @@ signal submit_drawing
 
 const DEBUG_MODE := false # TODO: Make everything free if this is on
 
+var freedraw_mode := false
+
 func _ready() -> void:
     drawing_manager.set_next_drawing()
     

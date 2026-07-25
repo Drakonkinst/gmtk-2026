@@ -194,7 +194,7 @@ texture_disabled = ExtResource("17_m28ev")
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="ColorSelect" type="Control" parent="HUDLayer/HUD" unique_id=1987601810]
+[node name="ColorSelect" type="Control" parent="HUDLayer/HUD" unique_id=1987601810 node_paths=PackedStringArray("buttons")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
@@ -206,15 +206,16 @@ offset_right = 20.0
 offset_bottom = 45.0
 grow_horizontal = 2
 script = ExtResource("17_bnpwn")
+buttons = [NodePath("ColorBlack"), NodePath("ColorRed"), NodePath("ColorBlue"), NodePath("ColorYellow"), NodePath("ColorGreen")]
 
 [node name="ColorBlack" type="TextureButton" parent="HUDLayer/HUD/ColorSelect" unique_id=574762465]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -117.0
+offset_left = -133.0
 offset_top = 117.0
-offset_right = -141.0
+offset_right = -157.0
 offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -227,7 +228,7 @@ texture_disabled = ExtResource("18_xa8c5")
 [node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/ColorSelect/ColorBlack" unique_id=2040219320]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_right = 16.0
+offset_right = 15.999992
 offset_bottom = 16.0
 texture = ExtResource("20_5b14r")
 
@@ -236,9 +237,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -61.0
+offset_left = -69.0
 offset_top = 117.0
-offset_right = -85.0
+offset_right = -93.0
 offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -284,9 +285,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 51.000015
+offset_left = 59.00003
 offset_top = 117.0
-offset_right = 27.000015
+offset_right = 35.00003
 offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -308,9 +309,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 107.000015
+offset_left = 122.99997
 offset_top = 117.0
-offset_right = 83.000015
+offset_right = 98.99997
 offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -323,15 +324,16 @@ texture_disabled = ExtResource("18_xa8c5")
 [node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/ColorSelect/ColorGreen" unique_id=1664048825]
 modulate = Color(0.4862745, 0.7019608, 0.25882354, 1)
 layout_mode = 0
-offset_right = 16.0
+offset_left = 1.5258789e-05
+offset_right = 16.000015
 offset_bottom = 16.0
 texture = ExtResource("20_5b14r")
 
 [node name="Label" type="Label" parent="HUDLayer/HUD/ColorSelect" unique_id=561560022]
 layout_mode = 0
-offset_left = -99.0
+offset_left = -107.0
 offset_top = 101.0
-offset_right = -84.0
+offset_right = -92.0
 offset_bottom = 118.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_color = Color(0.050980393, 0.25490198, 0.007843138, 1)
@@ -341,9 +343,9 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="HUDLayer/HUD/ColorSelect" unique_id=1837401406]
 layout_mode = 0
-offset_left = -44.0
+offset_left = -52.0
 offset_top = 101.0
-offset_right = -29.0
+offset_right = -37.0
 offset_bottom = 118.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_color = Color(0.050980393, 0.25490198, 0.007843138, 1)
@@ -365,9 +367,9 @@ horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="HUDLayer/HUD/ColorSelect" unique_id=1229931058]
 layout_mode = 0
-offset_left = 68.0
+offset_left = 76.0
 offset_top = 101.0
-offset_right = 83.0
+offset_right = 91.0
 offset_bottom = 118.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_color = Color(0.050980393, 0.25490198, 0.007843138, 1)
@@ -377,9 +379,9 @@ horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="HUDLayer/HUD/ColorSelect" unique_id=1250539048]
 layout_mode = 0
-offset_left = 124.0
+offset_left = 140.0
 offset_top = 101.0
-offset_right = 139.0
+offset_right = 155.0
 offset_bottom = 118.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_color = Color(0.050980393, 0.25490198, 0.007843138, 1)

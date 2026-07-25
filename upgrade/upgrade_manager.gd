@@ -30,6 +30,12 @@ func _ready() -> void:
     unlocked_tools[PlayerDrawing.Tool.BRUSH] = true
     unlocked_tools[PlayerDrawing.Tool.ERASER] = false
     unlocked_tools[PlayerDrawing.Tool.BUCKET] = false
+    
+    if Global.game.freedraw_mode:
+        for i in range(len(upgrade_list_1)):
+            unlock_upgrade_1()
+        for i in range(len(upgrade_list_2)):
+            unlock_upgrade_2()
 
 func _process_upgrade(upgrade_id: String):
     if upgrade_id == "Eraser":

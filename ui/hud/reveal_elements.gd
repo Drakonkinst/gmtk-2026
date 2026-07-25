@@ -7,7 +7,6 @@ class_name RevealElements
 @export var on_sizes_reveal: Array[Control]
 
 func _ready() -> void:
-    # TODO: Don't forget to actually show them
     _hide_all(on_color_reveal)
     _hide_all(on_tools_reveal)
     _hide_all(on_sizes_reveal)
