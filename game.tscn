@@ -73,6 +73,8 @@
 [ext_resource type="Texture2D" uid="uid://bsmsinbsyoiho" path="res://ui/hud/keyboard_space_outline.png" id="64_56gn1"]
 [ext_resource type="Texture2D" uid="uid://cqx7u0ak7tl2y" path="res://ui/hud/keyboard_backspace_icon_outline.png" id="65_avmo2"]
 [ext_resource type="Texture2D" uid="uid://dsbe0g7ipktte" path="res://ui/hud/mouse_scroll_vertical_outline.png" id="66_vyqle"]
+[ext_resource type="Script" uid="uid://dw8k5cekg68yt" path="res://lose_screen.gd" id="74_3xib3"]
+[ext_resource type="Shader" uid="uid://djr3t7bhrp3qa" path="res://Blur.gdshader" id="74_7noa1"]
 
 [sub_resource type="Animation" id="Animation_5sxqa"]
 length = 0.001
@@ -133,6 +135,9 @@ _data = {
 &"RESET": SubResource("Animation_5sxqa"),
 &"adding_time": SubResource("Animation_b1kc4")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+shader = ExtResource("74_7noa1")
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
@@ -274,6 +279,7 @@ offset_top = 24.0
 offset_right = 724.0
 offset_bottom = 64.0
 grow_horizontal = 0
+theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 24
 text = "Score:"
@@ -291,6 +297,7 @@ offset_top = 24.0
 offset_right = 814.0
 offset_bottom = 54.0
 grow_horizontal = 0
+theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 26
 text = "0"
@@ -312,6 +319,7 @@ offset_top = 41.0
 offset_right = 252.0
 offset_bottom = 81.0
 grow_horizontal = 0
+theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 24
 text = "Drawing:"
@@ -329,6 +337,7 @@ offset_top = 41.0
 offset_right = 342.0
 offset_bottom = 71.0
 grow_horizontal = 0
+theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 26
 text = "1 / 20"
@@ -788,6 +797,7 @@ offset_top = 48.0
 offset_right = -236.0
 offset_bottom = 87.0
 grow_horizontal = 0
+theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 26
 text = "Accuracy:
@@ -806,6 +816,7 @@ offset_top = 50.0
 offset_right = -145.0
 offset_bottom = 82.0
 grow_horizontal = 0
+theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 26
 text = "--%
@@ -1052,3 +1063,68 @@ offset_right = 279.0
 offset_bottom = 504.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("66_vyqle")
+
+[node name="EndScreen" type="Control" parent="HUDLayer" unique_id=488366321]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("74_3xib3")
+
+[node name="ColorRect" type="ColorRect" parent="HUDLayer/EndScreen" unique_id=1286395726]
+material = SubResource("ShaderMaterial_g4v7s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerEntry" type="LineEdit" parent="HUDLayer/EndScreen" unique_id=599717787]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 359.5
+offset_top = 370.0
+offset_right = 601.0
+offset_bottom = 408.0
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Enter your name"
+alignment = 1
+
+[node name="PostButton" type="Button" parent="HUDLayer/EndScreen" unique_id=842048962]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 403.0
+offset_top = 419.0
+offset_right = 553.0
+offset_bottom = 451.0
+theme = ExtResource("18_qpefm")
+text = "Post Score"
+
+[node name="ScoreText" type="Label" parent="HUDLayer/EndScreen" unique_id=524128082]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 291.0
+offset_right = 513.0
+offset_bottom = 356.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 64
+text = "SCORE:"
+
+[node name="ScoreValue" type="Label" parent="HUDLayer/EndScreen" unique_id=1973818723]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 292.0
+offset_right = 658.0
+offset_bottom = 357.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 64
+text = "50"
+horizontal_alignment = 1
