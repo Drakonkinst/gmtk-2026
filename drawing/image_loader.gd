@@ -22,8 +22,8 @@ func _ready() -> void:
         for y in image.get_height():
             for x in image.get_width():
                 var color := image.get_pixel(x, y)
-                var color_value := color.to_argb64()
-                if color_value != Drawing.EMPTY_COLOR_INT:
+                if color.a == 1:
+                    var color_value := color.to_argb64()
                     image_data.set(y * image.get_width() + x, color_value)
         image_data_array.push_back(image_data)
         print("Finished loading image ", drawing.id)

@@ -6,5 +6,5 @@
 script = ExtResource("1_arqt4")
 id = "Bucket"
 text = "BUCKET Tool"
-cost = 25
+cost = 20
 metadata/_custom_type_script = "uid://cyqjkk6ec601k"

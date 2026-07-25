@@ -6,6 +6,7 @@ signal draw(draw_pos: Vector2i)
 signal select_tool(tool: PlayerDrawing.Tool)
 signal select_color_index(index: int)
 signal submit_drawing
+signal scroll_changed(dir: int)
 
 const DRAWING_OFFSET_X := 240
 const DRAWING_OFFSET_Y := 180
@@ -59,6 +60,11 @@ func _process_drawing(delta: float):
         if i > 0:
             if Input.is_action_just_pressed("select_color_" + str(i)):
                 select_color_index.emit(i - 1)
+    
+    if Input.is_action_just_pressed("size_next"):
+        scroll_changed.emit(-1)
+    elif Input.is_action_just_pressed("size_prev"):
+        scroll_changed.emit(1)
 
 # Bresenham's line algorithm        
 func _interpolate_line(p0: Vector2i, p1: Vector2i) -> void:

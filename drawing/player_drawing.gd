@@ -66,7 +66,17 @@ func set_brush_color(color: Color) -> bool:
     brush_color = color
     return true
 
+func increment_size() -> void:
+    if brush_size_label < BrushSize.LARGE:
+        set_brush_size(brush_size_label + 1)
+
+func decrement_size() -> void:
+    if brush_size_label > BrushSize.SMALL:
+        set_brush_size(brush_size_label - 1)
+
 func set_brush_size(size: BrushSize) -> bool:
+    if not Global.game.upgrade_manager.unlocked_sizes:
+        return false
     if size == BrushSize.SMALL:
         brush_size = 0
     if size == BrushSize.NORMAL:

@@ -18,6 +18,7 @@ signal select_size(size: PlayerDrawing.BrushSize)
 @onready var accuracy_display: RichTextLabel = %AccuracyValue
 @onready var drawing_count: RichTextLabel = %DrawingCount
 @onready var hourglass: Hourglass = %Hourglass
+@onready var countdown_timer: CountdownTimer = %CountdownTimer
 
 func _ready() -> void:
     submit_button.pressed.connect(_on_submit_button_pressed)
@@ -27,9 +28,6 @@ func _ready() -> void:
     size_select.select_size.connect(_on_select_size)
     score_counter.set_multiplier(1.0)
     
-    if Global.game.freedraw_mode:
-        drawing_count.text = "0"
-
 func on_upgrade_unlocked(upgrade: Upgrade) -> void:
     reveal_elements.on_upgrade_unlocked(upgrade)
     score_counter.set_multiplier(Global.game.upgrade_manager.score_multiplier)
@@ -54,6 +52,10 @@ func _on_submit_button_pressed() -> void:
 func on_game_end() -> void:
     submit_button.disabled = true
     clear_button.disabled = true
+
+func on_freedraw_mode() -> void:
+    drawing_count.text = "0"
+    countdown_timer.hide()
 
 func on_game_lose() -> void:
     on_game_end()
