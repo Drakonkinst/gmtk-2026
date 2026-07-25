@@ -1348,12 +1348,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="AnimElements" type="Control" parent="HUDLayer/EndScreen" unique_id=1428863048]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Darken" type="ColorRect" parent="HUDLayer/EndScreen/AnimElements" unique_id=1231404820]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 954.0
+offset_bottom = 709.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3882353)
 
 [node name="Leaderboard" parent="HUDLayer/EndScreen/AnimElements" unique_id=1539792604 instance=ExtResource("89_pwsyv")]
 unique_name_in_owner = true
@@ -1393,7 +1407,7 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 236.0
 offset_top = 594.0
-offset_right = 424.8889
+offset_right = 426.0
 offset_bottom = 662.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
@@ -1405,9 +1419,9 @@ text = "Main Menu"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 474.0
-offset_top = 593.0
-offset_right = 651.7778
-offset_bottom = 657.0
+offset_top = 595.0
+offset_right = 664.0
+offset_bottom = 663.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
@@ -1416,29 +1430,116 @@ text = "Play again"
 
 [node name="EndScoreText" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=524128082]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 171.0
-offset_right = 224.0
-offset_bottom = 236.0
+offset_left = 39.0
+offset_top = 184.0
+offset_right = 242.0
+offset_bottom = 249.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 36
+text = "Score:"
+
+[node name="AvgAccuracyLabel" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=893222706]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 267.0
+offset_right = 371.0
+offset_bottom = 332.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 36
+text = "Avg. Accuracy: "
+
+[node name="DrawingsCompletedLabel" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=1373800939]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 385.0
+offset_right = 371.0
+offset_bottom = 450.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 36
+text = "Drawings Made: "
+
+[node name="TimeSpentLabel" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=1827874007]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 326.0
+offset_right = 368.0
+offset_bottom = 391.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 36
+text = "Time: "
+
+[node name="Header" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=2033968937]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 84.0
+offset_right = 379.0
+offset_bottom = 149.0
+theme = ExtResource("18_qpefm")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("52_tb2lt")
 theme_override_font_sizes/font_size = 64
-text = "SCORE:"
+text = "Time's up!"
 
 [node name="EndScoreValue" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=1973818723]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 242.0
-offset_top = 173.0
-offset_right = 370.0
-offset_bottom = 238.0
+offset_left = 174.0
+offset_top = 166.0
+offset_right = 302.0
+offset_bottom = 231.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("52_tb2lt")
 theme_override_font_sizes/font_size = 64
 text = "###"
-horizontal_alignment = 1
+
+[node name="EndAccuracyValue" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=64647602]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 318.0
+offset_top = 264.0
+offset_right = 446.0
+offset_bottom = 329.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 40
+text = "###"
+
+[node name="EndTimeSpent" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=2072607102]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 138.0
+offset_top = 324.0
+offset_right = 380.0
+offset_bottom = 389.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 40
+text = "###"
+
+[node name="EndDrawingsCompleted" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=1210669791]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 317.0
+offset_top = 381.0
+offset_right = 494.0
+offset_bottom = 446.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 40
+text = "###"
 
 [node name="EndAnimPlayer" type="AnimationPlayer" parent="HUDLayer/EndScreen" unique_id=2084029946]
 unique_name_in_owner = true

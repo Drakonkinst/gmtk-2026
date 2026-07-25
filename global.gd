@@ -14,6 +14,9 @@ var audio: AudioManager
 var user_name: String = ""
 var posting_score: bool = false
 var score: int
+var drawings_made: int
+var average_accuracy_str: String
+var total_time_str: String
 
 func _ready() -> void:
     _load_config()

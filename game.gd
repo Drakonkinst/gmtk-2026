@@ -84,10 +84,9 @@ func _on_submit_drawing() -> void:
     else:
         AudioManager.play_bad_sfx(accuracy)
     
-    if drawings_completed >= MAX_DRAWINGS:
-        # TODO: End the game
-        pass
     complete_drawing.emit()
+    if drawings_completed >= MAX_DRAWINGS:
+        _on_game_lose()
     
 func _on_clear_drawing() -> void:
     player_drawing.reset_image()
@@ -126,8 +125,18 @@ func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
 func _on_game_lose() -> void:
     input_manager.drawing_enabled = false
     hud.on_game_lose()
-    end_screen.on_game_end()
     AudioManager.play_time_up_sfx()
+    
+    # Calculate endgame stats
+    Global.drawings_made = drawings_completed
+    var overall_accuracy := accuracy_sum / drawings_completed
+    var accuracy_as_int := int(overall_accuracy * 100)
+    Global.average_accuracy_str = str(accuracy_as_int) + "%"
+    var num_minutes := int(total_time_spent / 60)
+    var num_seconds := int(total_time_spent) - num_minutes * 60
+    Global.total_time_str = str(num_minutes) + "m " + str(num_seconds) + "s"
+    
+    end_screen.on_game_end()
     
 func _on_upgrade_unlock(upgrade: Upgrade) -> void:
     hud.on_upgrade_unlocked(upgrade)
