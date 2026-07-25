@@ -7,8 +7,10 @@ signal start_game
 @onready var volume_sliders: Control = %VolumeSliders
 @onready var start_button: Button = %StartButton
 @onready var credits_button: Button = %CreditsButton
-@onready var options_button: Button = %OptionsButton
 @onready var back_button: Button = %BackButton
+@onready var options_button: Button = %OptionsButton
+@onready var options_menu: Control = %OptionsMenu
+@onready var options_bg: ColorRect = %OptionsBG
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var background: TextureRect = %Background
 @onready var credits: Control = %Credits
@@ -29,6 +31,7 @@ func _ready() -> void:
     credits_button.mouse_entered.connect(_on_credits_button_mouse_entered)
     options_button.mouse_entered.connect(_on_options_button_mouse_entered)
     back_button.mouse_entered.connect(_on_back_button_mouse_entered)
+    options_bg.mouse_exited.connect(_on_options_bg_mouse_exited)
     
     # can't press buttons until animation ended
     await animation_player.animation_finished
@@ -57,8 +60,14 @@ func _on_credits_button_pressed():
         
 func _on_options_button_pressed():
     AudioManager.play_button_sfx()
+    options_menu.show()
+
+func _on_options_bg_mouse_exited():
+    if not options_bg.get_global_rect().has_point(get_viewport().get_mouse_position()):
+        AudioManager.play_hover_sfx()
+        options_menu.hide()
     
-func _on_backbutton_pressed():    
+func _on_backbutton_pressed():
     AudioManager.play_button_sfx()
     volume_sliders.show()
 
