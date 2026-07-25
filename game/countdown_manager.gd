@@ -3,9 +3,9 @@ extends Node2D
 
 signal game_lose
 
-const TIME_PER_DRAWING := 15
+const TIME_PER_DRAWING := 20
 const ACCURACY_THRESHOLD := 0.2
-const MAX_TIME := 30
+const MAX_TIME := 45
 
 @onready var countdown_timer: CountdownTimer = %CountdownTimer
 @onready var timer: Timer = $Timer

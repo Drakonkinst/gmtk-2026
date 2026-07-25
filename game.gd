@@ -117,17 +117,24 @@ func _on_game_lose() -> void:
     hud.on_game_lose()
     AudioManager.play_time_up_sfx()
     
+func _on_upgrade_unlock(upgrade: Upgrade) -> void:
+    hud.on_upgrade_unlocked(upgrade)
+    # Start a new drawing without updating score, count, or timer
+    drawing_manager.set_next_drawing()
+    player_drawing.on_new_drawing()
+    AudioManager.play_clear_sfx()
+
 func _on_attempt_upgrade_1(upgrade: Upgrade) -> void:
     if _has_enough_time(upgrade.cost):
         _spend_time(upgrade.cost)
         upgrade_manager.unlock_upgrade_1()
-        hud.on_upgrade_unlocked(upgrade)
+        _on_upgrade_unlock(upgrade)
 
 func _on_attempt_upgrade_2(upgrade: Upgrade) -> void:
     if _has_enough_time(upgrade.cost):
         _spend_time(upgrade.cost)
         upgrade_manager.unlock_upgrade_2()
-        hud.on_upgrade_unlocked(upgrade)
+        _on_upgrade_unlock(upgrade)
 
 func _has_enough_time(seconds: int) -> bool:
     return DEBUG_MODE or countdown_manager.get_seconds_left()

@@ -75,7 +75,7 @@ func _precompute_goal_maps(goal_array: PackedInt64Array) -> Dictionary:
     # Find all valid drawn pixels in goal image
     var goal_pixels: Array = []
     for i in range(goal_array.size()):
-        var color_int = goal_array[i]
+        var color_int := goal_array[i]
         if color_int != Drawing.EMPTY_COLOR_INT:
             var goal_x := i % Drawing.WIDTH
             var goal_y := int(i * 1.0 / Drawing.WIDTH) # Getting around the silly syntax warnings
@@ -88,12 +88,12 @@ func _precompute_goal_maps(goal_array: PackedInt64Array) -> Dictionary:
     for y in range(Drawing.HEIGHT):
         print("y=", y)
         for x in range(Drawing.WIDTH):
-            var current_pos = Vector2i(x, y)
+            var current_pos := Vector2i(x, y)
             var min_distance: float = INF
             var closest_color_int: int = Drawing.EMPTY_COLOR_INT
             
             for goal_pixel in goal_pixels:
-                var dist = current_pos.distance_to(goal_pixel.pos)
+                var dist := current_pos.distance_to(goal_pixel.pos)
                 if dist < min_distance:
                     min_distance = dist
                     closest_color_int = goal_pixel.color_int
@@ -113,18 +113,18 @@ func calculate_accuracy(user_array: PackedInt64Array) -> float:
     var goal_pixels_covered := 0
     
     for i in range(user_array.size()):
-        var user_color_int = user_array[i]
+        var user_color_int := user_array[i]
         if user_color_int == Drawing.EMPTY_COLOR_INT:
             continue
         total_pixels_drawn += 1
         
         var lookup: GoalLookup = goal_map[i]
         # Geometric distance score (Exponential decay)
-        var distance_accuracy = exp(-lookup.distance / K_FACTOR)
+        var distance_accuracy := exp(-lookup.distance / K_FACTOR)
         
         # Fast integer color match
         var color_accuracy: float = 1.0
-        if user_color_int != lookup.target_color_int:
+        if user_color_int != lookup.target_color_int and get_drawing_info().is_colored:
             color_accuracy -= INCORRECT_COLOR_PENALTY
             
         var pixel_accuracy = max(0.0, distance_accuracy * color_accuracy)

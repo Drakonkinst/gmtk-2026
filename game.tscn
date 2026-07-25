@@ -41,6 +41,10 @@
 [ext_resource type="Texture2D" uid="uid://cf73lihrqxvsq" path="res://ui/hud/color/color_button_mask.png" id="20_5b14r"]
 [ext_resource type="Texture2D" uid="uid://nok8fgprgqs5" path="res://ui/hud/tools/button_brush_locked.png" id="20_x5p1p"]
 [ext_resource type="Texture2D" uid="uid://bk6xg0bnn7nka" path="res://ui/hud/tools/button_brush_selected.png" id="21_qhcbd"]
+[ext_resource type="Resource" uid="uid://b3rqexj6fjvw" path="res://drawing/drawings/cat.tres" id="22_6qn5j"]
+[ext_resource type="Resource" uid="uid://ixatq5tcspvn" path="res://drawing/drawings/dog.tres" id="23_wj41c"]
+[ext_resource type="Resource" uid="uid://cma2cshcg0rna" path="res://drawing/drawings/crab.tres" id="24_baljx"]
+[ext_resource type="Resource" uid="uid://bpao8tpan28wk" path="res://drawing/drawings/bunny.tres" id="25_t2ssd"]
 [ext_resource type="Script" uid="uid://cc0rhyh8d71w2" path="res://ui/hud/reveal_elements.gd" id="27_ple6s"]
 [ext_resource type="Script" uid="uid://6fycpfut6kfw" path="res://ui/hud/size/size_select.gd" id="30_7knny"]
 [ext_resource type="Texture2D" uid="uid://cpcuh7x5pwfhg" path="res://ui/hud/size/button_small_default.png" id="31_eu6ph"]
@@ -170,7 +174,7 @@ drawing_sprite = NodePath("../Drawing")
 [node name="ImageLoader" type="Node2D" parent="DrawingManager" unique_id=141799161]
 unique_name_in_owner = true
 script = ExtResource("6_hve3p")
-drawings = Array[ExtResource("7_mfdv2")]([ExtResource("8_iotsf"), ExtResource("8_vef74"), ExtResource("9_hve3p")])
+drawings = Array[ExtResource("7_mfdv2")]([ExtResource("8_iotsf"), ExtResource("8_vef74"), ExtResource("9_hve3p"), ExtResource("22_6qn5j"), ExtResource("23_wj41c"), ExtResource("24_baljx"), ExtResource("25_t2ssd")])
 
 [node name="ScoreManager" type="Node2D" parent="." unique_id=1200851758]
 unique_name_in_owner = true
@@ -934,7 +938,7 @@ mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 text = "ERASER Tool + More DRAWINGS
 "
@@ -980,7 +984,7 @@ mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 text = "2x Score + More DRAWINGS
 "

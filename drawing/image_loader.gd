@@ -41,10 +41,27 @@ func pick_next_drawing_index(prev_index: int) -> int:
     if len(valid_drawing_indexes) <= 0:
         push_warning("WARN: No valid drawing indexes")
         return -1
-   
+    
+    var valid_drawing_weights: Array[int] = []
+    var total_weight := 0
+    for index in valid_drawing_indexes:
+        var drawing: Drawing = drawings.get(index)
+        valid_drawing_weights.push_back(drawing.weight) 
+        total_weight += drawing.weight
+
     while attempts_remaining > 0 && next_index == prev_index:
-        next_index = valid_drawing_indexes.pick_random()
+        var target_weight := randi_range(0, total_weight)
+        var track_weight := 0
+        var track_index := 0
+        next_index = 0
+        while track_weight < total_weight:
+            track_weight += valid_drawing_weights.get(track_index)
+            if track_weight >= target_weight:
+                next_index = valid_drawing_indexes[track_index]
+                break
+            track_index += 1
         attempts_remaining -= 1
+    print("Picked ", next_index)
     return next_index
     
 

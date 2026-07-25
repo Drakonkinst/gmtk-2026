@@ -13,6 +13,8 @@ var displayed_time_left: int
 func change_time(delta_time: int):
     if delta_time >= 0:
         added_label.text = "+%ss" % (delta_time)
+        if displayed_time_left == CountdownManager.MAX_TIME:
+            added_label.text += " (max)"
         animation_player.play("adding_time")
         added_label.add_theme_color_override("font_color", Color.GREEN)
         if delta_time == 0:

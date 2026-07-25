@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://d27ju0vv8r1hi"]
 
-[ext_resource type="Script" uid="uid://cyqjkk6ec601k" path="res://upgrade/upgrade.gd" id="1_k4ks3"]
+[ext_resource type="Script" uid="uid://cyqjkk6ec601k" path="res://upgrade/upgrade.gd" id="1_y3ma1"]
 
 [resource]
-script = ExtResource("1_k4ks3")
+script = ExtResource("1_y3ma1")
 id = "Sizes"
-text = "Brush SIZES"
+text = "Brush SIZES + More DRAWINGS"
 cost = 5
 metadata/_custom_type_script = "uid://cyqjkk6ec601k"

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_3cfhg")
 id = "Drawing3"
-text = "MORE Drawings"
-score_multiplier = 2.0
+text = "4x Score + More DRAWINGS"
+score_multiplier = 4.0
 cost = 5
 metadata/_custom_type_script = "uid://cyqjkk6ec601k"

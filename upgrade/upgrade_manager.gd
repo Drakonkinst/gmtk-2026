@@ -47,13 +47,17 @@ func _process_upgrade(upgrade_id: String):
     elif upgrade_id == "Sizes":
         unlocked_sizes = true
     elif upgrade_id == "Drawing1":
-        unlocked_sizes = true
+        unlocked_drawing_sets.push_back(Drawing.DrawingSet.ANIMALS)
     elif upgrade_id == "Drawing2":
-        unlocked_sizes = true
+        # unlocked_drawing_sets.push_back(Drawing.DrawingSet.ANIMALS)
+        pass
     elif upgrade_id == "Drawing3":
-        unlocked_sizes = true
+        # unlocked_drawing_sets.push_back(Drawing.DrawingSet.ANIMALS)
+        pass
     elif upgrade_id == "Drawing4":
-        unlocked_sizes = true
+        # unlocked_drawing_sets.push_back(Drawing.DrawingSet.ANIMALS)
+        pass
+        
     else:
         push_warning("Unknown upgrade ", upgrade_id)
 

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Drawing" format=3 uid="uid://b3rqexj6fjvw"]
+
+[ext_resource type="Texture2D" uid="uid://dqol10gg8b206" path="res://drawing/drawings/cat.png" id="1_sw0y1"]
+[ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="2_oj5kn"]
+
+[resource]
+script = ExtResource("2_oj5kn")
+id = "Cat"
+image = ExtResource("1_sw0y1")
+drawing_set = 1
+weight = 5
+metadata/_custom_type_script = "uid://bj4uga4l46xp4"
