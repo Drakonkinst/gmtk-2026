@@ -195,7 +195,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o46vb"]
 shader = ExtResource("74_7noa1")
-shader_parameter/blur_amount = 2.000000095
+shader_parameter/blur_amount = 3.50000016625
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
 shader = ExtResource("74_7noa1")
@@ -1246,12 +1246,23 @@ texture = ExtResource("84_lon8v")
 [node name="PauseButton" type="Button" parent="HUDLayer/HUD" unique_id=575008747]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 7.0
-offset_top = 660.0
-offset_right = 139.0
-offset_bottom = 713.0
+offset_left = 15.0
+offset_top = 658.0
+offset_right = 109.0
+offset_bottom = 711.0
 theme = ExtResource("18_qpefm")
-text = "Pause `P`"
+text = "Pause"
+
+[node name="Label3" type="Label" parent="HUDLayer/HUD/PauseButton" unique_id=1387429465]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 17.0
+offset_right = 117.0
+offset_bottom = 34.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_color = Color(0.54178685, 0.5417869, 0.54178685, 1)
+theme_override_font_sizes/font_size = 15
+text = "P"
 
 [node name="PauseMenu" type="Control" parent="HUDLayer/HUD" unique_id=1004422991]
 unique_name_in_owner = true
@@ -1273,6 +1284,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Darken" type="ColorRect" parent="HUDLayer/HUD/PauseMenu" unique_id=441562654]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3882353)
 
 [node name="PausedMenuButton" type="Button" parent="HUDLayer/HUD/PauseMenu" unique_id=1164601840]
 unique_name_in_owner = true
@@ -1421,6 +1445,7 @@ bus_name = "UI"
 
 [node name="EndScreen" type="Control" parent="HUDLayer" unique_id=488366321]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -27,7 +27,6 @@ func _unhandled_input(event: InputEvent) -> void:
             get_tree().paused = true
             show()
 
-
 func _on_pause_button_pressed() -> void:
     AudioManager.play_button_sfx()
     get_tree().paused = true
