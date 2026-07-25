@@ -24,6 +24,7 @@ buses/default_bus_layout="uid://dfg7mgunc68uh"
 
 Global="*uid://bpvr3k2wbkqun"
 AudioManager="*uid://b4os27b2e6tsa"
+Talo="*uid://bpmdn8oc34pg7"
 
 [debug]
 
@@ -34,7 +35,10 @@ gdscript/warnings/unused_parameter=0
 window/size/viewport_width=960
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/talo/plugin.cfg")
 
 [input]
 

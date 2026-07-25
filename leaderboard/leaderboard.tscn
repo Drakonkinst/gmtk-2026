@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://cppg62i68ikb7"]
+
+[ext_resource type="Script" uid="uid://dbxhyxgm2xffj" path="res://leaderboard/leaderboard.gd" id="2_w6pbc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73eye"]
+bg_color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[node name="LeaderBoard" type="Control" unique_id=1539792604]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_w6pbc")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1702061320]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=1513600587]
+modulate = Color(1, 1, 1, 0.6156863)
+layout_mode = 2
+expand_mode = 3
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=2102818349]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/Panel" unique_id=165243215]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = 9.0
+offset_top = 625.0
+offset_right = 259.0
+offset_bottom = 709.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_73eye")
+text = "BACK
+"
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel" unique_id=577793428]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 29.0
+offset_right = 1217.0
+offset_bottom = 1029.0
+scale = Vector2(0.64, 0.64)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 30
+
+[node name="Panel" type="Panel" parent="MarginContainer/Panel/VBoxContainer" unique_id=1800329080]
+self_modulate = Color(0.314316, 0.314316, 0.314316, 1)
+custom_minimum_size = Vector2(700, 150)
+layout_mode = 2
+
+[node name="HighScoresLabel" type="Label" parent="MarginContainer/Panel/VBoxContainer/Panel" unique_id=1066703512]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "High Scores"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel4" type="Panel" parent="MarginContainer/Panel/VBoxContainer" unique_id=599894428]
+self_modulate = Color(0.313726, 0.313726, 0.313726, 1)
+custom_minimum_size = Vector2(1100, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Headers" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer/Panel4" unique_id=926485254]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="RankHeader" type="Label" parent="MarginContainer/Panel/VBoxContainer/Panel4/Headers" unique_id=1092058415]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "RANK"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScoreHeader" type="Label" parent="MarginContainer/Panel/VBoxContainer/Panel4/Headers" unique_id=984250195]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "SCORE"
+horizontal_alignment = 1
+
+[node name="NameHeader" type="Label" parent="MarginContainer/Panel/VBoxContainer/Panel4/Headers" unique_id=2044136754]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel/VBoxContainer" unique_id=1667695345]
+custom_minimum_size = Vector2(0, 650)
+layout_mode = 2
+
+[node name="ScoresContainer" type="VBoxContainer" parent="MarginContainer/Panel/VBoxContainer/ScoreScrollContainer" unique_id=726052360]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="LoadingLabel" type="Label" parent="MarginContainer/Panel/VBoxContainer/ScoreScrollContainer" unique_id=1892581073]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+text = "LOADING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="MarginContainer/Panel/VBoxContainer/ScoreScrollContainer/LoadingLabel" unique_id=504662003]
+wait_time = 0.25
+autostart = true
+
+[connection signal="pressed" from="MarginContainer/Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="MarginContainer/Panel/VBoxContainer/ScoreScrollContainer/LoadingLabel/Timer" to="." method="_on_timer_timeout"]
