@@ -8,10 +8,11 @@ class_name RevealElements
 @export var on_bucket_reveal: Array[Control]
 
 func _ready() -> void:
-    _hide_all(on_color_reveal)
-    _hide_all(on_tools_reveal)
-    _hide_all(on_sizes_reveal)
-    _hide_all(on_bucket_reveal)
+    if not Global.game.freedraw_mode:
+        _hide_all(on_color_reveal)
+        _hide_all(on_tools_reveal)
+        _hide_all(on_sizes_reveal)
+        _hide_all(on_bucket_reveal)
 
 func on_upgrade_unlocked(upgrade: Upgrade) -> void:
     if upgrade.id == "Eraser":

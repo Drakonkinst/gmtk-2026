@@ -7,8 +7,8 @@ class_name DrawingManager
 # The sprite the player needs to match
 @export var drawing_sprite: Sprite2D
 
-const K_FACTOR := 3.0 # Lower = requires more precision, higher = more forgiving
-const INCORRECT_COLOR_PENALTY := 0.4 # Deducts a percentage if the wrong color is used
+const K_FACTOR := 3 # Lower = requires more precision, higher = more forgiving
+const INCORRECT_COLOR_PENALTY := 0.3 # Deducts a percentage if the wrong color is used
 static var OFFSETS := [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
 
 class GoalLookup:
@@ -30,17 +30,23 @@ func _precompute_goal_maps_2(goal_array: PackedInt64Array) -> Dictionary:
         lookup_map[i] = default_data
     
     var queue: Array[Vector2i] = []
+    var color_layout: Dictionary
     for i in range(goal_array.size()):
         var color_int := goal_array[i]
         if color_int != Drawing.EMPTY_COLOR_INT:
-             var goal_x := i % Drawing.WIDTH
-             var goal_y := int(i * 1.0 / Drawing.WIDTH) # Getting around the silly syntax warnings
-             var pos := Vector2i(goal_x, goal_y)
-             var data: GoalLookup = lookup_map[i]
-             data.distance = 0.0
-             data.target_color_int = color_int
-             total_goal_pixels += 1
-             queue.append(pos)
+            var goal_x := i % Drawing.WIDTH
+            var goal_y := int(i * 1.0 / Drawing.WIDTH) # Getting around the silly syntax warnings
+            var pos := Vector2i(goal_x, goal_y)
+            var data: GoalLookup = lookup_map[i]
+            data.distance = 0.0
+            data.target_color_int = color_int
+            total_goal_pixels += 1
+            if not color_layout.has(color_int):
+                color_layout[color_int] = 0
+            color_layout[color_int] += 1
+            queue.append(pos)
+    
+    print(color_layout)
     
     if queue.is_empty():
         push_warning("Image has no drawn pixels")

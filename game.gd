@@ -33,6 +33,8 @@ func _ready() -> void:
     hud.select_tool.connect(_on_select_tool)
     hud.select_color.connect(_on_select_color)
     hud.select_size.connect(_on_select_size)
+    if freedraw_mode:
+        hud.on_freedraw_mode()
     
     # HUD should only listen to game signals, pass everything up
     score_manager.update_score.connect(_on_update_score)
@@ -42,6 +44,7 @@ func _ready() -> void:
     input_manager.select_color_index.connect(_on_select_color_index)
     upgrade_manager.attempt_upgrade_1.connect(_on_attempt_upgrade_1)
     upgrade_manager.attempt_upgrade_2.connect(_on_attempt_upgrade_2)
+    input_manager.scroll_changed.connect(_on_scroll_change)
     
     countdown_manager.game_lose.connect(_on_game_lose)
     
@@ -149,3 +152,9 @@ func _has_enough_time(seconds: int) -> bool:
 func _spend_time(seconds: int) -> void:
     if not DEBUG_MODE:
         countdown_manager.change_time_big(-seconds)
+
+func _on_scroll_change(dir: int) -> void:
+    if dir > 0:
+        player_drawing.increment_size()
+    else:
+        player_drawing.decrement_size()
