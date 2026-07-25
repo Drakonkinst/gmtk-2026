@@ -128,7 +128,7 @@ func _on_upgrade_unlock(upgrade: Upgrade) -> void:
     # Start a new drawing without updating score, count, or timer
     drawing_manager.set_next_drawing()
     player_drawing.on_new_drawing()
-    AudioManager.play_clear_sfx()
+    AudioManager.play_unlock_sfx()
 
 func _on_attempt_upgrade_1(upgrade: Upgrade) -> void:
     if _has_enough_time(upgrade.cost):

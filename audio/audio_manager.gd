@@ -8,6 +8,7 @@ extends Node
 @export var bad_sfx: AudioStreamPlayer
 @export var button_sfx: AudioStreamPlayer
 @export var hover_sfx: AudioStreamPlayer
+@export var unlock_sfx: AudioStreamPlayer
 @export var draw_sfx: AudioStreamPlayer
 @export var erase_sfx: AudioStreamPlayer
 @export var clear_sfx: AudioStreamPlayer
@@ -40,6 +41,9 @@ func play_button_sfx() -> void:
     
 func play_hover_sfx() -> void:
     hover_sfx.play()
+
+func play_unlock_sfx() -> void:
+    unlock_sfx.play()
 
 var starting_draw_db: float
 var starting_draw_pitch: float
