@@ -14,6 +14,7 @@ extends Node
 @export var brush_select_sfx: AudioStreamPlayer
 @export var color_select_sfx: AudioStreamPlayer
 
+
 func start_bgm() -> void:
     bgm.play()
 
@@ -21,13 +22,13 @@ func play_submit_sfx() -> void:
     submit_sfx.play()
 
 func play_good_sfx(accuracy: float) -> void:
-    var pitch_shift: float = 0.5 + accuracy
-    good_sfx.pitch_scale = pitch_shift
+    #var pitch_shift: float = 0.5 + accuracy
+    #good_sfx.pitch_scale = pitch_shift
     good_sfx.play()
 
 func play_bad_sfx(accuracy: float) -> void:
-    var pitch_shift: float = 0.8 + accuracy
-    bad_sfx.pitch_scale = pitch_shift
+    #var pitch_shift: float = 0.8 + accuracy
+    #bad_sfx.pitch_scale = pitch_shift
     bad_sfx.play()
     
 func play_button_sfx() -> void:

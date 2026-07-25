@@ -22,10 +22,12 @@ streams_count = 1
 stream_0/stream = ExtResource("2_drlug")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8j4p3"]
+random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("3_vxw8f")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yf5fn"]
+random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("4_mhfhn")
 
