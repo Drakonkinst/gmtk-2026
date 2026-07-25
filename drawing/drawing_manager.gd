@@ -137,7 +137,6 @@ func calculate_accuracy(user_array: PackedInt64Array) -> float:
         return 0
     print(total_pixels_drawn, " pixels drawn vs ", total_goal_pixels, " goal pixels")
     var precision = cumulative_accuracy / max(total_pixels_drawn, total_goal_pixels)
-    var coverage = min(1.0, goal_pixels_covered * 1.0 / total_goal_pixels)
     return precision
 
 func set_next_drawing() -> void:

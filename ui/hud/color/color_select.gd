@@ -35,6 +35,6 @@ func update_button_states() -> void:
     for i in range(len(buttons)):
         var button := buttons[i]
         var color := colors[i]
-        button.disabled = selected_color == color 
+        button.disabled = (not upgrade_manager.unlocked_colors) or selected_color == color 
     
     

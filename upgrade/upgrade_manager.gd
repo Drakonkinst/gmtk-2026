@@ -28,8 +28,8 @@ func _ready() -> void:
     upgrade_panel_2.pressed.connect(_on_upgrade_panel_2_pressed)
 
     unlocked_tools[PlayerDrawing.Tool.BRUSH] = true
-    unlocked_tools[PlayerDrawing.Tool.ERASER] = true
-    unlocked_tools[PlayerDrawing.Tool.BUCKET] = true
+    unlocked_tools[PlayerDrawing.Tool.ERASER] = false
+    unlocked_tools[PlayerDrawing.Tool.BUCKET] = false
 
 func _process_upgrade(upgrade_id: String):
     if upgrade_id == "Eraser":
