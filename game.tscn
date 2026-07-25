@@ -276,11 +276,12 @@ anchors_preset = 0
 script = ExtResource("31_jo4nb")
 
 [node name="ScoreLabel" type="RichTextLabel" parent="HUDLayer/HUD/ScoreCounter" unique_id=721812396]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 594.0
+offset_left = 576.0
 offset_top = 24.0
 offset_right = 724.0
 offset_bottom = 64.0
@@ -288,7 +289,7 @@ grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 24
-text = "Score:"
+text = "Score (1x):"
 scroll_active = false
 horizontal_alignment = 2
 
@@ -1071,6 +1072,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("66_vyqle")
 
 [node name="EndScreen" type="Control" parent="HUDLayer" unique_id=488366321]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

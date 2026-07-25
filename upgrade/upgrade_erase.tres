@@ -6,6 +6,5 @@
 script = ExtResource("1_ukb3x")
 id = "Eraser"
 text = "ERASER Tool"
-cost_text = "Cost: 5s"
-cost = 5
+cost = 10
 metadata/_custom_type_script = "uid://cyqjkk6ec601k"

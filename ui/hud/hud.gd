@@ -24,12 +24,14 @@ func _ready() -> void:
     tool_select.tool_button_pressed.connect(_on_tool_button_pressed)
     color_select.select_color.connect(_on_select_color)
     size_select.select_size.connect(_on_select_size)
+    score_counter.set_multiplier(1.0)
     
     if Global.game.freedraw_mode:
         drawing_count.text = "0"
 
 func on_upgrade_unlocked(upgrade: Upgrade) -> void:
     reveal_elements.on_upgrade_unlocked(upgrade)
+    score_counter.set_multiplier(Global.game.upgrade_manager.score_multiplier)
 
 func on_complete_drawing(accuracy: float) -> void:
     accuracy_display.text = str(int(accuracy * 100)) + "%"

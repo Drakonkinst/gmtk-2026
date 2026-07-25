@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_8ppn3")
 id = "Colors"
-text = "More COLORS + More DRAWINGS"
-cost = 5
+text = "More COLORS"
+cost = 20
 metadata/_custom_type_script = "uid://cyqjkk6ec601k"

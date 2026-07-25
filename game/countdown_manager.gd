@@ -3,14 +3,16 @@ extends Node2D
 
 signal game_lose
 
-const TIME_PER_DRAWING := 20
-const ACCURACY_THRESHOLD := 0.2
-const MAX_TIME := 45
+const STARTING_TIME := 25
+const MAX_TIME_PER_DRAWING := 25
+const BASE_TIME_PER_DRAWING := 3
+const ACCURACY_THRESHOLD := 0.5
+const MAX_TIME := 60
 
 @onready var countdown_timer: CountdownTimer = %CountdownTimer
 @onready var timer: Timer = $Timer
 
-var time_left: int = TIME_PER_DRAWING
+var time_left: int = STARTING_TIME
 var timer_initialized := false
 
 func get_seconds_left() -> int:
@@ -19,7 +21,8 @@ func get_seconds_left() -> int:
 func add_time(accuracy: float = 1) -> void:
     var time_gained: int = 0
     if accuracy >= ACCURACY_THRESHOLD:
-        time_gained = int(TIME_PER_DRAWING * accuracy)
+        var accuracy_time_multiplier := (accuracy - ACCURACY_THRESHOLD) / (1 - ACCURACY_THRESHOLD)
+        time_gained = int(BASE_TIME_PER_DRAWING + accuracy_time_multiplier * (MAX_TIME_PER_DRAWING - BASE_TIME_PER_DRAWING))
     change_time_big(time_gained)
 
 func change_time_big(delta_time: int) -> void:

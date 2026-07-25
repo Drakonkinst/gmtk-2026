@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_y3ma1")
 id = "Sizes"
-text = "Brush SIZES + More DRAWINGS"
-cost = 5
+text = "Brush SIZES"
+cost = 15
 metadata/_custom_type_script = "uid://cyqjkk6ec601k"
