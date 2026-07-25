@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://bqa8hn3hsplq2"]
 
-[ext_resource type="FontFile" uid="uid://caov6fnyg0n1r" path="res://ui/fonts/Kenney Thick.ttf" id="1_67fxd"]
+[ext_resource type="FontFile" uid="uid://caov6fnyg0n1r" path="res://ui/fonts/KenneyThick.ttf" id="1_67fxd"]
 [ext_resource type="Texture2D" uid="uid://fiw2bkdiq7re" path="res://ui/hud/button_ninepatch_locked.png" id="1_lta3a"]
 [ext_resource type="Texture2D" uid="uid://cyqu48gvb83dy" path="res://ui/hud/button_ninepatch_selected.png" id="2_67fxd"]
 [ext_resource type="Texture2D" uid="uid://bv7extlajf0e7" path="res://ui/hud/button_ninepatch.png" id="3_pj8l7"]

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://caov6fnyg0n1r"
-path="res://.godot/imported/Kenney Thick.ttf-c7251a871e5c5f22a6f22633eb8cf4ac.fontdata"
+path="res://.godot/imported/KenneyThick.ttf-a598c0b1276020873e8d340593431dee.fontdata"
 
 [deps]
 
-source_file="res://ui/fonts/Kenney Thick.ttf"
-dest_files=["res://.godot/imported/Kenney Thick.ttf-c7251a871e5c5f22a6f22633eb8cf4ac.fontdata"]
+source_file="res://ui/fonts/KenneyThick.ttf"
+dest_files=["res://.godot/imported/KenneyThick.ttf-a598c0b1276020873e8d340593431dee.fontdata"]
 
 [params]
 

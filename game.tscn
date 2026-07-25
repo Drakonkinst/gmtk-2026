@@ -5,18 +5,27 @@
 [ext_resource type="Texture2D" uid="uid://vpexp42n6xj3" path="res://ui/hud/game_background.png" id="2_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://cqyd6c2u2yoag" path="res://ui/hud/score_counter.tscn" id="3_mfdv2"]
 [ext_resource type="Script" uid="uid://b85vccuexu5ts" path="res://game/input_manager.gd" id="4_7sc4i"]
-[ext_resource type="Script" uid="uid://cc7nffoorgjkr" path="res://game/upgrade_manager.gd" id="4_fc0e3"]
+[ext_resource type="Script" uid="uid://cc7nffoorgjkr" path="res://upgrade/upgrade_manager.gd" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://b5pl7v4o3x0hf" path="res://drawing/drawings/circle.png" id="4_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://d3c2iuey4kh3e" path="res://ui/hud/game_foreground.png" id="4_mljfx"]
 [ext_resource type="Script" uid="uid://jbnk6ktenqkq" path="res://drawing/drawing_manager.gd" id="5_vef74"]
 [ext_resource type="Script" uid="uid://daa7n7fsiyrc4" path="res://drawing/image_loader.gd" id="6_hve3p"]
+[ext_resource type="Script" uid="uid://cyqjkk6ec601k" path="res://upgrade/upgrade.gd" id="7_du4n2"]
 [ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="7_mfdv2"]
 [ext_resource type="Resource" uid="uid://c7c8our2jktyo" path="res://drawing/drawings/circle.tres" id="8_iotsf"]
+[ext_resource type="Resource" uid="uid://cp3kms0yhejdo" path="res://upgrade/upgrade_erase.tres" id="8_ra4rb"]
 [ext_resource type="Resource" uid="uid://dbb16snhpmpfc" path="res://drawing/drawings/square.tres" id="8_vef74"]
 [ext_resource type="Resource" uid="uid://7bgkcmf5ef3" path="res://drawing/drawings/triangle.tres" id="9_hve3p"]
+[ext_resource type="Resource" uid="uid://b1f7r0wwsiw43" path="res://upgrade/upgrade_colors.tres" id="9_ple6s"]
+[ext_resource type="Resource" uid="uid://d27ju0vv8r1hi" path="res://upgrade/upgrade_brush_size.tres" id="10_jo4nb"]
+[ext_resource type="Resource" uid="uid://cu305esiuxkon" path="res://upgrade/upgrade_bucket.tres" id="11_56gn1"]
 [ext_resource type="Script" uid="uid://b6c5njwc8xkvv" path="res://drawing/player_drawing.gd" id="11_215e1"]
+[ext_resource type="Resource" uid="uid://c8o484f5851ff" path="res://upgrade/upgrade_drawing_1.tres" id="12_avmo2"]
 [ext_resource type="Script" uid="uid://0ihfhxhut842" path="res://game/score_manager.gd" id="12_iotsf"]
+[ext_resource type="Resource" uid="uid://cleyb3hgr4vju" path="res://upgrade/upgrade_drawing_2.tres" id="13_vyqle"]
 [ext_resource type="Script" uid="uid://bmkmrmvnk0kp2" path="res://game/countdown_manager.gd" id="14_e8heu"]
+[ext_resource type="Resource" uid="uid://bfrbj7i0adf5x" path="res://upgrade/upgrade_drawing_3.tres" id="14_xoeau"]
+[ext_resource type="Resource" uid="uid://b8bygg82fsffi" path="res://upgrade/upgrade_drawing_4.tres" id="15_6qn5j"]
 [ext_resource type="Script" uid="uid://d2844m14xplb" path="res://game/accuracy_manager.gd" id="15_xa8c5"]
 [ext_resource type="PackedScene" uid="uid://dkrdgjdh3cfns" path="res://ui/hud/countdown_timer.tscn" id="16_80cx4"]
 [ext_resource type="Texture2D" uid="uid://r5scba5aqwx6" path="res://ui/hud/tools/button_eraser_default.png" id="16_rvswv"]
@@ -52,6 +61,7 @@
 [ext_resource type="Script" uid="uid://dwhxqb43wiyuo" path="res://ui/hud/h_slider.gd" id="43_edr7y"]
 [ext_resource type="FontFile" uid="uid://da35yew8fgybf" path="res://ui/fonts/ari-w9500-condensed-display.ttf" id="43_kq12w"]
 [ext_resource type="FontFile" uid="uid://csdil41k4yke5" path="res://ui/fonts/pico12.ttf" id="52_tb2lt"]
+[ext_resource type="Script" uid="uid://unhqjyw1ah55" path="res://upgrade/upgrade_panel.gd" id="61_wj41c"]
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
@@ -80,9 +90,13 @@ texture = ExtResource("4_mljfx")
 unique_name_in_owner = true
 script = ExtResource("4_7sc4i")
 
-[node name="UpgradeManager" type="Node2D" parent="." unique_id=1817957434]
+[node name="UpgradeManager" type="Node2D" parent="." unique_id=1817957434 node_paths=PackedStringArray("upgrade_panel_1", "upgrade_panel_2")]
 unique_name_in_owner = true
 script = ExtResource("4_fc0e3")
+upgrade_panel_1 = NodePath("../HUDLayer/HUD/Upgrades/Panel1")
+upgrade_panel_2 = NodePath("../HUDLayer/HUD/Upgrades/Panel2")
+upgrade_list_1 = Array[ExtResource("7_du4n2")]([ExtResource("8_ra4rb"), ExtResource("9_ple6s"), ExtResource("10_jo4nb"), ExtResource("11_56gn1")])
+upgrade_list_2 = Array[ExtResource("7_du4n2")]([ExtResource("12_avmo2"), ExtResource("13_vyqle"), ExtResource("14_xoeau"), ExtResource("15_6qn5j")])
 
 [node name="DrawingManager" type="Node2D" parent="." unique_id=716532831 node_paths=PackedStringArray("drawing_sprite")]
 unique_name_in_owner = true
@@ -138,6 +152,8 @@ offset_bottom = -101.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("18_qpefm")
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 18
 text = "Submit"
 
@@ -609,22 +625,112 @@ bus_name = "UI"
 
 [node name="Upgrades" type="Control" parent="HUDLayer/HUD" unique_id=1663861140]
 anchors_preset = 0
+offset_top = 15.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 55.0
 
-[node name="Panel1" type="Button" parent="HUDLayer/HUD/Upgrades" unique_id=437447164]
+[node name="Panel1" type="Button" parent="HUDLayer/HUD/Upgrades" unique_id=437447164 node_paths=PackedStringArray("text_label", "cost_label")]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 752.0
+offset_left = 775.0
 offset_top = 220.0
-offset_right = 901.0
-offset_bottom = 314.0
+offset_right = 935.0
+offset_bottom = 345.0
 theme = ExtResource("18_qpefm")
+script = ExtResource("61_wj41c")
+text_label = NodePath("Unlock")
+cost_label = NodePath("Cost")
 
-[node name="Label" type="Label" parent="HUDLayer/HUD/Upgrades/Panel1" unique_id=140754038]
+[node name="Unlock" type="RichTextLabel" parent="HUDLayer/HUD/Upgrades/Panel1" unique_id=894538099]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 19.0
-offset_right = 68.0
-offset_bottom = 42.0
-theme_override_fonts/font = ExtResource("52_tb2lt")
-text = "Text"
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 154.0
+offset_bottom = 93.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "ERASER Tool + More DRAWINGS
+"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="RichTextLabel" parent="HUDLayer/HUD/Upgrades/Panel1" unique_id=62326754]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 89.0
+offset_right = 146.0
+offset_bottom = 114.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+bbcode_enabled = true
+text = "Cost: 5s"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Panel2" type="Button" parent="HUDLayer/HUD/Upgrades" unique_id=1456876735 node_paths=PackedStringArray("text_label", "cost_label")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 775.0
+offset_top = 360.0
+offset_right = 935.0
+offset_bottom = 485.0
+theme = ExtResource("18_qpefm")
+script = ExtResource("61_wj41c")
+text_label = NodePath("Unlock")
+cost_label = NodePath("Cost")
+
+[node name="Unlock" type="RichTextLabel" parent="HUDLayer/HUD/Upgrades/Panel2" unique_id=968887373]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 154.0
+offset_bottom = 92.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "2x Score + More DRAWINGS
+"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="RichTextLabel" parent="HUDLayer/HUD/Upgrades/Panel2" unique_id=1610130322]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 89.0
+offset_right = 150.0
+offset_bottom = 114.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Cost: 5s"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label" type="Label" parent="HUDLayer/HUD/Upgrades" unique_id=1699560162]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 180.0
+offset_right = 940.0
+offset_bottom = 216.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 21
+text = "UNLOCK"
+horizontal_alignment = 1

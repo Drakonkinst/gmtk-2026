@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://cp3kms0yhejdo"]
+
+[ext_resource type="Script" uid="uid://cyqjkk6ec601k" path="res://upgrade/upgrade.gd" id="1_ukb3x"]
+
+[resource]
+script = ExtResource("1_ukb3x")
+id = "Eraser"
+text = "ERASER Tool"
+cost_text = "Cost: 5s"
+cost = 5
+metadata/_custom_type_script = "uid://cyqjkk6ec601k"

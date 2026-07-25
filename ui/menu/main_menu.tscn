@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bytpnprwy030i" path="res://ui/menu/cloud.png" id="4_8gmgf"]
 [ext_resource type="Theme" uid="uid://bqa8hn3hsplq2" path="res://ui/hud/hud_theme.tres" id="6_u4nky"]
 [ext_resource type="FontFile" uid="uid://da35yew8fgybf" path="res://ui/fonts/ari-w9500-condensed-display.ttf" id="7_8gmgf"]
-[ext_resource type="FontFile" uid="uid://caov6fnyg0n1r" path="res://ui/fonts/Kenney Thick.ttf" id="8_h2671"]
+[ext_resource type="FontFile" uid="uid://caov6fnyg0n1r" path="res://ui/fonts/KenneyThick.ttf" id="8_h2671"]
 [ext_resource type="Script" uid="uid://dwhxqb43wiyuo" path="res://ui/hud/h_slider.gd" id="9_umht6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yc8k7"]
