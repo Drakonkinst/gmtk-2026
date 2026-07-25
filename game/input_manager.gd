@@ -44,9 +44,16 @@ func _process_drawing(delta: float):
         select_tool.emit(PlayerDrawing.Tool.BRUSH)
     if Input.is_action_just_pressed("select_eraser"):
         select_tool.emit(PlayerDrawing.Tool.ERASER)
+    if Input.is_action_just_pressed("select_bucket"):
+        select_tool.emit(PlayerDrawing.Tool.BUCKET)
     if Input.is_action_just_pressed("submit"):
         submit_drawing.emit()
     
+    if Input.is_action_just_pressed("erase_override"):
+        AudioManager.play_brush_select_sfx()
+    if Input.is_action_just_released("erase_override"):
+        AudioManager.play_brush_select_sfx()
+        
     var num_colors := 5
     for i in range(num_colors + 1):
         if i > 0:

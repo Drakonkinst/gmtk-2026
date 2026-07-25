@@ -74,11 +74,15 @@ func _on_draw(draw_pos: Vector2i) -> void:
     player_drawing.on_draw(draw_pos)
 
 func _on_select_tool(tool: PlayerDrawing.Tool) -> void:
+    if tool == player_drawing.selected_tool: return
+    
     player_drawing.set_selected_tool(tool)
     AudioManager.play_button_sfx()
     AudioManager.play_brush_select_sfx()
     
 func _on_select_color(color: Color) -> void:
+    if color == player_drawing.brush_color: return
+    
     player_drawing.set_brush_color(color)
     AudioManager.play_button_sfx()
     AudioManager.play_color_select_sfx()
@@ -87,6 +91,8 @@ func _on_select_color_index(index: int) -> void:
     hud.select_color_index(index)
 
 func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
+    if size == player_drawing.brush_size: return
+    
     player_drawing.set_brush_size(size)
     AudioManager.play_button_sfx()
     AudioManager.play_brush_select_sfx()
