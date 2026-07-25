@@ -7,7 +7,6 @@ class_name Leaderboard
 @onready var loading_label := %LoadingLabel as Label
 @onready var high_scores_label := %HighScoresLabel as Label
 
-
 func _ready() -> void:
     refresh_scores()
 

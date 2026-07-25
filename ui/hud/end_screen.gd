@@ -18,11 +18,25 @@ extends Control
 
 var score_posted := false
 
+var displayed_score := 0
+const SCORE_PER_SECOND := 4000
+const MAX_DELAY := 1.5
+var target_score := 0
+var delay_left := 0.0
+
 func _ready() -> void:
     post_button.pressed.connect(_on_post_button_pressed)
     menu_button.pressed.connect(_on_menu_button_pressed)
     replay_button.pressed.connect(_on_replay_button_pressed)
     user_entry.text = Global.user_name
+    
+func _process(delta: float) -> void:
+    if delay_left > 0:
+        delay_left -= delta
+    else:
+        if displayed_score < target_score:
+            displayed_score = min(displayed_score + SCORE_PER_SECOND * delta, target_score)
+        end_score_value.text = str(displayed_score)
     
 func _on_post_button_pressed() -> void:
     if score_posted or len(user_entry.text) <= 0:
@@ -41,7 +55,9 @@ func _on_replay_button_pressed() -> void:
     
 func on_game_end() -> void:
     show()
-    end_score_value.text = str(Global.score)
+    displayed_score = 0
+    delay_left = MAX_DELAY
+    target_score = Global.score
     end_accuracy_value.text = Global.average_accuracy_str
     end_time_spent.text = Global.total_time_str
     end_drawings_completed.text = str(Global.drawings_made)
