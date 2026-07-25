@@ -20,6 +20,8 @@ var brush_mode: BrushMode = BrushMode.RADIAL
 var brush_color := Color(0, 0, 0, 1)
 var selected_tool := Tool.BRUSH
 
+var time_since_drawing_started := 0.0
+
 func _ready() -> void:
     player_image = Image.create_empty(Drawing.WIDTH, Drawing.HEIGHT, false, Image.FORMAT_RGBA8)
     player_image_texture = ImageTexture.create_from_image(player_image)
@@ -29,6 +31,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     if needs_update:
         update_image()
+    time_since_drawing_started += delta
+
+func on_new_drawing() -> void:
+    time_since_drawing_started = 0
+    reset_image()
 
 func get_current_tool() -> Tool:
     if Global.game.input_manager.erase_override:

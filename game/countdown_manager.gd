@@ -5,29 +5,28 @@ signal game_lose
 
 const TIME_PER_DRAWING := 15
 const ACCURACY_THRESHOLD := 0.2
+const MAX_TIME := 30
 
 @onready var countdown_timer: CountdownTimer = %CountdownTimer
 @onready var timer: Timer = $Timer
 
 var time_left: int = TIME_PER_DRAWING
+var timer_initialized := false
 
 func get_seconds_left() -> int:
     return time_left
 
-func spend_seconds(time_lost: int) -> void:
-    countdown_timer.change_time(-time_lost)
-    set_time(time_left - time_lost)
-
 func add_time(accuracy: float = 1) -> void:
     var time_gained: int = 0
-    
     if accuracy >= ACCURACY_THRESHOLD:
         time_gained = int(TIME_PER_DRAWING * accuracy)
-    
-    countdown_timer.change_time(time_gained)
-    set_time(time_left + time_gained)
+    change_time_big(time_gained)
 
-func set_time(time: int) -> void:
+func change_time_big(delta_time: int) -> void:
+    set_time(time_left + delta_time, true)
+
+func set_time(time: int, big_change: bool) -> void:
+    var prev_time := time_left
     time_left = time
     countdown_timer.update_displayed_time(time_left)
     if time_left < 0:
@@ -35,9 +34,17 @@ func set_time(time: int) -> void:
         timer.stop()
         game_lose.emit()
         AudioManager.stop_tick_tock_sfx()
+    var delta := time - prev_time
+    if big_change:
+        countdown_timer.change_time(delta)
 
 func _ready() -> void:
     timer.timeout.connect(_on_timer_timeout)
 
+func _process(delta: float) -> void:
+    if not timer_initialized:
+        set_time(time_left, false)
+        timer_initialized = true
+
 func _on_timer_timeout() -> void:
-    set_time(time_left - 1)
+    set_time(time_left - 1, false)

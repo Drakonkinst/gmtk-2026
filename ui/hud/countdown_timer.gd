@@ -9,6 +9,7 @@ const RED_TEXT_THRESHOLD := 5
 
 var displayed_time_left: int
 
+# When time changes in a big way, use this to show the delta
 func change_time(delta_time: int):
     if delta_time >= 0:
         added_label.text = "+%ss" % (delta_time)
@@ -16,7 +17,10 @@ func change_time(delta_time: int):
         added_label.add_theme_color_override("font_color", Color.GREEN)
         if delta_time == 0:
             added_label.add_theme_color_override("font_color", Color.RED)
-    # TODO: Add effects for removing time (spending time for an upgrade)
+    elif delta_time < 0:
+        added_label.text = "-%ss" % (-delta_time)
+        animation_player.play("adding_time")
+        added_label.add_theme_color_override("font_color", Color.RED)
 
 func update_displayed_time(time_left: int):
     displayed_time_left = max(0, time_left)

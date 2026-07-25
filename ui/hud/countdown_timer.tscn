@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dkrdgjdh3cfns"]
+[gd_scene format=3 uid="uid://bbhow0jgf1x32"]
 
 [ext_resource type="Script" uid="uid://bnlpmjhy4gf13" path="res://ui/hud/countdown_timer.gd" id="1_5sxqa"]
 [ext_resource type="FontFile" uid="uid://csdil41k4yke5" path="res://ui/fonts/pico12.ttf" id="2_b1kc4"]

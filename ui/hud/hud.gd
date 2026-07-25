@@ -15,6 +15,8 @@ signal select_size(size: PlayerDrawing.BrushSize)
 @onready var color_select: ColorSelect = %ColorSelect
 @onready var size_select: SizeSelect = %SizeSelect
 @onready var reveal_elements: RevealElements = %RevealElements
+@onready var accuracy_display: RichTextLabel = %AccuracyValue
+@onready var drawing_count: RichTextLabel = %DrawingCount
 
 func _ready() -> void:
     submit_button.pressed.connect(_on_submit_button_pressed)
@@ -22,9 +24,20 @@ func _ready() -> void:
     tool_select.tool_button_pressed.connect(_on_tool_button_pressed)
     color_select.select_color.connect(_on_select_color)
     size_select.select_size.connect(_on_select_size)
+    
+    if Global.game.freedraw_mode:
+        drawing_count.text = "0"
 
 func on_upgrade_unlocked(upgrade: Upgrade) -> void:
     reveal_elements.on_upgrade_unlocked(upgrade)
+
+func on_complete_drawing(accuracy: float) -> void:
+    accuracy_display.text = str(int(accuracy * 100)) + "%"
+    var drawings_completed_text := str(min(Global.game.drawings_completed + 1, Global.game.MAX_DRAWINGS))
+    if Global.game.freedraw_mode:
+        drawing_count.text = drawings_completed_text
+    else:
+        drawing_count.text =  drawings_completed_text + " / " + str(Global.game.MAX_DRAWINGS)
 
 func select_color_index(index: int) -> void:
     color_select.select_color_index(index)

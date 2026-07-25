@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://botihjttrss8i" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://da7rifxflsrrg" path="res://ui/hud/hud.gd" id="2_hve3p"]
 [ext_resource type="Texture2D" uid="uid://vpexp42n6xj3" path="res://ui/hud/game_background.png" id="2_lc2xo"]
-[ext_resource type="PackedScene" uid="uid://cqyd6c2u2yoag" path="res://ui/hud/score_counter.tscn" id="3_mfdv2"]
 [ext_resource type="Script" uid="uid://b85vccuexu5ts" path="res://game/input_manager.gd" id="4_7sc4i"]
 [ext_resource type="Script" uid="uid://cc7nffoorgjkr" path="res://upgrade/upgrade_manager.gd" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://b5pl7v4o3x0hf" path="res://drawing/drawings/circle.png" id="4_j5wjh"]
@@ -26,8 +25,7 @@
 [ext_resource type="Script" uid="uid://bmkmrmvnk0kp2" path="res://game/countdown_manager.gd" id="14_e8heu"]
 [ext_resource type="Resource" uid="uid://bfrbj7i0adf5x" path="res://upgrade/upgrade_drawing_3.tres" id="14_xoeau"]
 [ext_resource type="Resource" uid="uid://b8bygg82fsffi" path="res://upgrade/upgrade_drawing_4.tres" id="15_6qn5j"]
-[ext_resource type="Script" uid="uid://d2844m14xplb" path="res://game/accuracy_manager.gd" id="15_xa8c5"]
-[ext_resource type="PackedScene" uid="uid://dkrdgjdh3cfns" path="res://ui/hud/countdown_timer.tscn" id="16_80cx4"]
+[ext_resource type="Script" path="res://game/accuracy_manager.gd" id="15_xa8c5"]
 [ext_resource type="Texture2D" uid="uid://r5scba5aqwx6" path="res://ui/hud/tools/button_eraser_default.png" id="16_rvswv"]
 [ext_resource type="Script" uid="uid://06tm0gbxmwx1" path="res://ui/hud/tools/tool_select.gd" id="16_x5p1p"]
 [ext_resource type="Script" uid="uid://c4icfclae4nwk" path="res://ui/hud/color/color_select.gd" id="17_bnpwn"]
@@ -43,11 +41,10 @@
 [ext_resource type="Texture2D" uid="uid://cf73lihrqxvsq" path="res://ui/hud/color/color_button_mask.png" id="20_5b14r"]
 [ext_resource type="Texture2D" uid="uid://nok8fgprgqs5" path="res://ui/hud/tools/button_brush_locked.png" id="20_x5p1p"]
 [ext_resource type="Texture2D" uid="uid://bk6xg0bnn7nka" path="res://ui/hud/tools/button_brush_selected.png" id="21_qhcbd"]
-[ext_resource type="PackedScene" uid="uid://cn26uywgn1h5r" path="res://ui/hud/accuracy_display.tscn" id="25_i2p71"]
-[ext_resource type="Script" uid="uid://d1brb37rhwudm" path="res://ui/hud/accuracy_display.gd" id="26_xa8c5"]
 [ext_resource type="Script" uid="uid://cc0rhyh8d71w2" path="res://ui/hud/reveal_elements.gd" id="27_ple6s"]
 [ext_resource type="Script" uid="uid://6fycpfut6kfw" path="res://ui/hud/size/size_select.gd" id="30_7knny"]
 [ext_resource type="Texture2D" uid="uid://cpcuh7x5pwfhg" path="res://ui/hud/size/button_small_default.png" id="31_eu6ph"]
+[ext_resource type="Script" uid="uid://c1seer2ipmrpo" path="res://ui/hud/score_counter.gd" id="31_jo4nb"]
 [ext_resource type="Texture2D" uid="uid://caf1vqr57t57e" path="res://ui/hud/tools/button_bucket_default.png" id="32_87ddb"]
 [ext_resource type="Texture2D" uid="uid://bnnvjh8mrq8p" path="res://ui/hud/size/button_small_locked.png" id="32_edr7y"]
 [ext_resource type="Texture2D" uid="uid://bkht6muhwxg2s" path="res://ui/hud/size/button_small_selected.png" id="33_kq12w"]
@@ -63,8 +60,69 @@
 [ext_resource type="Script" uid="uid://dwhxqb43wiyuo" path="res://ui/hud/h_slider.gd" id="43_edr7y"]
 [ext_resource type="FontFile" uid="uid://da35yew8fgybf" path="res://ui/fonts/ari-w9500-condensed-display.ttf" id="43_kq12w"]
 [ext_resource type="FontFile" uid="uid://csdil41k4yke5" path="res://ui/fonts/pico12.ttf" id="52_tb2lt"]
+[ext_resource type="Script" uid="uid://bnlpmjhy4gf13" path="res://ui/hud/countdown_timer.gd" id="59_ra4rb"]
 [ext_resource type="Script" uid="uid://unhqjyw1ah55" path="res://upgrade/upgrade_panel.gd" id="61_wj41c"]
 [ext_resource type="Texture2D" uid="uid://qmoiepqka1xf" path="res://ui/hud/1x1.png" id="63_ra4rb"]
+
+[sub_resource type="Animation" id="Animation_5sxqa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AddedLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-29, 42)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AddedLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b1kc4"]
+resource_name = "adding_time"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AddedLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.39229208, 1),
+"update": 0,
+"values": [Vector2(-11, 42), Vector2(-11, -24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AddedLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.0000005, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jcdv0"]
+_data = {
+&"RESET": SubResource("Animation_5sxqa"),
+&"adding_time": SubResource("Animation_b1kc4")
+}
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
@@ -193,9 +251,86 @@ texture_pressed = ExtResource("18_lwlx3")
 texture_hover = ExtResource("18_lwlx3")
 texture_disabled = ExtResource("17_m28ev")
 
-[node name="ScoreCounter" parent="HUDLayer/HUD" unique_id=821451000 instance=ExtResource("3_mfdv2")]
+[node name="ScoreCounter" type="Control" parent="HUDLayer/HUD" unique_id=821451000]
 unique_name_in_owner = true
 layout_mode = 1
+anchors_preset = 0
+script = ExtResource("31_jo4nb")
+
+[node name="ScoreLabel" type="RichTextLabel" parent="HUDLayer/HUD/ScoreCounter" unique_id=721812396]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 594.0
+offset_top = 24.0
+offset_right = 724.0
+offset_bottom = 64.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 24
+text = "Score:"
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="ScoreValue" type="RichTextLabel" parent="HUDLayer/HUD/ScoreCounter" unique_id=496825270]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 731.0
+offset_top = 24.0
+offset_right = 814.0
+offset_bottom = 54.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 26
+text = "0"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="DrawingCounter" type="Control" parent="HUDLayer/HUD" unique_id=1556238700]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 0
+
+[node name="DrawingLabel" type="RichTextLabel" parent="HUDLayer/HUD/DrawingCounter" unique_id=201460081]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 122.0
+offset_top = 41.0
+offset_right = 252.0
+offset_bottom = 81.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 24
+text = "Drawing:"
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="DrawingCount" type="RichTextLabel" parent="HUDLayer/HUD/DrawingCounter" unique_id=398777016]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 259.0
+offset_top = 41.0
+offset_right = 342.0
+offset_bottom = 71.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 26
+text = "1 / 20"
+scroll_active = false
+horizontal_alignment = 1
 
 [node name="ColorSelect" type="Control" parent="HUDLayer/HUD" unique_id=1987601810 node_paths=PackedStringArray("buttons")]
 unique_name_in_owner = true
@@ -583,18 +718,99 @@ texture_pressed = ExtResource("38_87ddb")
 texture_hover = ExtResource("39_mljfx")
 texture_disabled = ExtResource("38_87ddb")
 
-[node name="CountdownTimer" parent="HUDLayer/HUD" unique_id=300404977 instance=ExtResource("16_80cx4")]
+[node name="CountdownTimer" type="Control" parent="HUDLayer/HUD" unique_id=300404977]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
+script = ExtResource("59_ra4rb")
 
-[node name="AccuracyDisplay" parent="HUDLayer/HUD" unique_id=862877218 instance=ExtResource("25_i2p71")]
+[node name="TimeLabel" type="Label" parent="HUDLayer/HUD/CountdownTimer" unique_id=1845728302]
 unique_name_in_owner = true
 layout_mode = 1
-script = ExtResource("26_xa8c5")
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = 18.0
+offset_right = 39.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 80
+text = "10s"
+horizontal_alignment = 1
+
+[node name="AddedLabel" type="Label" parent="HUDLayer/HUD/CountdownTimer" unique_id=312955900]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -29.0
+offset_top = 42.0
+offset_right = 91.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0, 0.8039216, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 72
+text = "+1s"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer/HUD/CountdownTimer/AddedLabel" unique_id=1959995551]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_jcdv0")
+next/adding_time = &"RESET"
+
+[node name="AccuracyDisplay" type="Control" parent="HUDLayer/HUD" unique_id=862877218]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="AccuracyLabel" type="RichTextLabel" parent="HUDLayer/HUD/AccuracyDisplay" unique_id=861284623]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -369.0
+offset_top = 48.0
+offset_right = -236.0
+offset_bottom = 87.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 26
+text = "Accuracy:
+"
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="AccuracyValue" type="RichTextLabel" parent="HUDLayer/HUD/AccuracyDisplay" unique_id=521033322]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -230.0
+offset_top = 50.0
+offset_right = -145.0
+offset_bottom = 82.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 26
+text = "--%
+"
+scroll_active = false
+horizontal_alignment = 1
 
 [node name="VolumeSliders" type="Control" parent="HUDLayer/HUD" unique_id=2042766448]
 layout_mode = 1

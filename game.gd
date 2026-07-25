@@ -5,7 +5,9 @@ class_name Game
 signal exit_game
 signal restart_game
 signal update_score(score: int)
-signal submit_drawing
+signal complete_drawing
+
+const MAX_DRAWINGS := 20
 
 @onready var upgrade_manager: UpgradeManager = %UpgradeManager
 @onready var score_manager: ScoreManager = %ScoreManager
@@ -13,12 +15,12 @@ signal submit_drawing
 @onready var input_manager: InputManager = %InputManager
 @onready var player_drawing: PlayerDrawing = %PlayerDrawing
 @onready var countdown_manager: CountdownManager = %CountdownManager
-@onready var accuracy_manager: AccuracyManager = %AccuracyManager
 @onready var hud: HUD = %HUD
 
 const DEBUG_MODE := false # TODO: Make everything free if this is on
 
 var freedraw_mode := false
+var drawings_completed := 0
 
 func _ready() -> void:
     drawing_manager.set_next_drawing()
@@ -44,11 +46,9 @@ func _ready() -> void:
     AudioManager.play_tick_tock_sfx()
     
 func _calculate_score(accuracy: float) -> int:
+    var time_spent := player_drawing.time_since_drawing_started
     var drawing_info := drawing_manager.get_drawing_info()
-    # TODO: Time bonus for doing it quickly?
-    # TODO: Set bonus for doing a more complex drawing
-    # TODO: Gain 100 or 1000 points max?
-    return 5
+    return score_manager.calculate_score(accuracy, time_spent, drawing_info)
 
 func _get_accuracy() -> float:
     var user_array: PackedInt64Array = player_drawing.pack_image()
@@ -56,22 +56,27 @@ func _get_accuracy() -> float:
     return accuracy
 
 func _on_submit_drawing() -> void:
+    drawings_completed += 1
     var accuracy := _get_accuracy()
     print("Accuracy: ", accuracy)
     var score_earned := _calculate_score(accuracy)
     
     score_manager.add_score(score_earned)
-    player_drawing.reset_image()
+    player_drawing.on_new_drawing()
     drawing_manager.set_next_drawing()
-    submit_drawing.emit()
     countdown_manager.add_time(accuracy)
-    accuracy_manager.update_accuracy(accuracy)
+    hud.on_complete_drawing(accuracy)
     
     AudioManager.play_submit_sfx()
     if accuracy >= 0.2:
         AudioManager.play_good_sfx(accuracy)
     else:
         AudioManager.play_bad_sfx(accuracy)
+    
+    if drawings_completed >= MAX_DRAWINGS:
+        # TODO: End the game
+        pass
+    complete_drawing.emit()
     
 func _on_clear_drawing() -> void:
     player_drawing.reset_image()
@@ -129,4 +134,4 @@ func _has_enough_time(seconds: int) -> bool:
 
 func _spend_time(seconds: int) -> void:
     if not DEBUG_MODE:
-        countdown_manager.spend_seconds(seconds)
+        countdown_manager.change_time_big(-seconds)

@@ -83,10 +83,9 @@ func unlock_upgrade_2() -> void:
     _process_upgrade(upgrade_list_2[upgrade_track_2].id)
     upgrade_track_2 += 1
     if upgrade_track_2 < len(upgrade_list_2):
-        upgrade_panel_1.set_upgrade(upgrade_list_2[upgrade_track_2])
+        upgrade_panel_2.set_upgrade(upgrade_list_2[upgrade_track_2])
     else:
-        upgrade_panel_1.clear_upgrade()
-    
+        upgrade_panel_2.clear_upgrade()
 
 func is_drawing_set_unlocked(drawingSet: Drawing.DrawingSet) -> bool:
     return unlocked_drawing_sets.has(drawingSet)
