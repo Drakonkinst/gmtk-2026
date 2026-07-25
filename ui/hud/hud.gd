@@ -10,7 +10,7 @@ signal select_size(size: PlayerDrawing.BrushSize)
 
 @onready var score_counter: ScoreCounter = %ScoreCounter
 @onready var submit_button: Button = %SubmitButton
-@onready var clear_button: Button = %ClearButton
+@onready var clear_button: TextureButton = %ClearButton
 @onready var tool_select: ToolSelect = %ToolSelect
 @onready var color_select: ColorSelect = %ColorSelect
 @onready var size_select: SizeSelect = %SizeSelect

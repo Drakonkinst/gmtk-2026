@@ -6,12 +6,14 @@ signal tool_button_pressed(tool: PlayerDrawing.Tool)
 
 @onready var brush_button: TextureButton = %BrushButton
 @onready var eraser_button: TextureButton = %EraserButton
+@onready var bucket_button: TextureButton = %BucketButton
 
 var button_map: Dictionary
 
 func _ready() -> void:
     button_map[PlayerDrawing.Tool.BRUSH] = brush_button
     button_map[PlayerDrawing.Tool.ERASER] = eraser_button
+    button_map[PlayerDrawing.Tool.BUCKET] = bucket_button
     
     for tool in button_map.keys():
         var button: TextureButton = button_map[tool]

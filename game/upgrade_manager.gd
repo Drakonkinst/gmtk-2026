@@ -8,6 +8,7 @@ class_name UpgradeManager
 func _ready() -> void:
     unlocked_tools[PlayerDrawing.Tool.BRUSH] = true
     unlocked_tools[PlayerDrawing.Tool.ERASER] = true
+    unlocked_tools[PlayerDrawing.Tool.BUCKET] = true
 
 func is_drawing_set_unlocked(drawingSet: Drawing.DrawingSet) -> bool:
     return unlocked_drawing_sets.has(drawingSet)

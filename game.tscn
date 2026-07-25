@@ -22,8 +22,10 @@
 [ext_resource type="Script" uid="uid://06tm0gbxmwx1" path="res://ui/hud/tools/tool_select.gd" id="16_x5p1p"]
 [ext_resource type="Script" uid="uid://c4icfclae4nwk" path="res://ui/hud/color/color_select.gd" id="17_bnpwn"]
 [ext_resource type="Texture2D" uid="uid://p2qjac4gr2hu" path="res://ui/hud/tools/button_eraser_selected.png" id="17_boyg6"]
+[ext_resource type="Texture2D" uid="uid://b5i7t2kfs7w8b" path="res://ui/hud/button_clear_default.png" id="17_m28ev"]
 [ext_resource type="Texture2D" uid="uid://dqda01qg36118" path="res://ui/hud/color/color_button_default.png" id="17_vaj68"]
 [ext_resource type="Texture2D" uid="uid://vdprlc7hfssc" path="res://ui/hud/tools/button_eraser_locked.png" id="18_e36ub"]
+[ext_resource type="Texture2D" uid="uid://cc1r7b0dsnpxi" path="res://ui/hud/button_clear_selected.png" id="18_lwlx3"]
 [ext_resource type="Texture2D" uid="uid://bmefa0l4lis1x" path="res://ui/hud/color/color_button_disabled.png" id="18_xa8c5"]
 [ext_resource type="Texture2D" uid="uid://d0rutm6ooshmo" path="res://ui/hud/color/color_button_selected.png" id="19_5b14r"]
 [ext_resource type="Texture2D" uid="uid://cijwfb02o4og4" path="res://ui/hud/tools/button_brush_default.png" id="19_hb5m1"]
@@ -34,8 +36,11 @@
 [ext_resource type="Script" uid="uid://d1brb37rhwudm" path="res://ui/hud/accuracy_display.gd" id="26_xa8c5"]
 [ext_resource type="Script" uid="uid://6fycpfut6kfw" path="res://ui/hud/size/size_select.gd" id="30_7knny"]
 [ext_resource type="Texture2D" uid="uid://cpcuh7x5pwfhg" path="res://ui/hud/size/button_small_default.png" id="31_eu6ph"]
+[ext_resource type="Texture2D" uid="uid://caf1vqr57t57e" path="res://ui/hud/tools/button_bucket_default.png" id="32_87ddb"]
 [ext_resource type="Texture2D" uid="uid://bnnvjh8mrq8p" path="res://ui/hud/size/button_small_locked.png" id="32_edr7y"]
 [ext_resource type="Texture2D" uid="uid://bkht6muhwxg2s" path="res://ui/hud/size/button_small_selected.png" id="33_kq12w"]
+[ext_resource type="Texture2D" uid="uid://ykylvfu7omx" path="res://ui/hud/tools/button_bucket_locked.png" id="33_mljfx"]
+[ext_resource type="Texture2D" uid="uid://tdk3ql4crxd5" path="res://ui/hud/tools/button_bucket_selected.png" id="34_qpefm"]
 [ext_resource type="Texture2D" uid="uid://dkf58ppsirhvx" path="res://ui/hud/size/button_normal_default.png" id="34_t46w6"]
 [ext_resource type="Texture2D" uid="uid://y2b3cpjsnwaq" path="res://ui/hud/size/button_normal_locked.png" id="35_m28ev"]
 [ext_resource type="Texture2D" uid="uid://djqplpynero84" path="res://ui/hud/size/button_normal_selected.png" id="36_lwlx3"]
@@ -126,7 +131,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Submit"
 
-[node name="ClearButton" type="Button" parent="HUDLayer/HUD" unique_id=2084440820]
+[node name="ClearButton" type="TextureButton" parent="HUDLayer/HUD" unique_id=475510745]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -134,13 +139,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -186.0
-offset_top = -166.0
-offset_right = -118.5
-offset_bottom = -102.0
+offset_left = -175.0
+offset_top = -161.0
+offset_right = -159.0
+offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Clear"
+scale = Vector2(3, 3)
+texture_normal = ExtResource("17_m28ev")
+texture_pressed = ExtResource("18_lwlx3")
+texture_hover = ExtResource("18_lwlx3")
+texture_disabled = ExtResource("17_m28ev")
 
 [node name="ScoreCounter" parent="HUDLayer/HUD" unique_id=821451000 instance=ExtResource("3_mfdv2")]
 unique_name_in_owner = true
@@ -299,50 +308,64 @@ offset_bottom = -340.0
 grow_vertical = 2
 script = ExtResource("16_x5p1p")
 
-[node name="EraserButton" type="TextureButton" parent="HUDLayer/HUD/ToolSelect" unique_id=86994801]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 166.0
-offset_top = 281.0
-offset_right = 182.0
-offset_bottom = 297.0
-scale = Vector2(3, 3)
-texture_normal = ExtResource("16_rvswv")
-texture_pressed = ExtResource("18_e36ub")
-texture_hover = ExtResource("17_boyg6")
-texture_disabled = ExtResource("18_e36ub")
-
 [node name="BrushButton" type="TextureButton" parent="HUDLayer/HUD/ToolSelect" unique_id=863032596]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 166.0
-offset_top = 227.0
+offset_top = 220.0
 offset_right = 182.0
-offset_bottom = 243.0
+offset_bottom = 236.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("19_hb5m1")
 texture_pressed = ExtResource("20_x5p1p")
 texture_hover = ExtResource("21_qhcbd")
 texture_disabled = ExtResource("20_x5p1p")
 
+[node name="EraserButton" type="TextureButton" parent="HUDLayer/HUD/ToolSelect" unique_id=86994801]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 166.0
+offset_top = 275.0
+offset_right = 182.0
+offset_bottom = 291.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("16_rvswv")
+texture_pressed = ExtResource("18_e36ub")
+texture_hover = ExtResource("17_boyg6")
+texture_disabled = ExtResource("18_e36ub")
+
+[node name="BucketButton" type="TextureButton" parent="HUDLayer/HUD/ToolSelect" unique_id=903025830]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 166.0
+offset_top = 330.0
+offset_right = 182.0
+offset_bottom = 346.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("32_87ddb")
+texture_pressed = ExtResource("33_mljfx")
+texture_hover = ExtResource("34_qpefm")
+texture_disabled = ExtResource("33_mljfx")
+
 [node name="SizeSelect" type="Control" parent="HUDLayer/HUD" unique_id=1607849559]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -380.0
 offset_right = 40.0
-grow_vertical = 0
+offset_bottom = -340.0
+grow_vertical = 2
 script = ExtResource("30_7knny")
 
 [node name="SmallBrushButton" type="TextureButton" parent="HUDLayer/HUD/SizeSelect" unique_id=259684062]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 167.0
-offset_top = -351.0
+offset_top = 385.0
 offset_right = 183.0
-offset_bottom = -335.0
+offset_bottom = 401.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("31_eu6ph")
 texture_pressed = ExtResource("32_edr7y")
@@ -353,9 +376,9 @@ texture_disabled = ExtResource("32_edr7y")
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 168.0
-offset_top = -294.0
+offset_top = 440.0
 offset_right = 184.0
-offset_bottom = -278.0
+offset_bottom = 456.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("34_t46w6")
 texture_pressed = ExtResource("35_m28ev")
@@ -366,9 +389,9 @@ texture_disabled = ExtResource("35_m28ev")
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 167.0
-offset_top = -234.0
+offset_top = 495.0
 offset_right = 183.0
-offset_bottom = -218.0
+offset_bottom = 511.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("37_0de7l")
 texture_pressed = ExtResource("38_87ddb")

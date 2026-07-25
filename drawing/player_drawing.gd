@@ -3,18 +3,19 @@ extends Node
 class_name PlayerDrawing
 
 enum BrushMode { RADIAL }
-enum Tool { BRUSH, ERASER }
+enum Tool { BRUSH, ERASER, BUCKET }
 enum BrushSize {SMALL, NORMAL, LARGE} # 0, 2, 4?
 
 var TRANSPARENT_COLOR = Color(0, 0, 0, 0)
 const AVOID_CORNER := 12
+static var OFFSETS := [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
 
 @export var player_image_display: Sprite2D
 var player_image_texture: Texture2D
 var needs_update := false
 var player_image: Image
 var brush_size := 2
-var brush_size_label: BrushSize
+var brush_size_label: BrushSize = BrushSize.NORMAL
 var brush_mode: BrushMode = BrushMode.RADIAL
 var brush_color := Color(0, 0, 0, 1)
 var selected_tool := Tool.BRUSH
@@ -74,14 +75,40 @@ func on_draw(draw_pos: Vector2i) -> void:
         draw_pencil(draw_pos)
     elif tool == Tool.ERASER:
         erase(draw_pos)
+    elif tool == Tool.BUCKET:
+        fill(draw_pos, brush_color)
+
+func fill(draw_pos: Vector2i, color: Color) -> void:
+    if not is_inside_canvas(draw_pos.x, draw_pos.y):
+        return
+    var target_color := player_image.get_pixelv(draw_pos)
+    if target_color == color:
+        return
+    player_image.set_pixelv(draw_pos, color)
+    var queue: Array[Vector2i] = [draw_pos]
+    var head := 0
+    while head < queue.size():
+        var current_pos := queue[head]
+        head += 1
+        for offset in OFFSETS:
+            var next_pos: Vector2i = current_pos + offset
+            if is_inside_canvas(next_pos.x, next_pos.y):
+                var neighbor_color := player_image.get_pixelv(next_pos)
+                if neighbor_color == target_color:
+                    player_image.set_pixelv(next_pos, color)
+                    queue.append(next_pos)
+    needs_update = true
+    # TODO: Change to bucket
+    AudioManager.play_draw_sfx()
 
 func draw_at_point(center_pos: Vector2i, color: Color) -> void:
-    
     for brush_offset_x in range(-brush_size, brush_size + 1):
         for brush_offset_y in range(-brush_size, brush_size + 1):
             var x := center_pos.x + brush_offset_x
             var y := center_pos.y + brush_offset_y
             if brush_mode == BrushMode.RADIAL and not _is_in_radial_distance(center_pos, x, y, brush_size):
+                continue
+            if not is_inside_canvas(x, y):
                 continue
             player_image.set_pixel(x, y, color)
             needs_update = true
