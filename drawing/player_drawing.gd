@@ -6,8 +6,8 @@ enum BrushMode { RADIAL }
 enum Tool { BRUSH, ERASER, BUCKET }
 enum BrushSize {SMALL, NORMAL, LARGE} # 0, 2, 4?
 
-var TRANSPARENT_COLOR = Color(0, 0, 0, 0)
-const AVOID_CORNER := 12
+var TRANSPARENT_COLOR := Color(0, 0, 0, 0)
+const AVOID_CORNER := 0
 static var OFFSETS := [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
 
 @export var player_image_display: Sprite2D

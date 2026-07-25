@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b85vccuexu5ts" path="res://game/input_manager.gd" id="4_7sc4i"]
 [ext_resource type="Script" uid="uid://cc7nffoorgjkr" path="res://game/upgrade_manager.gd" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://b5pl7v4o3x0hf" path="res://drawing/drawings/circle.png" id="4_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://d3c2iuey4kh3e" path="res://ui/hud/game_foreground.png" id="4_mljfx"]
 [ext_resource type="Script" uid="uid://jbnk6ktenqkq" path="res://drawing/drawing_manager.gd" id="5_vef74"]
 [ext_resource type="Script" uid="uid://daa7n7fsiyrc4" path="res://drawing/image_loader.gd" id="6_hve3p"]
 [ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="7_mfdv2"]
@@ -61,12 +62,17 @@ texture = ExtResource("2_lc2xo")
 [node name="Drawing" type="Sprite2D" parent="." unique_id=1676181911]
 modulate = Color(1, 1, 1, 0.5058824)
 position = Vector2(480, 360)
-scale = Vector2(3, 3)
+scale = Vector2(3.01, 3.01)
 texture = ExtResource("4_j5wjh")
 
 [node name="PlayerDrawingDisplay" type="Sprite2D" parent="." unique_id=1502104550]
-position = Vector2(480.01566, 361.01172)
+position = Vector2(480, 360)
+scale = Vector2(3.01, 3.01)
+
+[node name="Foreground" type="Sprite2D" parent="." unique_id=1211583675]
+position = Vector2(480, 360)
 scale = Vector2(3, 3)
+texture = ExtResource("4_mljfx")
 
 [node name="InputManager" type="Node2D" parent="." unique_id=1115121594]
 unique_name_in_owner = true
@@ -302,8 +308,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = 2.0
 offset_top = -380.0
-offset_right = 40.0
+offset_right = 42.0
 offset_bottom = -340.0
 grow_vertical = 2
 script = ExtResource("16_x5p1p")
@@ -353,8 +360,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = 2.0
 offset_top = -380.0
-offset_right = 40.0
+offset_right = 42.0
 offset_bottom = -340.0
 grow_vertical = 2
 script = ExtResource("30_7knny")
