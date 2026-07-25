@@ -393,4 +393,4 @@ max_value = 2.0
 step = 0.1
 value = 2.0
 script = ExtResource("9_umht6")
-bus_name = "SFX"
+bus_name = "UI"

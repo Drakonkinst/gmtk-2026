@@ -476,4 +476,4 @@ max_value = 2.0
 step = 0.1
 value = 2.0
 script = ExtResource("43_edr7y")
-bus_name = "SFX"
+bus_name = "UI"

@@ -88,11 +88,11 @@ func draw_at_point(center_pos: Vector2i, color: Color) -> void:
 
 func erase(center_pos: Vector2i) -> void:
     draw_at_point(center_pos, TRANSPARENT_COLOR)
-    AudioManager.erase_sfx.play()
+    AudioManager.play_erase_sfx()
 
 func draw_pencil(center_pos: Vector2i) -> void:
     draw_at_point(center_pos, brush_color)
-    AudioManager.draw_sfx.play()
+    AudioManager.play_draw_sfx()
 
 func _is_in_radial_distance(center_pos: Vector2i, x: int, y: int, radius: int) -> bool:
     var delta_x := center_pos.x - x
