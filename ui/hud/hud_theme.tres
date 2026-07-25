@@ -1,0 +1,43 @@
+[gd_resource type="Theme" format=3 uid="uid://bqa8hn3hsplq2"]
+
+[ext_resource type="FontFile" uid="uid://caov6fnyg0n1r" path="res://ui/fonts/Kenney Thick.ttf" id="1_67fxd"]
+[ext_resource type="Texture2D" uid="uid://fiw2bkdiq7re" path="res://ui/hud/button_ninepatch_locked.png" id="1_lta3a"]
+[ext_resource type="Texture2D" uid="uid://cyqu48gvb83dy" path="res://ui/hud/button_ninepatch_selected.png" id="2_67fxd"]
+[ext_resource type="Texture2D" uid="uid://bv7extlajf0e7" path="res://ui/hud/button_ninepatch.png" id="3_pj8l7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jlp8q"]
+texture = ExtResource("1_lta3a")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lta3a"]
+texture = ExtResource("2_67fxd")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ochnt"]
+texture = ExtResource("3_pj8l7")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67fxd"]
+texture = ExtResource("1_lta3a")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[resource]
+Button/font_sizes/font_size = 14
+Button/fonts/font = ExtResource("1_67fxd")
+Button/styles/disabled = SubResource("StyleBoxTexture_jlp8q")
+Button/styles/hover = SubResource("StyleBoxTexture_lta3a")
+Button/styles/normal = SubResource("StyleBoxTexture_ochnt")
+Button/styles/pressed = SubResource("StyleBoxTexture_67fxd")
+Label/fonts/font = ExtResource("1_67fxd")

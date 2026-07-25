@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dqda01qg36118" path="res://ui/hud/color/color_button_default.png" id="17_vaj68"]
 [ext_resource type="Texture2D" uid="uid://vdprlc7hfssc" path="res://ui/hud/tools/button_eraser_locked.png" id="18_e36ub"]
 [ext_resource type="Texture2D" uid="uid://cc1r7b0dsnpxi" path="res://ui/hud/button_clear_selected.png" id="18_lwlx3"]
+[ext_resource type="Theme" uid="uid://bqa8hn3hsplq2" path="res://ui/hud/hud_theme.tres" id="18_qpefm"]
 [ext_resource type="Texture2D" uid="uid://bmefa0l4lis1x" path="res://ui/hud/color/color_button_disabled.png" id="18_xa8c5"]
 [ext_resource type="Texture2D" uid="uid://d0rutm6ooshmo" path="res://ui/hud/color/color_button_selected.png" id="19_5b14r"]
 [ext_resource type="Texture2D" uid="uid://cijwfb02o4og4" path="res://ui/hud/tools/button_brush_default.png" id="19_hb5m1"]
@@ -50,6 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://cb2we0ghhjvdh" path="res://ui/hud/size/button_large_selected.png" id="39_mljfx"]
 [ext_resource type="Script" uid="uid://dwhxqb43wiyuo" path="res://ui/hud/h_slider.gd" id="43_edr7y"]
 [ext_resource type="FontFile" uid="uid://da35yew8fgybf" path="res://ui/fonts/ari-w9500-condensed-display.ttf" id="43_kq12w"]
+[ext_resource type="FontFile" uid="uid://csdil41k4yke5" path="res://ui/fonts/pico12.ttf" id="52_tb2lt"]
 
 [node name="Game" type="Node2D" unique_id=881773381]
 script = ExtResource("1_80nbo")
@@ -135,6 +137,8 @@ offset_right = 81.5
 offset_bottom = -101.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("18_qpefm")
+theme_override_font_sizes/font_size = 18
 text = "Submit"
 
 [node name="ClearButton" type="TextureButton" parent="HUDLayer/HUD" unique_id=475510745]
@@ -176,8 +180,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
+offset_top = 5.0
 offset_right = 20.0
-offset_bottom = 40.0
+offset_bottom = 45.0
 grow_horizontal = 2
 script = ExtResource("17_bnpwn")
 buttons = [NodePath("ColorBlack"), NodePath("ColorRed"), NodePath("ColorBlue"), NodePath("ColorYellow"), NodePath("ColorGreen")]
@@ -302,6 +307,66 @@ offset_right = 16.0
 offset_bottom = 16.0
 texture = ExtResource("20_5b14r")
 
+[node name="Label" type="Label" parent="HUDLayer/HUD/ColorSelect" unique_id=561560022]
+layout_mode = 0
+offset_left = -99.0
+offset_top = 101.0
+offset_right = -84.0
+offset_bottom = 118.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_color = Color(0.050980393, 0.3254902, 0.007843138, 1)
+theme_override_font_sizes/font_size = 13
+text = "1"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HUDLayer/HUD/ColorSelect" unique_id=1837401406]
+layout_mode = 0
+offset_left = -44.0
+offset_top = 101.0
+offset_right = -29.0
+offset_bottom = 118.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_color = Color(0.050980393, 0.3254902, 0.007843138, 1)
+theme_override_font_sizes/font_size = 13
+text = "2"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="HUDLayer/HUD/ColorSelect" unique_id=334701388]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 101.0
+offset_right = 28.0
+offset_bottom = 118.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_color = Color(0.050980393, 0.3254902, 0.007843138, 1)
+theme_override_font_sizes/font_size = 13
+text = "3"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="HUDLayer/HUD/ColorSelect" unique_id=1229931058]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 101.0
+offset_right = 83.0
+offset_bottom = 118.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_color = Color(0.050980393, 0.3254902, 0.007843138, 1)
+theme_override_font_sizes/font_size = 13
+text = "4"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="HUDLayer/HUD/ColorSelect" unique_id=1250539048]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 101.0
+offset_right = 139.0
+offset_bottom = 118.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_color = Color(0.050980393, 0.3254902, 0.007843138, 1)
+theme_override_font_sizes/font_size = 13
+text = "5"
+horizontal_alignment = 1
+
 [node name="ToolSelect" type="Control" parent="HUDLayer/HUD" unique_id=1290582873]
 unique_name_in_owner = true
 layout_mode = 1
@@ -353,6 +418,39 @@ texture_normal = ExtResource("32_87ddb")
 texture_pressed = ExtResource("33_mljfx")
 texture_hover = ExtResource("34_qpefm")
 texture_disabled = ExtResource("33_mljfx")
+
+[node name="Label" type="Label" parent="HUDLayer/HUD/ToolSelect" unique_id=716612405]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 237.0
+offset_right = 233.0
+offset_bottom = 254.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_color = Color(0.050980393, 0.3254902, 0.007843138, 1)
+theme_override_font_sizes/font_size = 15
+text = "B"
+
+[node name="Label2" type="Label" parent="HUDLayer/HUD/ToolSelect" unique_id=758123761]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 292.0
+offset_right = 232.0
+offset_bottom = 309.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_color = Color(0.050980393, 0.3254902, 0.007843138, 1)
+theme_override_font_sizes/font_size = 15
+text = "E"
+
+[node name="Label3" type="Label" parent="HUDLayer/HUD/ToolSelect" unique_id=857909077]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 347.0
+offset_right = 232.0
+offset_bottom = 364.0
+theme = ExtResource("18_qpefm")
+theme_override_colors/font_color = Color(0.050980393, 0.3254902, 0.007843138, 1)
+theme_override_font_sizes/font_size = 15
+text = "F"
 
 [node name="SizeSelect" type="Control" parent="HUDLayer/HUD" unique_id=1607849559]
 unique_name_in_owner = true
@@ -508,3 +606,25 @@ step = 0.1
 value = 2.0
 script = ExtResource("43_edr7y")
 bus_name = "UI"
+
+[node name="Upgrades" type="Control" parent="HUDLayer/HUD" unique_id=1663861140]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel1" type="Button" parent="HUDLayer/HUD/Upgrades" unique_id=437447164]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 220.0
+offset_right = 901.0
+offset_bottom = 314.0
+theme = ExtResource("18_qpefm")
+
+[node name="Label" type="Label" parent="HUDLayer/HUD/Upgrades/Panel1" unique_id=140754038]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 19.0
+offset_right = 68.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("52_tb2lt")
+text = "Text"

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqhvbrg22chn" path="res://ui/menu/menu_background.png" id="2_gvx18"]
 [ext_resource type="Texture2D" uid="uid://bc2jeakh5ldfu" path="res://ui/menu/title.png" id="3_4gkdq"]
 [ext_resource type="Texture2D" uid="uid://bytpnprwy030i" path="res://ui/menu/cloud.png" id="4_8gmgf"]
+[ext_resource type="Theme" uid="uid://bqa8hn3hsplq2" path="res://ui/hud/hud_theme.tres" id="6_u4nky"]
 [ext_resource type="FontFile" uid="uid://da35yew8fgybf" path="res://ui/fonts/ari-w9500-condensed-display.ttf" id="7_8gmgf"]
 [ext_resource type="FontFile" uid="uid://caov6fnyg0n1r" path="res://ui/fonts/Kenney Thick.ttf" id="8_h2671"]
 [ext_resource type="Script" uid="uid://dwhxqb43wiyuo" path="res://ui/hud/h_slider.gd" id="9_umht6"]
@@ -172,28 +173,32 @@ metadata/_edit_lock_ = true
 [node name="StartButton" type="Button" parent="." unique_id=1243298960]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 491.0
-offset_top = 470.0
-offset_right = 623.0
-offset_bottom = 501.0
+offset_left = 460.0
+offset_top = 465.0
+offset_right = 644.0
+offset_bottom = 530.0
+theme = ExtResource("6_u4nky")
+theme_override_font_sizes/font_size = 23
 text = "start"
 
 [node name="OptionsButton" type="Button" parent="." unique_id=569448089]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 59.0
-offset_top = 557.0
+offset_top = 534.0
 offset_right = 191.0
-offset_bottom = 588.0
+offset_bottom = 589.0
+theme = ExtResource("6_u4nky")
 text = "options"
 
 [node name="CreditsButton" type="Button" parent="." unique_id=1993232127]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 61.0
-offset_top = 650.0
+offset_top = 630.0
 offset_right = 193.0
-offset_bottom = 681.0
+offset_bottom = 682.0
+theme = ExtResource("6_u4nky")
 text = "credits"
 
 [node name="Credits" type="Control" parent="." unique_id=2038010773]
@@ -249,10 +254,10 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/bold_font = ExtResource("8_h2671")
 theme_override_font_sizes/bold_font_size = 16
 bbcode_enabled = true
-text = "
-fonts:
+text = "fonts:
 ari-w9500-condensed
-Kenney Thick"
+Kenney Thick
+Pico12"
 scroll_active = false
 horizontal_alignment = 2
 
