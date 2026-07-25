@@ -9,10 +9,13 @@ extends Control
 var time_left: int = 10:
     set(value):
         var time_gained = value - time_left
-        if (time_gained) > 0:
+        if time_gained >= 0:
             added_label.text = "+%ss" % (time_gained)
             animation_player.play("adding_time")
-        
+            added_label.add_theme_color_override("font_color", Color.GREEN)
+            if time_gained == 0:
+                added_label.add_theme_color_override("font_color", Color.RED)
+            
         time_left = value
         time_label.text = "%ss" % time_left
         if value <= 3:
