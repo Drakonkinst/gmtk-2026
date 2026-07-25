@@ -33,6 +33,8 @@ func _ready() -> void:
     input_manager.select_tool.connect(_on_select_tool)
     input_manager.select_color_index.connect(_on_select_color_index)
     
+    AudioManager.play_tick_tock_sfx()
+    
 func _calculate_score(accuracy: float) -> int:
     var drawing_info := drawing_manager.get_drawing_info()
     # TODO: Time bonus for doing it quickly?
@@ -58,7 +60,7 @@ func _on_submit_drawing() -> void:
     accuracy_manager.update_accuracy(accuracy)
     
     AudioManager.play_submit_sfx()
-    if accuracy >= 0.5:
+    if accuracy >= 0.2:
         AudioManager.play_good_sfx(accuracy)
     else:
         AudioManager.play_bad_sfx(accuracy)

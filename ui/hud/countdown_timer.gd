@@ -22,6 +22,8 @@ var time_left: int = 10:
             time_label.self_modulate = Color.RED
         else:
             time_label.self_modulate = Color.WHITE
+        
+        AudioManager.adjust_tick_tock_db(time_left)
 
 func _on_timer_timeout() -> void:
     time_left -= 1

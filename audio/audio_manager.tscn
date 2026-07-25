@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://doc8jvuqmhcfh" path="res://audio/sfx/brushsoundeffect1.ogg" id="14_pyj8m"]
 [ext_resource type="AudioStream" uid="uid://cuul5ys48blgx" path="res://audio/sfx/coloursoundeffect1.ogg" id="15_ji21h"]
 [ext_resource type="AudioStream" uid="uid://dnr3b7hspc8w6" path="res://audio/sfx/fillsoundeffect2.ogg" id="16_ji21h"]
+[ext_resource type="AudioStream" uid="uid://c0tpcsf1gnj3r" path="res://audio/sfx/ticktocksoundeffect1.ogg" id="17_sgp2o"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i1k7u"]
 random_pitch = 1.122462
@@ -74,7 +75,11 @@ random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("16_ji21h")
 
-[node name="AudioManager" type="Node" unique_id=1337921936 node_paths=PackedStringArray("bgm", "submit_sfx", "good_sfx", "bad_sfx", "button_sfx", "hover_sfx", "draw_sfx", "erase_sfx", "clear_sfx", "brush_select_sfx", "color_select_sfx", "bucket_fill_sfx")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qus7j"]
+streams_count = 1
+stream_0/stream = ExtResource("17_sgp2o")
+
+[node name="AudioManager" type="Node" unique_id=1337921936 node_paths=PackedStringArray("bgm", "submit_sfx", "good_sfx", "bad_sfx", "button_sfx", "hover_sfx", "draw_sfx", "erase_sfx", "clear_sfx", "brush_select_sfx", "color_select_sfx", "bucket_fill_sfx", "tick_tock_sfx")]
 script = ExtResource("1_5jhky")
 bgm = NodePath("BGM")
 submit_sfx = NodePath("SubmitSFX")
@@ -88,6 +93,7 @@ clear_sfx = NodePath("ClearSFX")
 brush_select_sfx = NodePath("BrushSelectSFX")
 color_select_sfx = NodePath("ColorSelectSFX")
 bucket_fill_sfx = NodePath("BucketFillSFX")
+tick_tock_sfx = NodePath("TickTockSFX")
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1874000854]
 stream = ExtResource("6_i1k7u")
@@ -144,3 +150,7 @@ volume_db = 5.0
 [node name="BucketFillSFX" type="AudioStreamPlayer" parent="." unique_id=1173505437]
 stream = SubResource("AudioStreamRandomizer_sgp2o")
 volume_db = 5.0
+
+[node name="TickTockSFX" type="AudioStreamPlayer" parent="." unique_id=748352712]
+stream = SubResource("AudioStreamRandomizer_qus7j")
+volume_db = -80.0
