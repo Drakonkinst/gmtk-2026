@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Drawing" format=3 uid="uid://dx7jwpirnu6y7"]
+
+[ext_resource type="Texture2D" uid="uid://cb15jf384uwb" path="res://drawing/drawings/house.png" id="1_a0ldd"]
+[ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="2_3byrq"]
+
+[resource]
+script = ExtResource("2_3byrq")
+id = "House"
+image = ExtResource("1_a0ldd")
+drawing_set = 2
+weight = 7
+metadata/_custom_type_script = "uid://bj4uga4l46xp4"

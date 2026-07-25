@@ -7,5 +7,5 @@ script = ExtResource("1_re30q")
 id = "Drawing1"
 text = "2x Score + More DRAWINGS"
 score_multiplier = 2.0
-cost = 5
+cost = 10
 metadata/_custom_type_script = "uid://cyqjkk6ec601k"

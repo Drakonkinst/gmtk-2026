@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Drawing" format=3 uid="uid://c5ghrxucdkqmr"]
+
+[ext_resource type="Texture2D" uid="uid://risj0km481t4" path="res://drawing/drawings/swings.png" id="1_v3r8w"]
+[ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="2_lmnox"]
+
+[resource]
+script = ExtResource("2_lmnox")
+id = "Swings"
+image = ExtResource("1_v3r8w")
+drawing_set = 2
+weight = 7
+metadata/_custom_type_script = "uid://bj4uga4l46xp4"

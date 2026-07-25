@@ -14,9 +14,8 @@ func calculate_score(accuracy: float, time_spent: float, drawing_info: Drawing) 
     var remaining_time: int = max(0, AVG_DRAWING_TIME - time_spent)
     var base_score := accuracy * BASE_SCORE
     var speed_bonus := accuracy * remaining_time * SPEED_WEIGHT
-    var final_score := int(base_score + speed_bonus)
-    # TODO: Take into account drawing multipliers
-    return final_score
+    var final_score := (base_score + speed_bonus) * Global.game.upgrade_manager.score_multiplier
+    return int(final_score)
 
 func add_score(value: int) -> void:
     print("Adding score ", value, " to ", score)

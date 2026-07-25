@@ -8,7 +8,8 @@ static var EMPTY_COLOR_INT := Color(0, 0, 0, 0).to_argb64()
 
 enum DrawingSet {
     SIMPLE,
-    ANIMALS
+    ANIMALS,
+    PARK,
 }
 
 @export var id: String

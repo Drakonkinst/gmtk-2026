@@ -15,6 +15,7 @@ var unlocked_drawing_sets: Array[Drawing.DrawingSet] = []
 var unlocked_tools: Dictionary = {}
 var unlocked_colors := false
 var unlocked_sizes := false
+var score_multiplier := 1.0
 
 var upgrade_track_1 := 0
 var upgrade_track_2 := 0
@@ -47,29 +48,33 @@ func _process_upgrade(upgrade_id: String):
     elif upgrade_id == "Sizes":
         unlocked_sizes = true
     elif upgrade_id == "Drawing1":
-        unlocked_drawing_sets.push_back(Drawing.DrawingSet.ANIMALS)
+        unlocked_drawing_sets.push_back(Drawing.DrawingSet.PARK)
+        set_score_multiplier(2.0)
     elif upgrade_id == "Drawing2":
-        # unlocked_drawing_sets.push_back(Drawing.DrawingSet.ANIMALS)
-        pass
+        unlocked_drawing_sets.push_back(Drawing.DrawingSet.ANIMALS)
+        set_score_multiplier(3.0)
     elif upgrade_id == "Drawing3":
-        # unlocked_drawing_sets.push_back(Drawing.DrawingSet.ANIMALS)
+        set_score_multiplier(4.0)
         pass
     elif upgrade_id == "Drawing4":
-        # unlocked_drawing_sets.push_back(Drawing.DrawingSet.ANIMALS)
+        set_score_multiplier(5.0)
         pass
         
     else:
         push_warning("Unknown upgrade ", upgrade_id)
 
+func set_score_multiplier(multiplier: float) -> void:
+    score_multiplier = max(multiplier, score_multiplier)
+    
 func _on_upgrade_panel_1_pressed() -> void:
     if upgrade_track_1 >= len(upgrade_list_1):
         return
     attempt_upgrade_1.emit(upgrade_list_1[upgrade_track_1])
     
 func _on_upgrade_panel_2_pressed() -> void:
-    if upgrade_track_2 >= len(upgrade_list_1):
+    if upgrade_track_2 >= len(upgrade_list_2):
             return
-    attempt_upgrade_2.emit(upgrade_list_1[upgrade_track_1])
+    attempt_upgrade_2.emit(upgrade_list_2[upgrade_track_2])
 
 func unlock_upgrade_1() -> void:
     if upgrade_track_1 >= len(upgrade_list_1):

@@ -45,7 +45,11 @@
 [ext_resource type="Resource" uid="uid://ixatq5tcspvn" path="res://drawing/drawings/dog.tres" id="23_wj41c"]
 [ext_resource type="Resource" uid="uid://cma2cshcg0rna" path="res://drawing/drawings/crab.tres" id="24_baljx"]
 [ext_resource type="Resource" uid="uid://bpao8tpan28wk" path="res://drawing/drawings/bunny.tres" id="25_t2ssd"]
+[ext_resource type="Resource" uid="uid://blojcgv5u1g80" path="res://drawing/drawings/ball.tres" id="26_7noa1"]
+[ext_resource type="Resource" uid="uid://dx7jwpirnu6y7" path="res://drawing/drawings/house.tres" id="27_3xib3"]
 [ext_resource type="Script" uid="uid://cc0rhyh8d71w2" path="res://ui/hud/reveal_elements.gd" id="27_ple6s"]
+[ext_resource type="Resource" uid="uid://dsktata1elpb0" path="res://drawing/drawings/tree.tres" id="28_5628o"]
+[ext_resource type="Resource" uid="uid://c5ghrxucdkqmr" path="res://drawing/drawings/swings.tres" id="29_fuuk6"]
 [ext_resource type="Script" uid="uid://6fycpfut6kfw" path="res://ui/hud/size/size_select.gd" id="30_7knny"]
 [ext_resource type="Texture2D" uid="uid://cpcuh7x5pwfhg" path="res://ui/hud/size/button_small_default.png" id="31_eu6ph"]
 [ext_resource type="Script" uid="uid://c1seer2ipmrpo" path="res://ui/hud/score_counter.gd" id="31_jo4nb"]
@@ -174,7 +178,7 @@ drawing_sprite = NodePath("../Drawing")
 [node name="ImageLoader" type="Node2D" parent="DrawingManager" unique_id=141799161]
 unique_name_in_owner = true
 script = ExtResource("6_hve3p")
-drawings = Array[ExtResource("7_mfdv2")]([ExtResource("8_iotsf"), ExtResource("8_vef74"), ExtResource("9_hve3p"), ExtResource("22_6qn5j"), ExtResource("23_wj41c"), ExtResource("24_baljx"), ExtResource("25_t2ssd")])
+drawings = Array[ExtResource("7_mfdv2")]([ExtResource("8_iotsf"), ExtResource("8_vef74"), ExtResource("9_hve3p"), ExtResource("22_6qn5j"), ExtResource("23_wj41c"), ExtResource("24_baljx"), ExtResource("25_t2ssd"), ExtResource("26_7noa1"), ExtResource("27_3xib3"), ExtResource("28_5628o"), ExtResource("29_fuuk6")])
 
 [node name="ScoreManager" type="Node2D" parent="." unique_id=1200851758]
 unique_name_in_owner = true
@@ -275,7 +279,6 @@ offset_top = 24.0
 offset_right = 724.0
 offset_bottom = 64.0
 grow_horizontal = 0
-theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 24
 text = "Score:"
@@ -293,7 +296,6 @@ offset_top = 24.0
 offset_right = 814.0
 offset_bottom = 54.0
 grow_horizontal = 0
-theme_override_constants/outline_size = 16
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 26
 text = "0"
@@ -315,7 +317,6 @@ offset_top = 41.0
 offset_right = 252.0
 offset_bottom = 81.0
 grow_horizontal = 0
-theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 24
 text = "Drawing:"
@@ -333,7 +334,6 @@ offset_top = 41.0
 offset_right = 342.0
 offset_bottom = 71.0
 grow_horizontal = 0
-theme_override_constants/outline_size = 16
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 26
 text = "1 / 20"
@@ -793,7 +793,6 @@ offset_top = 48.0
 offset_right = -236.0
 offset_bottom = 87.0
 grow_horizontal = 0
-theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 26
 text = "Accuracy:
@@ -812,7 +811,6 @@ offset_top = 50.0
 offset_right = -145.0
 offset_bottom = 82.0
 grow_horizontal = 0
-theme_override_constants/outline_size = 16
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 26
 text = "--%

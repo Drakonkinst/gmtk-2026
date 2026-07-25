@@ -17,10 +17,12 @@ const MAX_DRAWINGS := 20
 @onready var countdown_manager: CountdownManager = %CountdownManager
 @onready var hud: HUD = %HUD
 
-const DEBUG_MODE := false # TODO: Make everything free if this is on
+const DEBUG_MODE := false
 
 var freedraw_mode := false
 var drawings_completed := 0
+var accuracy_sum := 0.0 # Can use this to calculate average accuracy with accuracy_sum / drawings_completed
+var total_time_spent := 0.0 # Can use for leaderboard
 
 func _ready() -> void:
     drawing_manager.set_next_drawing()
@@ -44,7 +46,10 @@ func _ready() -> void:
     countdown_manager.game_lose.connect(_on_game_lose)
     
     AudioManager.play_tick_tock_sfx()
-    
+
+func _process(delta: float) -> void:
+    total_time_spent += delta
+
 func _calculate_score(accuracy: float) -> int:
     var time_spent := player_drawing.time_since_drawing_started
     var drawing_info := drawing_manager.get_drawing_info()
@@ -59,6 +64,7 @@ func _on_submit_drawing() -> void:
     drawings_completed += 1
     var accuracy := _get_accuracy()
     print("Accuracy: ", accuracy)
+    accuracy_sum += accuracy
     var score_earned := _calculate_score(accuracy)
     
     score_manager.add_score(score_earned)
