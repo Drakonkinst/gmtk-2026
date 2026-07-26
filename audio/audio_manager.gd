@@ -3,6 +3,7 @@ extends Node
 # @onready var sound_effect: AudioRandomizer | AudioStreamPlayer | AudioRandomizer2D = %SoundEffect
 #exports instead of onready to avoid errors with singleton load order
 @export var bgm: AudioStreamPlayer
+@export var pause_bgm: AudioStreamPlayer
 @export var submit_sfx: AudioStreamPlayer
 @export var good_sfx: AudioStreamPlayer
 @export var bad_sfx: AudioStreamPlayer
@@ -21,6 +22,9 @@ extends Node
 
 func start_bgm() -> void:
     bgm.play()
+
+func start_pause_bgm() -> void:
+    pause_bgm.play()
 
 func play_submit_sfx() -> void:
     button_sfx.play()

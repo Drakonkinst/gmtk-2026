@@ -138,19 +138,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AddedLabel:position")
+tracks/0/path = NodePath("%AddedLabel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-29, 42)]
+"values": [Vector2(342, -357)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AddedLabel:self_modulate")
+tracks/1/path = NodePath("%AddedLabel:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -158,42 +158,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AddedLabel:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AddedLabel:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-50, 42)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AddedLabel:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_b1kc4"]
@@ -201,74 +165,32 @@ resource_name = "adding_time"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AddedLabel:position")
+tracks/0/path = NodePath("%AddedLabel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.39229208, 1),
+"transitions": PackedFloat32Array(0.37892923, 1),
 "update": 0,
-"values": [Vector2(-50, 42), Vector2(-50, -24)]
+"values": [Vector2(335, -365), Vector2(335, -420)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AddedLabel:self_modulate")
+tracks/1/path = NodePath("%AddedLabel:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(2.0000005, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_pwsyv"]
-resource_name = "zero_time"
-length = 1.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AddedLabel:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(2.07053, 1),
+"transitions": PackedFloat32Array(2.8284273, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AddedLabel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.5),
-"transitions": PackedFloat32Array(0.4506253, 1.8025012, 1),
-"update": 0,
-"values": [Vector2(-67, 47), Vector2(-34, 33), Vector2(-24, 112)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AddedLabel:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jcdv0"]
 _data = {
 &"RESET": SubResource("Animation_5sxqa"),
-&"adding_time": SubResource("Animation_b1kc4"),
-&"zero_time": SubResource("Animation_pwsyv")
+&"adding_time": SubResource("Animation_b1kc4")
 }
 
 [sub_resource type="Animation" id="Animation_lon8v"]
@@ -651,6 +573,10 @@ texture_disabled = ExtResource("17_m28ev")
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
+offset_left = -381.0
+offset_top = 18.0
+offset_right = -381.0
+offset_bottom = 18.0
 script = ExtResource("31_jo4nb")
 
 [node name="ScoreLabel" type="RichTextLabel" parent="HUDLayer/HUD/ScoreCounter" unique_id=721812396]
@@ -659,14 +585,14 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 576.0
-offset_top = 24.0
-offset_right = 724.0
-offset_bottom = 64.0
+offset_left = 463.0
+offset_top = -1.0
+offset_right = 642.0
+offset_bottom = 38.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 22
 text = "Score (1x):"
 scroll_active = false
 horizontal_alignment = 2
@@ -677,36 +603,87 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 731.0
-offset_top = 24.0
-offset_right = 814.0
-offset_bottom = 54.0
+offset_left = 664.0
+offset_top = -1.0
+offset_right = 756.0
+offset_bottom = 33.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/normal_font_size = 22
 text = "0"
 scroll_active = false
-horizontal_alignment = 1
+
+[node name="AccuracyDisplay" type="Control" parent="HUDLayer/HUD" unique_id=862877218]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -446.0
+offset_top = 13.0
+offset_right = -446.0
+offset_bottom = 13.0
+grow_horizontal = 0
+
+[node name="AccuracyLabel" type="RichTextLabel" parent="HUDLayer/HUD/AccuracyDisplay" unique_id=861284623]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -416.0
+offset_top = 40.0
+offset_right = -261.0
+offset_bottom = 79.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 22
+text = "Accuracy:
+"
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="AccuracyValue" type="RichTextLabel" parent="HUDLayer/HUD/AccuracyDisplay" unique_id=521033322]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -231.0
+offset_top = 40.0
+offset_right = -148.0
+offset_bottom = 81.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 22
+text = "--%
+"
+scroll_active = false
 
 [node name="DrawingCounter" type="Control" parent="HUDLayer/HUD" unique_id=1556238700]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
+offset_left = 230.0
+offset_top = 632.0
+offset_right = 230.0
+offset_bottom = 632.0
 
 [node name="DrawingLabel" type="RichTextLabel" parent="HUDLayer/HUD/DrawingCounter" unique_id=201460081]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 122.0
-offset_top = 41.0
-offset_right = 252.0
-offset_bottom = 81.0
+offset_left = 144.0
+offset_top = 23.0
+offset_right = 269.0
+offset_bottom = 69.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 30
 text = "Drawing:"
 scroll_active = false
 horizontal_alignment = 2
@@ -717,17 +694,16 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 259.0
-offset_top = 41.0
-offset_right = 358.0
-offset_bottom = 71.0
+offset_left = 274.0
+offset_top = 24.0
+offset_right = 406.0
+offset_bottom = 57.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/normal_font_size = 30
 text = "1 / 20"
 scroll_active = false
-horizontal_alignment = 1
 
 [node name="ColorSelect" type="Control" parent="HUDLayer/HUD" unique_id=1987601810 node_paths=PackedStringArray("buttons")]
 unique_name_in_owner = true
@@ -1115,51 +1091,6 @@ texture_pressed = ExtResource("38_87ddb")
 texture_hover = ExtResource("39_mljfx")
 texture_disabled = ExtResource("38_87ddb")
 
-[node name="AccuracyDisplay" type="Control" parent="HUDLayer/HUD" unique_id=862877218]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-
-[node name="AccuracyLabel" type="RichTextLabel" parent="HUDLayer/HUD/AccuracyDisplay" unique_id=861284623]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -369.0
-offset_top = 48.0
-offset_right = -236.0
-offset_bottom = 87.0
-grow_horizontal = 0
-theme_override_constants/outline_size = 12
-theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 26
-text = "Accuracy:
-"
-scroll_active = false
-horizontal_alignment = 2
-
-[node name="AccuracyValue" type="RichTextLabel" parent="HUDLayer/HUD/AccuracyDisplay" unique_id=521033322]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -230.0
-offset_top = 50.0
-offset_right = -145.0
-offset_bottom = 82.0
-grow_horizontal = 0
-theme_override_constants/outline_size = 12
-theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 26
-text = "--%
-"
-scroll_active = false
-horizontal_alignment = 1
-
 [node name="Upgrades" type="Control" parent="HUDLayer/HUD" unique_id=1663861140]
 anchors_preset = 0
 offset_top = 15.0
@@ -1325,8 +1256,6 @@ texture = ExtResource("66_vyqle")
 [node name="Hourglass" type="Control" parent="HUDLayer/HUD" unique_id=528516156]
 unique_name_in_owner = true
 anchors_preset = 0
-offset_top = -38.0
-offset_bottom = -38.0
 script = ExtResource("80_vvpk2")
 
 [node name="BaseHourglass" type="TextureRect" parent="HUDLayer/HUD/Hourglass" unique_id=215782338]
@@ -1404,15 +1333,15 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -62.5
-offset_top = 13.5
-offset_right = 62.5
-offset_bottom = 89.5
+offset_left = 338.0
+offset_top = -379.0
+offset_right = 480.0
+offset_bottom = -293.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("52_tb2lt")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 72
 text = "10s"
 horizontal_alignment = 1
 
@@ -1422,38 +1351,30 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -59.0
-offset_top = 97.5
-offset_right = 64.0
-offset_bottom = 70.5
+offset_left = 63.0
+offset_top = 47.0
+offset_right = 146.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/outline_size = 16
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("52_tb2lt")
-theme_override_font_sizes/font_size = 47
-text = "60s"
+theme_override_font_sizes/font_size = 16
+text = "(60s max)"
 horizontal_alignment = 1
-
-[node name="VolumeBG" type="NinePatchRect" parent="HUDLayer/HUD/CountdownTimer/TimeLabel" unique_id=1639257643]
-layout_mode = 0
-offset_left = 6.5
-offset_top = 78.5
-offset_right = 123.5
-offset_bottom = 94.5
-texture = ExtResource("76_vqo61")
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
 
 [node name="AddedLabel" type="Label" parent="HUDLayer/HUD/CountdownTimer" unique_id=312955900]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = -50.0
-offset_top = 42.0
-offset_right = 112.0
-offset_bottom = 114.00102
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 342.0
+offset_top = -357.0
+offset_right = 504.0
+offset_bottom = -284.99896
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0.8039216, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 14
@@ -1467,7 +1388,6 @@ unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_jcdv0")
 next/adding_time = &"RESET"
-next/zero_time = &"RESET"
 
 [node name="FullLabel" type="Label" parent="HUDLayer/HUD/CountdownTimer" unique_id=1697230322]
 unique_name_in_owner = true
@@ -1493,9 +1413,9 @@ libraries/ = SubResource("AnimationLibrary_sueei")
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 15.0
-offset_top = 658.0
+offset_top = 650.0
 offset_right = 109.0
-offset_bottom = 711.0
+offset_bottom = 703.0
 theme = ExtResource("18_qpefm")
 text = "Pause"
 

@@ -19,7 +19,7 @@ func change_time(delta_time: int):
         animation_player.play("adding_time")
         added_label.add_theme_color_override("font_color", Color.GREEN)
         if delta_time == 0:
-            animation_player.play("zero_time")
+            #animation_player.play("zero_time")
             added_label.add_theme_color_override("font_color", Color.RED)
     elif delta_time < 0:
         added_label.text = "-%ss" % (-delta_time)
