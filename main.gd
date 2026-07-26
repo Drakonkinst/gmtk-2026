@@ -8,6 +8,7 @@ class_name Main
 
 var game: Game
 var menu: MainMenu
+var restarting: bool = false
 
 func _ready() -> void:
     Global.audio = audio
@@ -18,7 +19,10 @@ func _ready() -> void:
 func init_main_menu() -> void:
     menu = main_menu_scene.instantiate()
     menu.start_game.connect(start_new_game)
+    menu.restarting = restarting
     add_child(menu)
+    
+    restarting = false
 
 func start_new_game() -> void:
     if menu != null:
@@ -37,6 +41,7 @@ func exit_to_menu() -> void:
     init_main_menu()
 
 func restart() -> void:
+    restarting = true
     exit_to_menu()
     start_new_game()
         
