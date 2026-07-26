@@ -195,9 +195,14 @@ _data = {
 &"falling_sand": SubResource("Animation_o46vb")
 }
 
+[sub_resource type="Curve" id="Curve_lon8v"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 3), 0.0, -11.541985, 0, 0, Vector2(0.24404761, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Gradient" id="Gradient_q6vxt"]
-offsets = PackedFloat32Array(0, 0.18387097)
-colors = PackedColorArray(0.8901186, 0.7604822, 0.4977886, 0, 0.8901961, 0.7607843, 0.49803922, 1)
+offsets = PackedFloat32Array(0, 0.18387097, 0.86129034, 1)
+colors = PackedColorArray(0.8901186, 0.7604822, 0.4977886, 0, 0.8901961, 0.7607843, 0.49803922, 1, 0.8901186, 0.7604822, 0.4977886, 1, 0.8901186, 0.7604822, 0.4977886, 0)
 
 [sub_resource type="Animation" id="Animation_5sxqa"]
 length = 0.001
@@ -1495,16 +1500,17 @@ scale = Vector2(3, 3)
 texture = ExtResource("84_lon8v")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="HUDLayer/HUD/Hourglass" unique_id=1680693269]
-position = Vector2(72, 310)
+position = Vector2(73, 305)
 emitting = false
 amount = 32
-lifetime = 0.5
+lifetime = 0.75
 one_shot = true
 emission_shape = 1
-emission_sphere_radius = 18.0
+emission_sphere_radius = 24.0
 gravity = Vector2(0, -980)
 scale_amount_min = 3.0
 scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_lon8v")
 color_ramp = SubResource("Gradient_q6vxt")
 
 [node name="CountdownTimer" type="Control" parent="HUDLayer/HUD" unique_id=300404977]
@@ -1787,6 +1793,7 @@ bus_name = "UI"
 
 [node name="EndScreen" type="Control" parent="HUDLayer" unique_id=488366321]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
