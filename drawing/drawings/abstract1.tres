@@ -8,6 +8,6 @@ script = ExtResource("2_ir4vu")
 id = "Abstract1"
 image = ExtResource("1_qeyue")
 drawing_set = 4
-weight = 6.0
+weight = 8.0
 is_colored = true
 metadata/_custom_type_script = "uid://bj4uga4l46xp4"
