@@ -63,7 +63,6 @@
 [ext_resource type="Texture2D" uid="uid://dkf58ppsirhvx" path="res://ui/hud/size/button_normal_default.png" id="34_t46w6"]
 [ext_resource type="Texture2D" uid="uid://y2b3cpjsnwaq" path="res://ui/hud/size/button_normal_locked.png" id="35_m28ev"]
 [ext_resource type="Resource" uid="uid://7yqonci0yd1t" path="res://drawing/drawings/plane.tres" id="35_vvpk2"]
-[ext_resource type="Resource" uid="uid://utb6fvcnjj32" path="res://drawing/drawings/blank.tres" id="36_lon8v"]
 [ext_resource type="Texture2D" uid="uid://djqplpynero84" path="res://ui/hud/size/button_normal_selected.png" id="36_lwlx3"]
 [ext_resource type="Resource" uid="uid://df13ib1nxo0rj" path="res://drawing/drawings/bicycle.tres" id="36_o46vb"]
 [ext_resource type="Texture2D" uid="uid://dw3w5vku0kdtg" path="res://ui/hud/size/button_large_default.png" id="37_0de7l"]
@@ -489,7 +488,7 @@ drawing_sprite = NodePath("../Drawing")
 [node name="ImageLoader" type="Node2D" parent="DrawingManager" unique_id=141799161]
 unique_name_in_owner = true
 script = ExtResource("6_hve3p")
-drawings = Array[ExtResource("7_mfdv2")]([ExtResource("8_iotsf"), ExtResource("8_vef74"), ExtResource("9_hve3p"), ExtResource("22_6qn5j"), ExtResource("23_wj41c"), ExtResource("24_baljx"), ExtResource("25_t2ssd"), ExtResource("26_7noa1"), ExtResource("27_3xib3"), ExtResource("28_5628o"), ExtResource("29_fuuk6"), ExtResource("30_66xay"), ExtResource("31_0s2o4"), ExtResource("32_4mai8"), ExtResource("33_w37fy"), ExtResource("34_7x3ck"), ExtResource("35_vvpk2"), ExtResource("36_o46vb"), ExtResource("37_66xay"), ExtResource("36_lon8v")])
+drawings = Array[ExtResource("7_mfdv2")]([ExtResource("8_iotsf"), ExtResource("8_vef74"), ExtResource("9_hve3p"), ExtResource("22_6qn5j"), ExtResource("23_wj41c"), ExtResource("24_baljx"), ExtResource("25_t2ssd"), ExtResource("26_7noa1"), ExtResource("27_3xib3"), ExtResource("28_5628o"), ExtResource("29_fuuk6"), ExtResource("30_66xay"), ExtResource("31_0s2o4"), ExtResource("32_4mai8"), ExtResource("33_w37fy"), ExtResource("34_7x3ck"), ExtResource("35_vvpk2"), ExtResource("36_o46vb"), ExtResource("37_66xay")])
 
 [node name="ScoreManager" type="Node2D" parent="." unique_id=1200851758]
 unique_name_in_owner = true
@@ -604,9 +603,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 664.0
+offset_left = 663.0
 offset_top = -1.0
-offset_right = 756.0
+offset_right = 755.0
 offset_bottom = 33.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
@@ -651,9 +650,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -231.0
+offset_left = -232.0
 offset_top = 40.0
-offset_right = -148.0
+offset_right = -149.0
 offset_bottom = 81.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
