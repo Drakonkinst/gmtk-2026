@@ -36,6 +36,12 @@ func on_upgrade_unlocked(upgrade: Upgrade) -> void:
 func on_complete_drawing(accuracy: float) -> void:
     accuracy_display.text = str(int(accuracy * 100)) + "%"
     var drawings_completed_text := str(min(Global.game.drawings_completed + 1, Global.game.MAX_DRAWINGS))
+    if accuracy > 0.75:
+        accuracy_display.add_theme_color_override("default_color", Color.GREEN)
+    elif accuracy < 0.5:
+        accuracy_display.add_theme_color_override("default_color", Color.RED)
+    else:
+        accuracy_display.remove_theme_color_override("default_color")
     if Global.game.freedraw_mode:
         drawing_count.text = drawings_completed_text
     else:
