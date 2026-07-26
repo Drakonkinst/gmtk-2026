@@ -36,8 +36,7 @@ func unpause() -> void:
 
 func _on_pause_button_pressed() -> void:
     AudioManager.play_button_sfx()
-    get_tree().paused = true
-    show()
+    pause()
     
 func _on_paused_menu_button_pressed() -> void:
     AudioManager.play_button_sfx()
@@ -45,12 +44,12 @@ func _on_paused_menu_button_pressed() -> void:
     
 func _on_restart_button_pressed() -> void:
     AudioManager.play_button_sfx()
+    unpause()
     Global.game.restart()
 
 func _on_back_button_pressed() -> void:
     AudioManager.play_button_sfx()
-    get_tree().paused = false
-    hide()
+    unpause()
 
 func _on_button_mouse_entered() -> void:
     AudioManager.play_hover_sfx()

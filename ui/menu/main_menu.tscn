@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://l6ukl7w6fax" path="res://ui/menu/sky gradient.png" id="2_4aijq"]
 [ext_resource type="Texture2D" uid="uid://1vrdoroam2ap" path="res://ui/menu/scribbled sun.png" id="2_4gkdq"]
 [ext_resource type="Texture2D" uid="uid://bqhvbrg22chn" path="res://ui/menu/menu_background.png" id="2_gvx18"]
-[ext_resource type="Texture2D" uid="uid://bc2jeakh5ldfu" path="res://ui/menu/title.png" id="3_4gkdq"]
 [ext_resource type="Texture2D" uid="uid://bytpnprwy030i" path="res://ui/menu/cloud.png" id="4_8gmgf"]
 [ext_resource type="Texture2D" uid="uid://cwh36whhfakuu" path="res://ui/menu/start_background.png" id="6_t3kfx"]
 [ext_resource type="Theme" uid="uid://bqa8hn3hsplq2" path="res://ui/hud/hud_theme.tres" id="6_u4nky"]
@@ -12,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://caov6fnyg0n1r" path="res://ui/fonts/KenneyThick.ttf" id="8_h2671"]
 [ext_resource type="Script" uid="uid://dwhxqb43wiyuo" path="res://ui/hud/h_slider.gd" id="9_umht6"]
 [ext_resource type="FontFile" uid="uid://csdil41k4yke5" path="res://ui/fonts/pico12.ttf" id="10_r5t3j"]
+[ext_resource type="Texture2D" uid="uid://ced8xftjsia7a" path="res://ui/menu/title animated.png" id="12_t3kfx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yc8k7"]
 atlas = ExtResource("2_4gkdq")
@@ -57,6 +57,77 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 default_font = ExtResource("10_r5t3j")
 default_font_size = 12
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hut73"]
+atlas = ExtResource("12_t3kfx")
+region = Rect2(0, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pyrn"]
+atlas = ExtResource("12_t3kfx")
+region = Rect2(320, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf8oo"]
+atlas = ExtResource("12_t3kfx")
+region = Rect2(640, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kurrx"]
+atlas = ExtResource("12_t3kfx")
+region = Rect2(960, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yime1"]
+atlas = ExtResource("12_t3kfx")
+region = Rect2(1280, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhv5v"]
+atlas = ExtResource("12_t3kfx")
+region = Rect2(1600, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vvdv"]
+atlas = ExtResource("12_t3kfx")
+region = Rect2(1920, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdptx"]
+atlas = ExtResource("12_t3kfx")
+region = Rect2(2240, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfqop"]
+atlas = ExtResource("12_t3kfx")
+region = Rect2(2560, 0, 320, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yced0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hut73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pyrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf8oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kurrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yime1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhv5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vvdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdptx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfqop")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_yc8k7"]
 length = 0.001
 tracks/0/type = "value"
@@ -78,6 +149,30 @@ tracks/1/path = NodePath("Title:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(480, 360)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -111,11 +206,77 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(480, -360), Vector2(480, 360), Vector2(480, 320), Vector2(480, 360), Vector2(480, 350), Vector2(480, 360)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_t3kfx"]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fader:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(2.8284266, 1),
+"update": 0,
+"values": [Vector2(480, 360), Vector2(480, -360)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3.8637452, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(5, 5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3.2490087, 1),
+"update": 0,
+"values": [Vector2(480, 360), Vector2(590, 517)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8gmgf"]
 _data = {
 &"RESET": SubResource("Animation_yc8k7"),
-&"intro": SubResource("Animation_4aijq")
+&"intro": SubResource("Animation_4aijq"),
+&"transition": SubResource("Animation_t3kfx")
 }
 
 [node name="MainMenu" type="Control" unique_id=721735160]
@@ -245,10 +406,10 @@ scale = Vector2(0.69, 0.69)
 
 [node name="Label" type="Label" parent="OptionsMenu/VolumeSliders" unique_id=1267097435]
 layout_mode = 0
-offset_left = -210.14496
-offset_top = -127.536255
-offset_right = 35.85504
-offset_bottom = -85.536255
+offset_left = -208.0
+offset_top = -130.0
+offset_right = 38.0
+offset_bottom = -88.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 16
@@ -271,11 +432,12 @@ script = ExtResource("9_umht6")
 bus_name = "Master"
 
 [node name="Label2" type="Label" parent="OptionsMenu/VolumeSliders" unique_id=1910104492]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = -194.20293
-offset_top = -68.115906
-offset_right = 21.797073
-offset_bottom = -26.115906
+offset_left = -194.0
+offset_top = -69.0
+offset_right = 22.0
+offset_bottom = -27.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 16
@@ -285,6 +447,7 @@ text = "Music Volume"
 horizontal_alignment = 1
 
 [node name="HSlider2" type="HSlider" parent="OptionsMenu/VolumeSliders" unique_id=1538273406]
+unique_name_in_owner = true
 modulate = Color(1.034, 1.034, 1.034, 1)
 layout_mode = 0
 offset_left = -221.7391
@@ -299,10 +462,10 @@ bus_name = "Music"
 
 [node name="Label3" type="Label" parent="OptionsMenu/VolumeSliders" unique_id=1623420087]
 layout_mode = 0
-offset_left = -179.71016
-offset_top = -5.7971067
-offset_right = 6.2898407
-offset_bottom = 36.202892
+offset_left = -179.0
+offset_top = -9.0
+offset_right = 7.0
+offset_bottom = 33.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 16
@@ -428,14 +591,17 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0)
 metadata/_edit_lock_ = true
 
-[node name="Title" type="Sprite2D" parent="." unique_id=15045752]
+[node name="Title" type="AnimatedSprite2D" parent="." unique_id=1899926584]
 unique_name_in_owner = true
 z_index = 6
 position = Vector2(480, 360)
 scale = Vector2(3, 3)
-texture = ExtResource("3_4gkdq")
+sprite_frames = SubResource("SpriteFrames_yced0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1128401807]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_8gmgf")
 autoplay = &"intro"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1624393875]
+position = Vector2(480, 360)

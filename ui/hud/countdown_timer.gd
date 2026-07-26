@@ -14,7 +14,7 @@ var displayed_time_left: int
 func change_time(delta_time: int):
     if delta_time >= 0:
         added_label.text = "+%ss" % (delta_time)
-        if displayed_time_left == CountdownManager.MAX_TIME:
+        if displayed_time_left == CountdownManager.MAX_TIME and not Global.freedraw_mode:
             full_anim_player.play("time_full")
         animation_player.play("adding_time")
         added_label.add_theme_color_override("font_color", Color.GREEN)

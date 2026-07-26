@@ -150,6 +150,7 @@ func _on_upgrade_unlock(upgrade: Upgrade) -> void:
     drawing_manager.set_next_drawing()
     player_drawing.on_new_drawing()
     AudioManager.play_button_sfx()
+    %Hourglass.take_sand()
     AudioManager.play_unlock_sfx()
 
 func _on_attempt_upgrade_1(upgrade: Upgrade) -> void:
@@ -178,6 +179,10 @@ func _on_scroll_change(dir: int) -> void:
         player_drawing.decrement_size()
 
 func exit_to_menu():
+    for button: BaseButton in [%RestartButton,%PausedMenuButton,%BackButton]:
+        button.disabled = true
+    %TransitionAnimation.play_backwards("transition")
+    await %TransitionAnimation.animation_finished
     exit_game.emit()
 
 func restart():

@@ -25,21 +25,21 @@ func _ready() -> void:
 
 const QUIET_VOLUME: float = -100
 var starting_bgm_db: float
-func start_bgm() -> void:
+func start_bgm(play_from_start: bool = false) -> void:
     if pause_bgm.playing:
         pause_bgm.volume_db = QUIET_VOLUME
-    if bgm.playing:
-        bgm.volume_db = starting_bgm_db
-    else:
+    
+    bgm.volume_db = starting_bgm_db
+    if !bgm.playing or play_from_start:
         bgm.play()
 
 var starting_pause_bgm_db: float
 func start_pause_bgm() -> void:
     if bgm.playing:
         bgm.volume_db = QUIET_VOLUME
-    if pause_bgm.playing:
-        pause_bgm.volume_db = starting_pause_bgm_db
-    else:
+    
+    pause_bgm.volume_db = starting_pause_bgm_db
+    if !pause_bgm.playing:
         pause_bgm.play()
 
 func play_submit_sfx() -> void:
