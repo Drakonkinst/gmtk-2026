@@ -206,6 +206,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(480, -360), Vector2(480, 360), Vector2(480, 320), Vector2(480, 360), Vector2(480, 350), Vector2(480, 360)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_t3kfx"]
 resource_name = "transition"
@@ -583,7 +597,6 @@ z_index = 6
 position = Vector2(480, 360)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_yced0")
-autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1128401807]
 unique_name_in_owner = true

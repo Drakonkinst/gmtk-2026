@@ -195,6 +195,10 @@ _data = {
 &"falling_sand": SubResource("Animation_o46vb")
 }
 
+[sub_resource type="Gradient" id="Gradient_q6vxt"]
+offsets = PackedFloat32Array(0, 0.18387097)
+colors = PackedColorArray(0.8901186, 0.7604822, 0.4977886, 0, 0.8901961, 0.7607843, 0.49803922, 1)
+
 [sub_resource type="Animation" id="Animation_5sxqa"]
 length = 0.001
 tracks/0/type = "value"
@@ -305,11 +309,23 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Hourglass:offset_transform_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_r3ggl"]
 resource_name = "time_full"
 length = 2.0
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -358,6 +374,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Hourglass:offset_transform_position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(9, 0), Vector2(-7, 0), Vector2(5, 0), Vector2(-3, 0), Vector2(2, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sueei"]
 _data = {
@@ -402,7 +430,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%PostButton:disabled")
+tracks/2/path = NodePath("AnimElements/Leaderboard/PostButton:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -434,6 +462,42 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%ReplayButton:offset_transform_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%MenuButton:offset_transform_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%Leaderboard:offset_transform_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_66xay"]
@@ -459,19 +523,19 @@ tracks/1/path = NodePath("AnimElements:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2, 3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(0.6155722, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%PostButton:disabled")
+tracks/2/path = NodePath("AnimElements/Leaderboard/PostButton:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -483,7 +547,7 @@ tracks/3/path = NodePath("%MenuButton:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -495,10 +559,46 @@ tracks/4/path = NodePath("%ReplayButton:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%ReplayButton:offset_transform_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(0.48296815, 1),
+"update": 0,
+"values": [Vector2(0, 200), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%MenuButton:offset_transform_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.9000001, 2.9),
+"transitions": PackedFloat32Array(0.43527535, 1),
+"update": 0,
+"values": [Vector2(0, 200), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%Leaderboard:offset_transform_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(0.39229202, 1),
+"update": 0,
+"values": [Vector2(300, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0s2o4"]
@@ -653,10 +753,10 @@ texture_disabled = ExtResource("17_m28ev")
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
-offset_left = -381.0
-offset_top = 18.0
-offset_right = -381.0
-offset_bottom = 18.0
+offset_left = 72.0
+offset_top = 22.0
+offset_right = 72.0
+offset_bottom = 22.0
 script = ExtResource("31_jo4nb")
 
 [node name="ScoreLabel" type="RichTextLabel" parent="HUDLayer/HUD/ScoreCounter" unique_id=721812396]
@@ -672,7 +772,7 @@ offset_bottom = 43.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 24
 text = "Score (1x):"
 scroll_active = false
 horizontal_alignment = 2
@@ -684,13 +784,13 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 663.0
-offset_top = 4.0
+offset_top = 5.0
 offset_right = 755.0
-offset_bottom = 38.0
+offset_bottom = 39.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 24
 text = "0"
 scroll_active = false
 
@@ -700,10 +800,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -446.0
-offset_top = 13.0
-offset_right = -446.0
-offset_bottom = 13.0
+offset_left = 6.0
+offset_top = 17.0
+offset_right = 6.0
+offset_bottom = 17.0
 grow_horizontal = 0
 
 [node name="AccuracyLabel" type="RichTextLabel" parent="HUDLayer/HUD/AccuracyDisplay" unique_id=861284623]
@@ -718,7 +818,7 @@ offset_bottom = 73.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 24
 text = "Accuracy:
 "
 scroll_active = false
@@ -731,13 +831,13 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -232.0
-offset_top = 34.0
+offset_top = 35.0
 offset_right = -149.0
-offset_bottom = 75.0
+offset_bottom = 76.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 24
 text = "--%
 "
 scroll_active = false
@@ -746,24 +846,24 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
-offset_left = 230.0
-offset_top = 632.0
-offset_right = 230.0
-offset_bottom = 632.0
+offset_left = 29.0
+offset_top = 28.0
+offset_right = 29.0
+offset_bottom = 28.0
 
 [node name="DrawingLabel" type="RichTextLabel" parent="HUDLayer/HUD/DrawingCounter" unique_id=201460081]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 144.0
-offset_top = 15.0
-offset_right = 269.0
-offset_bottom = 61.0
+offset_left = 93.0
+offset_top = 10.0
+offset_right = 270.0
+offset_bottom = 56.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 24
 text = "Drawing:"
 scroll_active = false
 horizontal_alignment = 2
@@ -774,14 +874,14 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 274.0
-offset_top = 16.0
-offset_right = 406.0
-offset_bottom = 49.0
+offset_left = 278.0
+offset_top = 10.0
+offset_right = 372.0
+offset_bottom = 43.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 24
 text = "1 / 20"
 scroll_active = false
 
@@ -1336,6 +1436,7 @@ texture = ExtResource("66_vyqle")
 [node name="Hourglass" type="Control" parent="HUDLayer/HUD" unique_id=528516156]
 unique_name_in_owner = true
 anchors_preset = 0
+offset_transform_enabled = true
 script = ExtResource("80_vvpk2")
 
 [node name="BaseHourglass" type="TextureRect" parent="HUDLayer/HUD/Hourglass" unique_id=215782338]
@@ -1365,7 +1466,7 @@ offset_right = 59.0
 offset_bottom = 306.0
 scale = Vector2(3, 3)
 max_value = 1.0
-step = 0.01
+step = 0.0
 value = 0.75
 fill_mode = 3
 texture_progress = ExtResource("83_o46vb")
@@ -1392,6 +1493,19 @@ offset_right = 57.0
 offset_bottom = 306.0
 scale = Vector2(3, 3)
 texture = ExtResource("84_lon8v")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="HUDLayer/HUD/Hourglass" unique_id=1680693269]
+position = Vector2(72, 310)
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 18.0
+gravity = Vector2(0, -980)
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_q6vxt")
 
 [node name="CountdownTimer" type="Control" parent="HUDLayer/HUD" unique_id=300404977]
 unique_name_in_owner = true
@@ -1673,7 +1787,6 @@ bus_name = "UI"
 
 [node name="EndScreen" type="Control" parent="HUDLayer" unique_id=488366321]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1719,26 +1832,26 @@ offset_left = 503.0
 offset_top = 150.0
 offset_right = 888.0
 offset_bottom = 535.0
+offset_transform_enabled = true
 
-[node name="UserEntry" type="LineEdit" parent="HUDLayer/EndScreen/AnimElements" unique_id=599717787]
+[node name="UserEntry" type="LineEdit" parent="HUDLayer/EndScreen/AnimElements/Leaderboard" unique_id=599717787]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 503.0
-offset_top = 95.0
-offset_right = 757.0
-offset_bottom = 133.0
+offset_top = -55.0
+offset_right = 254.0
+offset_bottom = -17.0
 theme_override_fonts/font = ExtResource("52_tb2lt")
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Enter your name"
 max_length = 20
 
-[node name="PostButton" type="Button" parent="HUDLayer/EndScreen/AnimElements" unique_id=842048962]
+[node name="PostButton" type="Button" parent="HUDLayer/EndScreen/AnimElements/Leaderboard" unique_id=842048962]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 768.0
-offset_top = 77.0
-offset_right = 929.0
-offset_bottom = 146.0
+offset_left = 265.0
+offset_top = -73.0
+offset_right = 426.0
+offset_bottom = -4.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
@@ -1752,6 +1865,7 @@ offset_left = 236.0
 offset_top = 594.0
 offset_right = 426.0
 offset_bottom = 662.0
+offset_transform_enabled = true
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
@@ -1762,9 +1876,10 @@ text = "Main Menu"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 474.0
-offset_top = 595.0
+offset_top = 594.0
 offset_right = 664.0
-offset_bottom = 663.0
+offset_bottom = 662.0
+offset_transform_enabled = true
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
@@ -1795,18 +1910,6 @@ theme_override_fonts/font = ExtResource("52_tb2lt")
 theme_override_font_sizes/font_size = 36
 text = "Avg. Accuracy: "
 
-[node name="DrawingsCompletedLabel" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=1373800939]
-layout_mode = 0
-offset_left = 39.0
-offset_top = 385.0
-offset_right = 371.0
-offset_bottom = 450.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 22
-theme_override_fonts/font = ExtResource("52_tb2lt")
-theme_override_font_sizes/font_size = 36
-text = "Drawings Made: "
-
 [node name="TimeSpentLabel" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=1827874007]
 layout_mode = 0
 offset_left = 36.0
@@ -1818,6 +1921,18 @@ theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("52_tb2lt")
 theme_override_font_sizes/font_size = 36
 text = "Time: "
+
+[node name="DrawingsCompletedLabel" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=1373800939]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 385.0
+offset_right = 371.0
+offset_bottom = 450.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 36
+text = "Drawings Made: "
 
 [node name="Header" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=2033968937]
 layout_mode = 0
@@ -1842,46 +1957,46 @@ offset_bottom = 231.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("52_tb2lt")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 60
 text = "###"
 
 [node name="EndAccuracyValue" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=64647602]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 318.0
-offset_top = 264.0
-offset_right = 446.0
-offset_bottom = 329.0
+offset_left = 316.0
+offset_top = 249.0
+offset_right = 444.0
+offset_bottom = 314.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("52_tb2lt")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 60
 text = "###"
 
 [node name="EndTimeSpent" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=2072607102]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 138.0
-offset_top = 324.0
-offset_right = 380.0
-offset_bottom = 389.0
+offset_left = 134.0
+offset_top = 308.0
+offset_right = 376.0
+offset_bottom = 373.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("52_tb2lt")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 60
 text = "###"
 
 [node name="EndDrawingsCompleted" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=1210669791]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 317.0
-offset_top = 381.0
-offset_right = 494.0
-offset_bottom = 446.0
+offset_left = 315.0
+offset_top = 367.0
+offset_right = 492.0
+offset_bottom = 432.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("52_tb2lt")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 60
 text = "###"
 
 [node name="EndAnimPlayer" type="AnimationPlayer" parent="HUDLayer/EndScreen" unique_id=2084029946]
