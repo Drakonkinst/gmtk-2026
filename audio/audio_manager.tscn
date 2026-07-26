@@ -148,14 +148,15 @@ bus = &"UI"
 stream = SubResource("AudioStreamRandomizer_todq8")
 volume_db = -10.0
 pitch_scale = 2.0
-max_polyphony = 8
+max_polyphony = 4
 bus = &"UI"
 
 [node name="EraseSFXOneshot" type="AudioStreamPlayer" parent="." unique_id=918809805]
 stream = SubResource("AudioStreamRandomizer_tmngx")
 volume_db = -10.0
-max_polyphony = 8
+max_polyphony = 4
 bus = &"UI"
+playback_type = 2
 
 [node name="ClearSFX" type="AudioStreamPlayer" parent="." unique_id=75116472]
 stream = SubResource("AudioStreamRandomizer_gnfy0")
@@ -163,12 +164,11 @@ bus = &"UI"
 
 [node name="BrushSelectSFX" type="AudioStreamPlayer" parent="." unique_id=1157530454]
 stream = SubResource("AudioStreamRandomizer_pyj8m")
-volume_db = 10.0
+volume_db = 2.0
 bus = &"UI"
 
 [node name="ColorSelectSFX" type="AudioStreamPlayer" parent="." unique_id=383473584]
 stream = SubResource("AudioStreamRandomizer_ji21h")
-volume_db = 5.0
 bus = &"UI"
 
 [node name="BucketFillSFX" type="AudioStreamPlayer" parent="." unique_id=1173505437]

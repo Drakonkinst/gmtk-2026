@@ -16,7 +16,7 @@ signal start_game
 @onready var background: TextureRect = %Background
 @onready var credits: Control = %Credits
 @onready var fader: ColorRect = %Fader
-@onready var title: Sprite2D = %Title
+@onready var title: AnimatedSprite2D = %Title
 var restarting: bool = false
 
 func _ready() -> void:
@@ -34,7 +34,10 @@ func _ready() -> void:
     credits_button.mouse_entered.connect(_on_button_mouse_entered)
     options_button.mouse_entered.connect(_on_button_mouse_entered)
     back_button.mouse_entered.connect(_on_button_mouse_entered)
+    freedraw_button.mouse_entered.connect(_on_button_mouse_entered)
+    
     options_bg.mouse_exited.connect(_on_options_bg_mouse_exited)
+    %HSlider2.value_changed.connect(_on_musicslider_value_changed)
     
     # can't press buttons until animation ended
     await animation_player.animation_finished
@@ -43,11 +46,19 @@ func _ready() -> void:
 func _on_start_button_pressed():
     AudioManager.play_button_sfx()
     Global.freedraw_mode = false
+    for button: BaseButton in [start_button,options_button,credits_button,freedraw_button]:
+        button.disabled = true
+    %AnimationPlayer.play("transition")
+    await %AnimationPlayer.animation_finished
     start_game.emit()
 
 func _on_freedraw_button_pressed():
     AudioManager.play_button_sfx()
     Global.freedraw_mode = true
+    for button: BaseButton in [start_button,options_button,credits_button,freedraw_button]:
+        button.disabled = true
+    %AnimationPlayer.play("transition")
+    await %AnimationPlayer.animation_finished
     start_game.emit()
 
 func _on_credits_button_pressed():
@@ -90,8 +101,15 @@ func _on_backbutton_pressed():
         
         var menu_tween = get_tree().create_tween().set_parallel(false)
         menu_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
-        for node: CanvasItem in [start_button,options_button,credits_button,freedraw_button,title]:
+        for node: CanvasItem in [options_button,credits_button,freedraw_button,title,start_button]:
             menu_tween.tween_property(node,"position:x", node.position.x + 1000,0.25)
     
 func _on_button_mouse_entered() -> void:
-    AudioManager.play_hover_sfx()
+    if not %AnimationPlayer.is_playing():
+        AudioManager.play_hover_sfx()
+        
+func _on_musicslider_value_changed(value):
+    if value == 0:
+        %Label2.text = "bruh"
+    else:
+        %Label2.text = "Music Volume"

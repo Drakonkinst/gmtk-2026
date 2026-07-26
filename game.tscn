@@ -91,6 +91,67 @@
 [ext_resource type="Script" uid="uid://cgbyeqdvqmnti" path="res://ui/hud/pause_menu.gd" id="85_pwsyv"]
 [ext_resource type="PackedScene" uid="uid://cppg62i68ikb7" path="res://leaderboard/leaderboard.tscn" id="89_pwsyv"]
 
+[sub_resource type="Animation" id="Animation_sueei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUDLayer/Fader:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qhxlk"]
+resource_name = "transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUDLayer/Fader:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.45062545, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.22531286, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qw2kp"]
+_data = {
+&"RESET": SubResource("Animation_sueei"),
+&"transition": SubResource("Animation_qhxlk")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vden3"]
 atlas = ExtResource("83_pwsyv")
 region = Rect2(0, 0, 32, 64)
@@ -469,6 +530,14 @@ position = Vector2(480, 360)
 scale = Vector2(3, 3)
 texture = ExtResource("4_mljfx")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1633746045]
+position = Vector2(480, 360)
+
+[node name="TransitionAnimation" type="AnimationPlayer" parent="Camera2D" unique_id=1719395190]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_qw2kp")
+autoplay = &"transition"
+
 [node name="InputManager" type="Node2D" parent="." unique_id=1115121594]
 unique_name_in_owner = true
 script = ExtResource("4_7sc4i")
@@ -508,6 +577,16 @@ script = ExtResource("14_e8heu")
 autostart = true
 
 [node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1285114456]
+
+[node name="Fader" type="ColorRect" parent="HUDLayer" unique_id=187782288]
+z_index = 2
+offset_left = -108.0
+offset_top = -51.0
+offset_right = 1059.0
+offset_bottom = 774.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="HUD" type="Control" parent="HUDLayer" unique_id=1449260775]
 unique_name_in_owner = true
@@ -1344,24 +1423,6 @@ theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("52_tb2lt")
 theme_override_font_sizes/font_size = 72
 text = "10s"
-horizontal_alignment = 1
-
-[node name="MaxTimeLabel" type="Label" parent="HUDLayer/HUD/CountdownTimer/TimeLabel" unique_id=1969361924]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 63.0
-offset_top = 47.0
-offset_right = 146.0
-offset_bottom = -18.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("52_tb2lt")
-theme_override_font_sizes/font_size = 16
-text = "(60s max)"
 horizontal_alignment = 1
 
 [node name="AddedLabel" type="Label" parent="HUDLayer/HUD/CountdownTimer" unique_id=312955900]
