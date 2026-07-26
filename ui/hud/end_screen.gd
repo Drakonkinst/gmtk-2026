@@ -52,6 +52,7 @@ func _on_menu_button_pressed() -> void:
     
 func _on_replay_button_pressed() -> void:
     Global.game.restart_game.emit()
+    AudioManager.start_bgm()
     
 func on_game_end() -> void:
     show()
@@ -63,4 +64,5 @@ func on_game_end() -> void:
     end_drawings_completed.text = str(Global.drawings_made)
     
     end_anim_player.play("end_game")
+    AudioManager.start_pause_bgm()
     

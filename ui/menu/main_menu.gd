@@ -21,9 +21,8 @@ var restarting: bool = false
 
 func _ready() -> void:
     get_tree().paused = false
-    print("RE ",restarting)
     if !restarting:
-        AudioManager.start_bgm()
+        AudioManager.start_bgm(true)
     # Show menus and connect buttons
     start_button.pressed.connect(_on_start_button_pressed)
     credits_button.pressed.connect(_on_credits_button_pressed)
