@@ -4,8 +4,6 @@ class_name ImageLoader
 
 @export var drawings: Array[Drawing]
 
-var _max_attempts := 3
-
 # Array of the same length as drawings to hold image data
 var image_data_array: Array[PackedInt64Array]
 var is_first_drawing := true

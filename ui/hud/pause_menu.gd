@@ -6,7 +6,6 @@ extends Control
 @onready var restart_button: Button = %RestartButton
 @onready var back_button: Button = %BackButton
 
-
 func _ready() -> void:
     pause_button.pressed.connect(_on_pause_button_pressed)
     paused_menu_button.pressed.connect(_on_paused_menu_button_pressed)
@@ -34,11 +33,11 @@ func _on_pause_button_pressed() -> void:
     
 func _on_paused_menu_button_pressed() -> void:
     AudioManager.play_button_sfx()
-    Global.game.exit_game.emit()
+    Global.game.exit_to_menu()
     
 func _on_restart_button_pressed() -> void:
     AudioManager.play_button_sfx()
-    Global.game.restart_game.emit()
+    Global.game.restart()
 
 func _on_back_button_pressed() -> void:
     AudioManager.play_button_sfx()
