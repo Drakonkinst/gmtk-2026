@@ -19,12 +19,20 @@ func _ready() -> void:
     
 func _unhandled_input(event: InputEvent) -> void:
     if Input.is_action_just_pressed("pause"):
-        if visible:
-            get_tree().paused = false
-            hide()
+        if !visible:
+            pause()
         else:
-            get_tree().paused = true
-            show()
+            unpause()
+
+func pause() -> void:
+    get_tree().paused = true
+    show()
+    AudioManager.start_pause_bgm()
+
+func unpause() -> void:
+    get_tree().paused = false
+    hide()
+    AudioManager.start_bgm()
 
 func _on_pause_button_pressed() -> void:
     AudioManager.play_button_sfx()

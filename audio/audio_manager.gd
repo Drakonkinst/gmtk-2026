@@ -19,12 +19,28 @@ extends Node
 @export var tick_tock_sfx: AudioStreamPlayer
 @export var time_up_sfx: AudioStreamPlayer
 
+func _ready() -> void:
+    starting_bgm_db = bgm.volume_db
+    starting_pause_bgm_db = pause_bgm.volume_db
 
+const QUIET_VOLUME: float = -100
+var starting_bgm_db: float
 func start_bgm() -> void:
-    bgm.play()
+    if pause_bgm.playing:
+        pause_bgm.volume_db = QUIET_VOLUME
+    if bgm.playing:
+        bgm.volume_db = starting_bgm_db
+    else:
+        bgm.play()
 
+var starting_pause_bgm_db: float
 func start_pause_bgm() -> void:
-    pause_bgm.play()
+    if bgm.playing:
+        bgm.volume_db = QUIET_VOLUME
+    if pause_bgm.playing:
+        pause_bgm.volume_db = starting_pause_bgm_db
+    else:
+        pause_bgm.play()
 
 func play_submit_sfx() -> void:
     button_sfx.play()

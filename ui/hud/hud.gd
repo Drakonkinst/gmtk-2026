@@ -53,6 +53,7 @@ func _on_submit_button_pressed() -> void:
 func on_game_end() -> void:
     submit_button.disabled = true
     clear_button.disabled = true
+    #AudioManager.start_pause_bgm()
 
 func on_freedraw_mode() -> void:
     drawing_count.text = "0"
