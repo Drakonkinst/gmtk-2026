@@ -16,11 +16,13 @@ signal start_game
 @onready var credits: Control = %Credits
 @onready var fader: ColorRect = %Fader
 @onready var title: Sprite2D = %Title
-
+var restarting: bool = false
 
 func _ready() -> void:
     get_tree().paused = false
-    AudioManager.start_bgm()
+    print("RE ",restarting)
+    if !restarting:
+        AudioManager.start_bgm()
     # Show menus and connect buttons
     start_button.pressed.connect(_on_start_button_pressed)
     credits_button.pressed.connect(_on_credits_button_pressed)
