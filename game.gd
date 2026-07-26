@@ -174,3 +174,9 @@ func _on_scroll_change(dir: int) -> void:
         player_drawing.increment_size()
     else:
         player_drawing.decrement_size()
+
+func exit_to_menu():
+    exit_game.emit()
+
+func restart():
+    restart_game.emit()
