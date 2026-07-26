@@ -519,6 +519,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_hve3p")
 
+[node name="InitialHint" type="RichTextLabel" parent="HUDLayer/HUD" unique_id=861284623]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -661.0
+offset_top = 191.0
+offset_right = -306.0
+offset_bottom = 233.0
+grow_horizontal = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.8980392, 0.9254902, 0.89411765, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 16
+text = "Trace the drawing then press SUBMIT!
+Higher accuracy equals higher score.
+"
+scroll_active = false
+horizontal_alignment = 1
+
 [node name="RevealElements" type="Control" parent="HUDLayer/HUD" unique_id=1460300616 node_paths=PackedStringArray("on_color_reveal", "on_tools_reveal", "on_sizes_reveal", "on_bucket_reveal")]
 unique_name_in_owner = true
 anchors_preset = 0
@@ -627,7 +649,7 @@ offset_right = -446.0
 offset_bottom = 13.0
 grow_horizontal = 0
 
-[node name="AccuracyLabel" type="RichTextLabel" parent="HUDLayer/HUD/AccuracyDisplay" unique_id=861284623]
+[node name="AccuracyLabel" type="RichTextLabel" parent="HUDLayer/HUD/AccuracyDisplay" unique_id=1015127411]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

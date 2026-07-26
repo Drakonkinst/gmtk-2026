@@ -19,6 +19,7 @@ signal select_size(size: PlayerDrawing.BrushSize)
 @onready var drawing_count: RichTextLabel = %DrawingCount
 @onready var hourglass: Hourglass = %Hourglass
 @onready var countdown_timer: CountdownTimer = %CountdownTimer
+@onready var initial_hint: Node = %InitialHint
 
 
 func _ready() -> void:
@@ -35,6 +36,7 @@ func on_upgrade_unlocked(upgrade: Upgrade) -> void:
 
 func on_complete_drawing(accuracy: float) -> void:
     accuracy_display.text = str(int(accuracy * 100)) + "%"
+    initial_hint.hide()
     var drawings_completed_text := str(min(Global.game.drawings_completed + 1, Global.game.MAX_DRAWINGS))
     if accuracy > 0.75:
         accuracy_display.add_theme_color_override("default_color", Color.GREEN)
