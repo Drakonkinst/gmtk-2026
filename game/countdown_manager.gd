@@ -53,5 +53,5 @@ func _process(delta: float) -> void:
         timer_initialized = true
 
 func _on_timer_timeout() -> void:
-    if not Global.game.freedraw_mode:
+    if not Global.game.freedraw_mode and not Global.game.game_over:
         set_time(time_left - 1, false)

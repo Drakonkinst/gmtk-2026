@@ -25,6 +25,7 @@ var freedraw_mode := Global.freedraw_mode
 var drawings_completed := 0
 var accuracy_sum := 0.0 # Can use this to calculate average accuracy with accuracy_sum / drawings_completed
 var total_time_spent := 0.0 # Can use for leaderboard
+var game_over := false
 
 func _ready() -> void:
     drawing_manager.set_next_drawing()
@@ -124,6 +125,7 @@ func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
     AudioManager.play_brush_select_sfx()
 
 func _on_game_lose() -> void:
+    game_over = true
     input_manager.drawing_enabled = false
     hud.on_game_lose()
     AudioManager.play_time_up_sfx()

@@ -19,7 +19,7 @@ extends Control
 var score_posted := false
 
 var displayed_score := 0
-const SCORE_PER_SECOND := 4000
+const SCORE_PER_SECOND := 10000
 const MAX_DELAY := 1.5
 var target_score := 0
 var delay_left := 0.0
