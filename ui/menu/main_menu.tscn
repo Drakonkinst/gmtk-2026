@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqhvbrg22chn" path="res://ui/menu/menu_background.png" id="2_gvx18"]
 [ext_resource type="Texture2D" uid="uid://bc2jeakh5ldfu" path="res://ui/menu/title.png" id="3_4gkdq"]
 [ext_resource type="Texture2D" uid="uid://bytpnprwy030i" path="res://ui/menu/cloud.png" id="4_8gmgf"]
+[ext_resource type="Texture2D" uid="uid://cwh36whhfakuu" path="res://ui/menu/start_background.png" id="6_t3kfx"]
 [ext_resource type="Theme" uid="uid://bqa8hn3hsplq2" path="res://ui/hud/hud_theme.tres" id="6_u4nky"]
 [ext_resource type="Texture2D" uid="uid://bv7extlajf0e7" path="res://ui/hud/button_ninepatch.png" id="7_t3kfx"]
 [ext_resource type="FontFile" uid="uid://caov6fnyg0n1r" path="res://ui/fonts/KenneyThick.ttf" id="8_h2671"]
@@ -168,13 +169,23 @@ metadata/_edit_lock_ = true
 [node name="StartButton" type="Button" parent="." unique_id=1243298960]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 365.0
-offset_top = 466.0
+offset_left = 361.0
+offset_top = 608.0
 offset_right = 611.0
-offset_bottom = 549.0
+offset_bottom = 699.0
 theme = ExtResource("6_u4nky")
 theme_override_font_sizes/font_size = 32
 text = "start"
+
+[node name="TextureRect" type="TextureRect" parent="StartButton" unique_id=1827875578]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.999939
+offset_right = 84.0
+offset_bottom = 29.666748
+scale = Vector2(2.95, 3)
+texture = ExtResource("6_t3kfx")
 
 [node name="OptionsButton" type="Button" parent="." unique_id=569448089]
 unique_name_in_owner = true
