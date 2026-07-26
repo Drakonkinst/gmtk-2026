@@ -44,6 +44,8 @@ func set_time(time: int, big_change: bool) -> void:
 
 func _ready() -> void:
     timer.timeout.connect(_on_timer_timeout)
+    if Global.freedraw_mode:
+        time_left = MAX_TIME
 
 func _process(delta: float) -> void:
     if not timer_initialized:
