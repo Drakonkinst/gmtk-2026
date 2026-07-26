@@ -37,6 +37,7 @@ func _ready() -> void:
             unlock_upgrade_1()
         for i in range(len(upgrade_list_2)):
             unlock_upgrade_2()
+        unlocked_drawing_sets.push_back(Drawing.DrawingSet.FREEDRAW)
 
 func _process_upgrade(upgrade_id: String):
     if upgrade_id == "Eraser":

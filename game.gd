@@ -86,7 +86,7 @@ func _on_submit_drawing() -> void:
         AudioManager.play_bad_sfx(accuracy)
     
     complete_drawing.emit()
-    if drawings_completed >= MAX_DRAWINGS:
+    if drawings_completed >= MAX_DRAWINGS and not Global.freedraw_mode:
         _on_game_lose()
     
 func _on_clear_drawing() -> void:

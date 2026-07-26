@@ -11,7 +11,8 @@ enum DrawingSet {
     ANIMALS,
     PARK,
     VEHICLE,
-    ABSTRACT
+    ABSTRACT,
+    FREEDRAW
 }
 
 @export var id: String
