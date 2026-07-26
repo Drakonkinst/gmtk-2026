@@ -179,6 +179,10 @@ func _on_scroll_change(dir: int) -> void:
         player_drawing.decrement_size()
 
 func exit_to_menu():
+    for button: BaseButton in [%RestartButton,%PausedMenuButton,%BackButton]:
+        button.disabled = true
+    %TransitionAnimation.play_backwards("transition")
+    await %TransitionAnimation.animation_finished
     exit_game.emit()
 
 func restart():
