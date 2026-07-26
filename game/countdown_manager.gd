@@ -15,6 +15,7 @@ const MAX_TIME := 60
 var time_left: int = STARTING_TIME
 var timer_initialized := false
 
+
 func get_seconds_left() -> int:
     return time_left
 

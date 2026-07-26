@@ -4,6 +4,7 @@ extends Control
 @onready var time_label: Label = %TimeLabel
 @onready var added_label: Label = %AddedLabel
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var full_anim_player: AnimationPlayer = %FullAnimPlayer
 
 const RED_TEXT_THRESHOLD := 5
 
@@ -14,10 +15,11 @@ func change_time(delta_time: int):
     if delta_time >= 0:
         added_label.text = "+%ss" % (delta_time)
         if displayed_time_left == CountdownManager.MAX_TIME:
-            added_label.text += " (max)"
+            full_anim_player.play("time_full")
         animation_player.play("adding_time")
         added_label.add_theme_color_override("font_color", Color.GREEN)
         if delta_time == 0:
+            animation_player.play("zero_time")
             added_label.add_theme_color_override("font_color", Color.RED)
     elif delta_time < 0:
         added_label.text = "-%ss" % (-delta_time)
