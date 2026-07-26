@@ -118,7 +118,7 @@ func _on_select_color_index(index: int) -> void:
     hud.select_color_index(index)
 
 func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
-    if size == player_drawing.brush_size: return
+    #if size == player_drawing.brush_size: return ##not sure why this is buggin
     
     player_drawing.set_brush_size(size)
     AudioManager.play_button_sfx()

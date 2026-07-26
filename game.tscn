@@ -152,6 +152,43 @@ _data = {
 &"transition": SubResource("Animation_qhxlk")
 }
 
+[sub_resource type="Animation" id="Animation_qw2kp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(38, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_ftkif"]
+resource_name = "point"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(38, -42), Vector2(38, -58)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_71bxy"]
+_data = {
+&"RESET": SubResource("Animation_qw2kp"),
+&"point": SubResource("Animation_ftkif")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vden3"]
 atlas = ExtResource("83_pwsyv")
 region = Rect2(0, 0, 32, 64)
@@ -717,15 +754,59 @@ offset_right = -306.0
 offset_bottom = 233.0
 grow_horizontal = 0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.8980392, 0.9254902, 0.89411765, 1)
-theme_override_constants/outline_size = 10
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 18
 text = "Trace the drawing then press SUBMIT!
 Higher accuracy equals higher score.
 "
 scroll_active = false
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="HUDLayer/HUD" unique_id=1605336558]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 566.0
+offset_right = 929.0
+offset_bottom = 615.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 18
+text = "Get more
+drawings!"
+
+[node name="ColorRect" type="ColorRect" parent="HUDLayer/HUD/Label" unique_id=464204819]
+layout_mode = 0
+offset_left = 38.0
+offset_top = -48.0
+offset_right = 42.0
+offset_bottom = -12.0
+color = Color(0.4862745, 0.30980393, 0.21568628, 1)
+
+[node name="ColorRect" type="ColorRect" parent="HUDLayer/HUD/Label/ColorRect" unique_id=77676384]
+layout_mode = 0
+offset_left = 1.0000305
+offset_top = -1.0000305
+offset_right = 5.0000305
+offset_bottom = 20.138763
+rotation = 0.5235988
+color = Color(0.4862745, 0.30980393, 0.21568628, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HUDLayer/HUD/Label/ColorRect" unique_id=432102702]
+layout_mode = 0
+offset_left = 3.0517578e-05
+offset_top = 1.9999695
+offset_right = 4.0000305
+offset_bottom = 23.138763
+rotation = -0.5235988
+color = Color(0.4862745, 0.30980393, 0.21568628, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer/HUD/Label" unique_id=241759133]
+libraries/ = SubResource("AnimationLibrary_71bxy")
+autoplay = &"point"
 
 [node name="RevealElements" type="Control" parent="HUDLayer/HUD" unique_id=1460300616 node_paths=PackedStringArray("on_color_reveal", "on_tools_reveal", "on_sizes_reveal", "on_bucket_reveal")]
 unique_name_in_owner = true
@@ -1321,9 +1402,9 @@ cost_label = NodePath("Cost")
 [node name="Unlock" type="RichTextLabel" parent="HUDLayer/HUD/Upgrades/Panel1" unique_id=894538099]
 layout_mode = 0
 offset_left = 6.0
-offset_top = 9.0
+offset_top = 7.0
 offset_right = 154.0
-offset_bottom = 93.0
+offset_bottom = 91.0
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
@@ -1346,6 +1427,7 @@ mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "Cost: 5s"
 scroll_active = false
@@ -1367,9 +1449,9 @@ cost_label = NodePath("Cost")
 [node name="Unlock" type="RichTextLabel" parent="HUDLayer/HUD/Upgrades/Panel2" unique_id=968887373]
 layout_mode = 0
 offset_left = 6.0
-offset_top = 9.0
+offset_top = 7.0
 offset_right = 154.0
-offset_bottom = 92.0
+offset_bottom = 90.0
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
@@ -1392,7 +1474,7 @@ mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "Cost: 5s"
 scroll_active = false
@@ -1400,10 +1482,11 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HUDLayer/HUD/Upgrades" unique_id=327085150]
+self_modulate = Color(0.6321235, 0.6321235, 0.6321234, 1)
 layout_mode = 0
-offset_left = 780.0
+offset_left = 774.0
 offset_top = 159.0
-offset_right = 930.0
+offset_right = 938.0
 offset_bottom = 203.0
 texture = ExtResource("76_vqo61")
 patch_margin_left = 8
@@ -1413,15 +1496,14 @@ patch_margin_bottom = 8
 
 [node name="Label" type="Label" parent="HUDLayer/HUD/Upgrades/NinePatchRect" unique_id=1699560162]
 layout_mode = 0
-offset_left = -8.0
 offset_top = 11.0
-offset_right = 160.0
+offset_right = 168.0
 offset_bottom = 47.0
 theme = ExtResource("18_qpefm")
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 21
-text = "UNLOCK"
+text = "UNLOCKS"
 horizontal_alignment = 1
 
 [node name="Divider" type="TextureRect" parent="HUDLayer/HUD" unique_id=583322741]
