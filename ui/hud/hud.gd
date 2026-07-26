@@ -66,6 +66,7 @@ func on_game_end() -> void:
 func on_freedraw_mode() -> void:
     drawing_count.text = "0"
     countdown_timer.hide()
+    initial_hint.hide()
 
 func on_game_lose() -> void:
     on_game_end()
