@@ -334,6 +334,16 @@ offset_bottom = 590.0
 theme = ExtResource("6_u4nky")
 text = "credits"
 
+[node name="FreedrawButton" type="Button" parent="." unique_id=1767289967]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 55.0
+offset_top = 637.0
+offset_right = 187.0
+offset_bottom = 689.0
+theme = ExtResource("6_u4nky")
+text = "freedraw"
+
 [node name="Credits" type="Control" parent="." unique_id=2038010773]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(960, 720)

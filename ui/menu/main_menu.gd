@@ -7,6 +7,7 @@ signal start_game
 @onready var volume_sliders: Control = %VolumeSliders
 @onready var start_button: Button = %StartButton
 @onready var credits_button: Button = %CreditsButton
+@onready var freedraw_button: Button = %FreedrawButton
 @onready var back_button: Button = %BackButton
 @onready var options_button: Button = %OptionsButton
 @onready var options_menu: Control = %OptionsMenu
@@ -28,6 +29,7 @@ func _ready() -> void:
     credits_button.pressed.connect(_on_credits_button_pressed)
     options_button.pressed.connect(_on_options_button_pressed)
     back_button.pressed.connect(_on_backbutton_pressed)
+    freedraw_button.pressed.connect(_on_freedraw_button_pressed)
     
     start_button.mouse_entered.connect(_on_button_mouse_entered)
     credits_button.mouse_entered.connect(_on_button_mouse_entered)
@@ -41,6 +43,12 @@ func _ready() -> void:
     
 func _on_start_button_pressed():
     AudioManager.play_button_sfx()
+    Global.freedraw_mode = false
+    start_game.emit()
+
+func _on_freedraw_button_pressed():
+    AudioManager.play_button_sfx()
+    Global.freedraw_mode = true
     start_game.emit()
 
 func _on_credits_button_pressed():
@@ -57,8 +65,8 @@ func _on_credits_button_pressed():
         
         var menu_tween = get_tree().create_tween().set_parallel(false)
         menu_tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
-        for node: CanvasItem in [title,start_button,options_button,credits_button]:
-            menu_tween.tween_property(node,"position:x", node.position.x - 1000,0.1)
+        for node: CanvasItem in [title,start_button,options_button,credits_button,freedraw_button]:
+            menu_tween.tween_property(node,"position:x", node.position.x - 1000,0.075)
         
 func _on_options_button_pressed():
     AudioManager.play_button_sfx()
@@ -83,8 +91,8 @@ func _on_backbutton_pressed():
         
         var menu_tween = get_tree().create_tween().set_parallel(false)
         menu_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
-        for node: CanvasItem in [start_button,options_button,credits_button,title]:
-            menu_tween.tween_property(node,"position:x", node.position.x + 1000,0.2)
+        for node: CanvasItem in [start_button,options_button,credits_button,freedraw_button,title]:
+            menu_tween.tween_property(node,"position:x", node.position.x + 1000,0.25)
     
 func _on_button_mouse_entered() -> void:
     AudioManager.play_hover_sfx()

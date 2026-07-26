@@ -21,7 +21,7 @@ const MAX_DRAWINGS := 20
 const DEBUG_MODE := false
 const ACCURACY_THRESHOLD := 0.5
 
-var freedraw_mode := false
+var freedraw_mode := Global.freedraw_mode
 var drawings_completed := 0
 var accuracy_sum := 0.0 # Can use this to calculate average accuracy with accuracy_sum / drawings_completed
 var total_time_spent := 0.0 # Can use for leaderboard

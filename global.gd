@@ -18,6 +18,8 @@ var drawings_made: int
 var average_accuracy_str: String
 var total_time_str: String
 
+var freedraw_mode := false
+
 func _ready() -> void:
     _load_config()
     print("music=", music, ", ui=", ui, ", environment=", environment)
