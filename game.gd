@@ -118,7 +118,8 @@ func _on_select_color_index(index: int) -> void:
     hud.select_color_index(index)
 
 func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
-    #if size == player_drawing.brush_size: return ##not sure why this is buggin
+    if size == player_drawing.brush_size_label:
+        return
     
     player_drawing.set_brush_size(size)
     AudioManager.play_button_sfx()
@@ -146,9 +147,6 @@ func _on_game_lose() -> void:
     
 func _on_upgrade_unlock(upgrade: Upgrade) -> void:
     hud.on_upgrade_unlocked(upgrade)
-    # Start a new drawing without updating score, count, or timer
-    drawing_manager.set_next_drawing()
-    player_drawing.on_new_drawing()
     AudioManager.play_button_sfx()
     %Hourglass.take_sand()
     AudioManager.play_unlock_sfx()

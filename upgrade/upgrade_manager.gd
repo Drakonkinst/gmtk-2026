@@ -39,6 +39,9 @@ func _ready() -> void:
             unlock_upgrade_2()
         unlocked_drawing_sets.push_back(Drawing.DrawingSet.FREEDRAW)
 
+func any_upgrade_left() -> bool:
+    return not Global.freedraw_mode and (upgrade_track_1 < len(upgrade_list_1) - 1 or upgrade_track_2 < len(upgrade_list_2) - 1)
+
 func _process_upgrade(upgrade_id: String):
     if upgrade_id == "Eraser":
         unlocked_tools[PlayerDrawing.Tool.ERASER] = true

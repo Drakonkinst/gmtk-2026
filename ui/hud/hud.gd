@@ -8,6 +8,8 @@ signal select_tool(tool: PlayerDrawing.Tool)
 signal select_color(color: Color)
 signal select_size(size: PlayerDrawing.BrushSize)
 
+const UPGRADE_HINT_TIMER_COOLDOWN := 15.0
+
 @onready var score_counter: ScoreCounter = %ScoreCounter
 @onready var submit_button: Button = %SubmitButton
 @onready var clear_button: TextureButton = %ClearButton
@@ -20,7 +22,10 @@ signal select_size(size: PlayerDrawing.BrushSize)
 @onready var hourglass: Hourglass = %Hourglass
 @onready var countdown_timer: CountdownTimer = %CountdownTimer
 @onready var initial_hint: Node = %InitialHint
+@onready var upgrade_hint: Node = %UpgradeHint
+@onready var upgrade_hint_timer: Timer = %UpgradeHintTimer
 
+var upgrade_hint_on_cooldown := false
 
 func _ready() -> void:
     submit_button.pressed.connect(_on_submit_button_pressed)
@@ -28,11 +33,17 @@ func _ready() -> void:
     tool_select.tool_button_pressed.connect(_on_tool_button_pressed)
     color_select.select_color.connect(_on_select_color)
     size_select.select_size.connect(_on_select_size)
+    upgrade_hint_timer.timeout.connect(_on_upgrade_hint_timer_timeout)
     score_counter.set_multiplier(1.0)
+    upgrade_hint.hide()
     
 func on_upgrade_unlocked(upgrade: Upgrade) -> void:
     reveal_elements.on_upgrade_unlocked(upgrade)
     score_counter.set_multiplier(Global.game.upgrade_manager.score_multiplier)
+
+    upgrade_hint.hide()
+    upgrade_hint_timer.start(UPGRADE_HINT_TIMER_COOLDOWN)
+    upgrade_hint_on_cooldown = true
 
 func on_complete_drawing(accuracy: float) -> void:
     accuracy_display.text = str(int(accuracy * 100)) + "%"
@@ -48,6 +59,9 @@ func on_complete_drawing(accuracy: float) -> void:
         drawing_count.text = drawings_completed_text
     else:
         drawing_count.text =  drawings_completed_text + " / " + str(Global.game.MAX_DRAWINGS)
+
+    if Global.game.countdown_manager.time_left >= 60 and not upgrade_hint_on_cooldown and Global.game.upgrade_manager.any_upgrade_left():
+        upgrade_hint.show()
 
 func select_color_index(index: int) -> void:
     color_select.select_color_index(index)
@@ -84,3 +98,6 @@ func _on_select_color(color: Color) -> void:
 
 func _on_select_size(brush_size: PlayerDrawing.BrushSize) -> void:
     select_size.emit(brush_size)
+    
+func _on_upgrade_hint_timer_timeout() -> void:
+    upgrade_hint_on_cooldown = false

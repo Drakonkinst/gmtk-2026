@@ -754,7 +754,7 @@ offset_right = -306.0
 offset_bottom = 233.0
 grow_horizontal = 0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.8980392, 0.9254902, 0.89411765, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
 theme_override_font_sizes/normal_font_size = 18
@@ -764,21 +764,22 @@ Higher accuracy equals higher score.
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="HUDLayer/HUD" unique_id=1605336558]
+[node name="UpgradeHint" type="Label" parent="HUDLayer/HUD" unique_id=1605336558]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 846.0
-offset_top = 566.0
-offset_right = 929.0
-offset_bottom = 615.0
+offset_left = 833.0
+offset_top = 564.0
+offset_right = 942.0
+offset_bottom = 613.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("52_tb2lt")
 theme_override_font_sizes/font_size = 18
-text = "Get more
+text = "Unlock more
 drawings!"
 
-[node name="ColorRect" type="ColorRect" parent="HUDLayer/HUD/Label" unique_id=464204819]
+[node name="ColorRect" type="ColorRect" parent="HUDLayer/HUD/UpgradeHint" unique_id=464204819]
 layout_mode = 0
 offset_left = 38.0
 offset_top = -48.0
@@ -786,7 +787,7 @@ offset_right = 42.0
 offset_bottom = -12.0
 color = Color(0.4862745, 0.30980393, 0.21568628, 1)
 
-[node name="ColorRect" type="ColorRect" parent="HUDLayer/HUD/Label/ColorRect" unique_id=77676384]
+[node name="ColorRect" type="ColorRect" parent="HUDLayer/HUD/UpgradeHint/ColorRect" unique_id=77676384]
 layout_mode = 0
 offset_left = 1.0000305
 offset_top = -1.0000305
@@ -795,7 +796,7 @@ offset_bottom = 20.138763
 rotation = 0.5235988
 color = Color(0.4862745, 0.30980393, 0.21568628, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="HUDLayer/HUD/Label/ColorRect" unique_id=432102702]
+[node name="ColorRect2" type="ColorRect" parent="HUDLayer/HUD/UpgradeHint/ColorRect" unique_id=432102702]
 layout_mode = 0
 offset_left = 3.0517578e-05
 offset_top = 1.9999695
@@ -804,9 +805,12 @@ offset_bottom = 23.138763
 rotation = -0.5235988
 color = Color(0.4862745, 0.30980393, 0.21568628, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer/HUD/Label" unique_id=241759133]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer/HUD/UpgradeHint" unique_id=241759133]
 libraries/ = SubResource("AnimationLibrary_71bxy")
 autoplay = &"point"
+
+[node name="UpgradeHintTimer" type="Timer" parent="HUDLayer/HUD/UpgradeHint" unique_id=42217347]
+unique_name_in_owner = true
 
 [node name="RevealElements" type="Control" parent="HUDLayer/HUD" unique_id=1460300616 node_paths=PackedStringArray("on_color_reveal", "on_tools_reveal", "on_sizes_reveal", "on_bucket_reveal")]
 unique_name_in_owner = true
@@ -1503,7 +1507,7 @@ theme = ExtResource("18_qpefm")
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 21
-text = "UNLOCKS"
+text = "UNLOCK"
 horizontal_alignment = 1
 
 [node name="Divider" type="TextureRect" parent="HUDLayer/HUD" unique_id=583322741]
