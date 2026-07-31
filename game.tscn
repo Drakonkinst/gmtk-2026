@@ -174,7 +174,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("ColorRect:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
@@ -239,6 +239,20 @@ point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_q6vxt"]
 offsets = PackedFloat32Array(0, 0.18387097, 0.86129034, 1)
+colors = PackedColorArray(0.8901186, 0.7604822, 0.4977886, 0, 0.8901961, 0.7607843, 0.49803922, 1, 0.8901186, 0.7604822, 0.4977886, 1, 0.8901186, 0.7604822, 0.4977886, 0)
+
+[sub_resource type="Curve" id="Curve_vftfo"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_r3ggl"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, -11.541985, 0, 0, Vector2(0.056, 1), 0.0, 0.0, 0, 0, Vector2(0.4, 1), 0.0, 0.0, 0, 0, Vector2(1, 3), 13.337413, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_sueei"]
+offsets = PackedFloat32Array(0, 0.17096774, 0.8064516, 1)
 colors = PackedColorArray(0.8901186, 0.7604822, 0.4977886, 0, 0.8901961, 0.7607843, 0.49803922, 1, 0.8901186, 0.7604822, 0.4977886, 1, 0.8901186, 0.7604822, 0.4977886, 0)
 
 [sub_resource type="Animation" id="Animation_5sxqa"]
@@ -748,16 +762,17 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -661.0
-offset_top = 191.0
-offset_right = -306.0
-offset_bottom = 233.0
+offset_left = -711.0
+offset_top = 194.0
+offset_right = -479.0
+offset_bottom = 245.5
 grow_horizontal = 0
+scale = Vector2(2, 2)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.8980392, 0.9254902, 0.89411765, 1)
-theme_override_constants/outline_size = 12
+theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 12
 text = "Trace the drawing then press SUBMIT!
 Higher accuracy equals higher score.
 "
@@ -1413,7 +1428,7 @@ mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "ERASER Tool + More DRAWINGS
 "
@@ -1460,7 +1475,7 @@ mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.21960784, 0.12156863, 0.07058824, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("52_tb2lt")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "2x Score + More DRAWINGS
 "
@@ -1609,7 +1624,7 @@ offset_bottom = 306.0
 scale = Vector2(3, 3)
 texture = ExtResource("84_lon8v")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="HUDLayer/HUD/Hourglass" unique_id=1680693269]
+[node name="ParticlesOut" type="CPUParticles2D" parent="HUDLayer/HUD/Hourglass" unique_id=1680693269]
 position = Vector2(73, 305)
 emitting = false
 amount = 32
@@ -1622,6 +1637,28 @@ scale_amount_min = 3.0
 scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_lon8v")
 color_ramp = SubResource("Gradient_q6vxt")
+
+[node name="ParticlesIn" type="CPUParticles2D" parent="HUDLayer/HUD/Hourglass" unique_id=814555698]
+position = Vector2(477, 52)
+emitting = false
+amount = 32
+lifetime = 0.75
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.5
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 32.0
+direction = Vector2(-1.8, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 600.0
+initial_velocity_max = 600.0
+damping_curve = SubResource("Curve_vftfo")
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_r3ggl")
+color_ramp = SubResource("Gradient_sueei")
 
 [node name="CountdownTimer" type="Control" parent="HUDLayer/HUD" unique_id=300404977]
 unique_name_in_owner = true
@@ -2106,15 +2143,29 @@ text = "###"
 [node name="EndDrawingsCompleted" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=1210669791]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 315.0
+offset_left = 306.0
 offset_top = 367.0
-offset_right = 492.0
+offset_right = 392.0
 offset_bottom = 432.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("52_tb2lt")
 theme_override_font_sizes/font_size = 60
-text = "###"
+text = "55"
+horizontal_alignment = 1
+
+[node name="EndDrawingsMax" type="Label" parent="HUDLayer/EndScreen/AnimElements" unique_id=326610270]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 400.0
+offset_top = 387.0
+offset_right = 508.0
+offset_bottom = 452.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("52_tb2lt")
+theme_override_font_sizes/font_size = 36
+text = "/ 20"
 
 [node name="EndAnimPlayer" type="AnimationPlayer" parent="HUDLayer/EndScreen" unique_id=2084029946]
 unique_name_in_owner = true

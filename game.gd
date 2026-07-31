@@ -83,8 +83,11 @@ func _on_submit_drawing() -> void:
     AudioManager.play_submit_sfx()
     if accuracy >= ACCURACY_THRESHOLD:
         AudioManager.play_good_sfx(accuracy)
+        %Hourglass.add_sand()
     else:
         AudioManager.play_bad_sfx(accuracy)
+        
+    
     
     complete_drawing.emit()
     if drawings_completed >= MAX_DRAWINGS and not Global.freedraw_mode:
@@ -181,6 +184,7 @@ func exit_to_menu():
         button.disabled = true
     %TransitionAnimation.play_backwards("transition")
     await %TransitionAnimation.animation_finished
+    AudioManager.stop_tick_tock_sfx()
     exit_game.emit()
 
 func restart():

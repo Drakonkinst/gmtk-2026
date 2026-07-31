@@ -6,7 +6,8 @@ const OFFSET := 0.54
 
 @onready var sand_progress: TextureProgressBar = %SandProgress
 @onready var falling_sand: Control = %FallingSand
-@onready var particles: CPUParticles2D = $CPUParticles2D
+@onready var particles_out: CPUParticles2D = $ParticlesOut
+@onready var particles_in: CPUParticles2D = $ParticlesIn
 
 func _process(delta: float) -> void:
     var time_left := Global.game.countdown_manager.time_left
@@ -16,4 +17,7 @@ func _process(delta: float) -> void:
     sand_progress.value = lerpf(sand_progress.value, target_display_percentage, 0.15)
 
 func take_sand():
-    particles.emitting = true
+    particles_out.emitting = true
+
+func add_sand():
+    particles_in.emitting = true

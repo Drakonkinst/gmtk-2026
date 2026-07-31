@@ -15,6 +15,7 @@ extends Control
 @onready var end_accuracy_value: Label = %EndAccuracyValue
 @onready var end_time_spent: Label = %EndTimeSpent
 @onready var end_drawings_completed: Label = %EndDrawingsCompleted
+@onready var end_drawings_max: Label = %EndDrawingsMax
 
 var score_posted := false
 
@@ -48,6 +49,10 @@ func _on_post_button_pressed() -> void:
     user_entry.editable = false
 
 func _on_menu_button_pressed() -> void:
+    for button: BaseButton in [%MenuButton,%ReplayButton]:
+        button.disabled = true
+    %TransitionAnimation.play_backwards("transition")
+    await %TransitionAnimation.animation_finished
     Global.game.exit_game.emit()
     
 func _on_replay_button_pressed() -> void:
@@ -62,6 +67,7 @@ func on_game_end() -> void:
     end_accuracy_value.text = Global.average_accuracy_str
     end_time_spent.text = Global.total_time_str
     end_drawings_completed.text = str(Global.drawings_made)
+    end_drawings_max.text = "/ " + str(Global.game.MAX_DRAWINGS)
     
     end_anim_player.play("end_game")
     AudioManager.start_pause_bgm()
