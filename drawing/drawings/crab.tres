@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Drawing" format=3 uid="uid://cma2cshcg0rna"]
 
-[ext_resource type="Texture2D" uid="uid://c7ec7jehawy2x" path="res://drawing/drawings/crab.png" id="1_ym5ut"]
+[ext_resource type="Texture2D" uid="uid://odp74acsoela" path="res://drawing/drawings/crab.png" id="1_ym5ut"]
 [ext_resource type="Script" uid="uid://bj4uga4l46xp4" path="res://drawing/drawing.gd" id="2_b8nlq"]
 
 [resource]

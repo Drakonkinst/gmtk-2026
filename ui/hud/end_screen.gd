@@ -11,6 +11,7 @@ extends Control
 @onready var end_anim_player: AnimationPlayer = %EndAnimPlayer
 @onready var leaderboard: Leaderboard = %Leaderboard
 
+@onready var header: Label = %Header
 @onready var end_score_value: Label = %EndScoreValue
 @onready var end_accuracy_value: Label = %EndAccuracyValue
 @onready var end_time_spent: Label = %EndTimeSpent
@@ -59,7 +60,7 @@ func _on_replay_button_pressed() -> void:
     Global.game.restart_game.emit()
     AudioManager.start_bgm()
     
-func on_game_end() -> void:
+func on_game_end(reached_drawing_limit: bool = false) -> void:
     show()
     displayed_score = 0
     delay_left = MAX_DELAY
@@ -69,6 +70,12 @@ func on_game_end() -> void:
     end_drawings_completed.text = str(Global.drawings_made)
     end_drawings_max.text = "/ " + str(Global.game.MAX_DRAWINGS)
     
+    if reached_drawing_limit:
+        header.text = "Finished!"
+        AudioManager.play_draw_limit_sfx()
+    else:
+        AudioManager.play_time_up_sfx()
+
     end_anim_player.play("end_game")
     AudioManager.start_pause_bgm()
     

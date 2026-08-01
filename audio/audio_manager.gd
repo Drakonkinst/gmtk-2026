@@ -18,10 +18,13 @@ extends Node
 @export var bucket_fill_sfx: AudioStreamPlayer
 @export var tick_tock_sfx: AudioStreamPlayer
 @export var time_up_sfx: AudioStreamPlayer
+@export var draw_limit_sfx: AudioStreamPlayer
+
 
 func _ready() -> void:
     starting_bgm_db = bgm.volume_db
     starting_pause_bgm_db = pause_bgm.volume_db
+    starting_draw_limit_pitch = draw_limit_sfx.pitch_scale
 
 const QUIET_VOLUME: float = -100
 var starting_bgm_db: float
@@ -108,3 +111,11 @@ func stop_tick_tock_sfx() -> void:
 
 func play_time_up_sfx() -> void:
     time_up_sfx.play()
+
+var starting_draw_limit_pitch: float
+func play_draw_limit_sfx() -> void:
+    draw_limit_sfx.pitch_scale = starting_draw_limit_pitch
+    for i in 3:
+        draw_limit_sfx.play()
+        await get_tree().create_timer(0.3).timeout
+        draw_limit_sfx.pitch_scale += 1

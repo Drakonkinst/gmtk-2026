@@ -91,7 +91,7 @@ func _on_submit_drawing() -> void:
     
     complete_drawing.emit()
     if drawings_completed >= MAX_DRAWINGS and not Global.freedraw_mode:
-        _on_game_lose()
+        _on_game_lose(true)
     
 func _on_clear_drawing() -> void:
     player_drawing.reset_image()
@@ -128,11 +128,11 @@ func _on_select_size(size: PlayerDrawing.BrushSize) -> void:
     AudioManager.play_button_sfx()
     AudioManager.play_brush_select_sfx()
 
-func _on_game_lose() -> void:
+func _on_game_lose(reached_drawing_limit: bool = false) -> void:
     game_over = true
     input_manager.drawing_enabled = false
     hud.on_game_lose()
-    AudioManager.play_time_up_sfx()
+    end_screen.on_game_end(reached_drawing_limit)
     
     # Calculate endgame stats
     Global.drawings_made = drawings_completed
@@ -145,9 +145,7 @@ func _on_game_lose() -> void:
     var num_minutes := int(total_time_spent / 60)
     var num_seconds := int(total_time_spent) - num_minutes * 60
     Global.total_time_str = str(num_minutes) + "m " + str(num_seconds) + "s"
-    
-    end_screen.on_game_end()
-    
+
 func _on_upgrade_unlock(upgrade: Upgrade) -> void:
     hud.on_upgrade_unlocked(upgrade)
     AudioManager.play_button_sfx()
