@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://c4vci3u0hkw41" path="res://audio/sfx/drawingsound3a.ogg" id="8_hlghp"]
 [ext_resource type="AudioStream" uid="uid://ndypnfg11okp" path="res://audio/sfx/unlockingsomethingsoundeffect2.ogg" id="8_qus7j"]
 [ext_resource type="AudioStream" uid="uid://bw4nuv0id3nm" path="res://audio/sfx/drawingsound3b.ogg" id="9_0xv67"]
+[ext_resource type="AudioStream" uid="uid://b2g1fqoxjlfq2" path="res://audio/sfx/drawersound.ogg" id="9_2qk0m"]
 [ext_resource type="AudioStream" uid="uid://e6fldvwbu04v" path="res://audio/sfx/drawingsound3c.ogg" id="10_oyqdx"]
 [ext_resource type="AudioStream" uid="uid://7fuf3cgpjqe3" path="res://audio/sfx/erasingsound.ogg" id="11_oyqdx"]
 [ext_resource type="AudioStream" uid="uid://c2xytf6tslmu3" path="res://audio/sfx/clearsoundeffect2.ogg" id="13_h3g62"]
@@ -44,6 +45,11 @@ stream_0/stream = ExtResource("5_mhfhn")
 random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("7_tmngx")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gs81p"]
+random_pitch = 1.1892071
+streams_count = 1
+stream_0/stream = ExtResource("9_2qk0m")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tu6k2"]
 random_pitch = 1.0594631
@@ -82,7 +88,7 @@ random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("16_ji21h")
 
-[node name="AudioManager" type="Node" unique_id=1337921936 node_paths=PackedStringArray("bgm", "pause_bgm", "submit_sfx", "good_sfx", "bad_sfx", "button_sfx", "hover_sfx", "unlock_sfx", "draw_sfx", "erase_sfx", "clear_sfx", "brush_select_sfx", "color_select_sfx", "bucket_fill_sfx", "tick_tock_sfx", "time_up_sfx", "draw_limit_sfx")]
+[node name="AudioManager" type="Node" unique_id=1337921936 node_paths=PackedStringArray("bgm", "pause_bgm", "submit_sfx", "good_sfx", "bad_sfx", "button_sfx", "hover_sfx", "drawer_sfx", "unlock_sfx", "draw_sfx", "erase_sfx", "clear_sfx", "brush_select_sfx", "color_select_sfx", "bucket_fill_sfx", "tick_tock_sfx", "time_up_sfx", "draw_limit_sfx")]
 process_mode = 3
 script = ExtResource("1_5jhky")
 bgm = NodePath("BGM")
@@ -92,6 +98,7 @@ good_sfx = NodePath("GoodSFX")
 bad_sfx = NodePath("BadSFX")
 button_sfx = NodePath("ButtonSFX")
 hover_sfx = NodePath("HoverSFX")
+drawer_sfx = NodePath("DrawerSFX")
 unlock_sfx = NodePath("UnlockSFX")
 draw_sfx = NodePath("DrawSFXOneshot")
 erase_sfx = NodePath("EraseSFXOneshot")
@@ -135,8 +142,12 @@ bus = &"UI"
 
 [node name="HoverSFX" type="AudioStreamPlayer" parent="." unique_id=552402759]
 stream = SubResource("AudioStreamRandomizer_h3g62")
-volume_db = -2.0
 pitch_scale = 0.8
+bus = &"UI"
+
+[node name="DrawerSFX" type="AudioStreamPlayer" parent="." unique_id=1222826342]
+stream = SubResource("AudioStreamRandomizer_gs81p")
+volume_db = 3.0
 bus = &"UI"
 
 [node name="UnlockSFX" type="AudioStreamPlayer" parent="." unique_id=871061633]

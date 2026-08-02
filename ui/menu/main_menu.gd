@@ -48,47 +48,56 @@ func _on_start_button_pressed():
     Global.freedraw_mode = false
     for button: BaseButton in [start_button,options_button,credits_button,freedraw_button]:
         button.disabled = true
-    %AnimationPlayer.play("transition")
-    await %AnimationPlayer.animation_finished
+    animation_player.play("transition")
+    await animation_player.animation_finished
     start_game.emit()
 
 func _on_freedraw_button_pressed():
     AudioManager.play_button_sfx()
+    AudioManager.play_drawer_sfx()
+    
+    
     Global.freedraw_mode = true
     for button: BaseButton in [start_button,options_button,credits_button,freedraw_button]:
         button.disabled = true
-    %AnimationPlayer.play("transition")
-    await %AnimationPlayer.animation_finished
+    animation_player.play("transition")
+    await animation_player.animation_finished
     start_game.emit()
 
 func _on_credits_button_pressed():
-    AudioManager.play_button_sfx()
-    volume_sliders.hide()
+    if background.modulate != Color(1.0, 1.0, 1.0, 1.0): return
     
-    if background.modulate == Color(1.0, 1.0, 1.0, 1.0):
-        AudioManager.play_button_sfx()
-        var tween = get_tree().create_tween().set_parallel(true)
-        tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
-        tween.tween_property(credits,"position:y",0.0,1.0)
-        tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
-        tween.tween_property(background,"modulate",Color(0.5, 0.5, 0.5, 1.0),1.0)
-        
-        var menu_tween = get_tree().create_tween().set_parallel(false)
-        menu_tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
-        for node: CanvasItem in [title,start_button,options_button,credits_button,freedraw_button]:
-            menu_tween.tween_property(node,"position:x", node.position.x - 1000,0.075)
+    AudioManager.play_button_sfx()
+    AudioManager.play_drawer_sfx()
+    
+    var tween = get_tree().create_tween().set_parallel(true)
+    tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+    tween.tween_property(credits,"position:y",0.0,1.0)
+    tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+    tween.tween_property(background,"modulate",Color(0.5, 0.5, 0.5, 1.0),1.0)
+    
+    var menu_tween = get_tree().create_tween().set_parallel(false)
+    menu_tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+    for node: CanvasItem in [title,start_button,options_button,credits_button,freedraw_button]:
+        menu_tween.tween_property(node,"position:x", node.position.x - 1000,0.075)
         
 func _on_options_button_pressed():
     AudioManager.play_button_sfx()
+    AudioManager.play_drawer_sfx()
+    
     options_menu.show()
 
 func _on_options_bg_mouse_exited():
     if not options_bg.get_global_rect().has_point(get_viewport().get_mouse_position()):
         AudioManager.play_hover_sfx()
+        AudioManager.play_drawer_sfx()
+        
         options_menu.hide()
     
 func _on_backbutton_pressed():
     AudioManager.play_button_sfx()
+    AudioManager.play_drawer_sfx()
+    
     volume_sliders.show()
 
     if background.modulate == Color(0.5, 0.5, 0.5, 1.0):
@@ -105,7 +114,7 @@ func _on_backbutton_pressed():
             menu_tween.tween_property(node,"position:x", node.position.x + 1000,0.25)
     
 func _on_button_mouse_entered() -> void:
-    if not %AnimationPlayer.is_playing():
+    if not animation_player.is_playing():
         AudioManager.play_hover_sfx()
         
 func _on_musicslider_value_changed(value):
